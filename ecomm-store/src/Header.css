@@ -1,0 +1,11 @@
+#container-header section {
+    width: 85%;
+    height: 60vh;
+    border: 2px black solid;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+#container-header section h2 {
+
+}
