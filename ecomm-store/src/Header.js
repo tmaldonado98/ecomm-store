@@ -1,12 +1,14 @@
 import './Header.css';
+import { Typography } from '@material-ui/core';
+
 
 export default function Header(){
     return (
         <section>
-        <h2>
+        <Typography variant='h2'>
             Browse David Maldonado's Latest Works For Sale
-        </h2>
-        <p>This section can be an image carousel.</p>
+        </Typography>
+        <Typography variant='p'>This section can be an image carousel for latest works</Typography>
         {/* <h4>
 
         </h4> */}
