@@ -1,0 +1,21 @@
+#footerContainer {
+    margin: 3rem auto;
+    max-width: 1200px;
+}
+
+
+#footerContent {
+    display: grid;
+    grid-auto-columns: 1fr;
+    align-items: start;
+grid-column-gap: 30px;
+grid-row-gap: 30px;
+grid-template-areas:
+". . . . ." 
+". . . . .";
+padding: 4rem 1rem;
+}
+
+.footerCol {
+    text-align: center;
+}
