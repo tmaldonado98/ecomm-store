@@ -1,7 +1,12 @@
 import React from "react";
+import Nav from "../Nav";
+
 
 export default function Contact(){
     return (
-        <h1>contact</h1>
+    <>
+        <Nav />
+        <h1>Contact, Commissions, or Get Help</h1>
+    </>
     )
 }

@@ -14,33 +14,7 @@ import Contact from './pages/Contact';
 function App() {
   return (
     <div >
-      <nav>
-        <Typography variant='h1'>David Maldonado Art</Typography>
-                  <div>
-                      <ul id='nav-items'>
-                          <Link to='/'>
-                              <Typography variant='li'>home</Typography>
-                          </Link>
-                          <Link to='/products'>
-                              <Typography variant='li'>products</Typography>
-                          </Link>                              
-                          <Link to='/about'>
-                            <Typography variant='li'>about</Typography>
-                          </Link>
-                          <Link to='/contact'>
-                            <Typography variant='li'>contact</Typography>
-                          </Link>                      
-                      </ul>
-                      <button>
-                          <Typography variant='span'>cart </Typography><Typography variant='span'>0</Typography>
-                      </button>
-                  </div>
-          <Routes>
-              <Route path='/Products' element={<Products />}/>
-              <Route path='/About' element={<About />}/>
-              <Route path='/Contact' element={<Contact />}/>
-          </Routes>                                
-      </nav>
+      <Nav />
       <header id="containerHeader">
         <Header />
       </header>

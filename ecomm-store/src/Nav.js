@@ -3,30 +3,51 @@ import { ReactDOM } from 'react';
 import { Link, Route, Routes} from 'react-router-dom';
 import {  Typography } from '@material-ui/core';
 import Products from './pages/Products';
-// import About from './pages/About';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import { useState } from 'react';
+
+
 
 export default function Nav(){
+    const [cartAmt, setCartAmt] = useState(0);
+
+    const increaseCart = function (){
+        // setCartAmt(prevAmt => prevAmt + 1)
+        setCartAmt(cartAmt + 1)
+    }
+
     return(
-            <section id='container-nav'>
-                <Typography variant='h1'>David Maldonado Art</Typography>
-                <div>
-                    <ul id='nav-items'>
-                        <Link to='/products'>
-                            <Typography variant='li'>products</Typography>
-                        </Link>                              
-                        <Typography variant='li'>about</Typography>
-                        <Typography variant='li'>contact</Typography>  
-                    </ul>
-                    <button>
-                        <Typography variant='span'>cart </Typography><Typography variant='span'>0</Typography>
-                    </button>
-                </div>
-        <Routes>
-            <Route path='/Products' element={<Products />}/>
-            <Route path='/About' element={<Link to='/about' />}/>
-            <Route path='/Contact' element={<Link to='/contact' />}/>
-        </Routes>
-            </section>
+        <nav>
+            <Typography variant='h1'>David Maldonado Art</Typography>
+                  <div>
+                      <ul id='nav-items'>
+                          <Link to='/'>
+                              <li>home</li>
+                          </Link>
+                          <Link to='/products'>
+                              <li>products</li>
+                          </Link>                              
+                          <Link to='/about'>
+                            <li>about</li>
+                          </Link>
+                          <Link to='/contact'>
+                            <li>contact</li>
+                          </Link>                      
+                      
+                        <li>
+                            <Typography variant='button'>
+                                <span>{'cart ' + cartAmt}</span>
+                            </Typography>
+                        </li>
+                      </ul>
+                  </div>
+          <Routes>
+              <Route path='/Products' element={<Products  increase={increaseCart}/>}/>
+              <Route path='/About' element={<About />}/>
+              <Route path='/Contact' element={<Contact />}/>
+          </Routes>                                
+    </nav>
     )
 }
 
