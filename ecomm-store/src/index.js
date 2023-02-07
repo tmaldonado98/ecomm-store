@@ -1,11 +1,12 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
-// import './index.css';
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+// import "@fontawesome/fontawesome-free/css/all.min.css";
 import App from './App';
-import Products from './pages/Products';
-import About from './pages/About';
-import Contact from './pages/Contact';
+import Products from './routes/Products';
+import About from './routes/About';
+import Contact from './routes/Contact';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -20,6 +21,7 @@ root.render(
           </Routes>                                
 
     </Router>
+    {/* <App /> */}
   </React.StrictMode>
 );
 

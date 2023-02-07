@@ -2,12 +2,27 @@ import './Nav.css';
 import React from 'react';
 import { createContext, ReactDOM } from 'react';
 import { Link, Route, Routes} from 'react-router-dom';
-import {  Typography } from '@material-ui/core';
-import Products from './pages/Products';
-import About from './pages/About';
-import Contact from './pages/Contact';
+import {  Button, Typography } from '@material-ui/core';
+import Products from './routes/Products';
+import About from './routes/About';
+import Contact from './routes/Contact';
 import { useState, useContext } from 'react';
 import CartContext from './App';
+
+
+// import { useState } from 'react';
+import {
+  MDBBtn,
+  MDBModal,
+  MDBModalDialog,
+  MDBModalContent,
+  MDBModalHeader,
+  MDBModalTitle,
+  MDBModalBody,
+  MDBModalFooter,
+} from 'mdb-react-ui-kit';
+
+
 
 // export const CartContext = React.createContext();
 
@@ -20,7 +35,9 @@ export default function Nav(){
     //     setCartAmt(prevAmt => prevAmt + 1)
     //     console.log('test')
     // }
+    const [topRightModal, setTopRightModal] = useState(false);
 
+    const toggleShow = () => setTopRightModal(!topRightModal);
     
     
     return(
@@ -30,31 +47,67 @@ export default function Nav(){
                   <div>
                       <ul id='nav-items'>
                           <Link to='/'>
-                              <li>home</li>
+                              <Button>home</Button>
                           </Link>
                           <Link to='/products'>
-                              <li>products</li>
+                              <Button>products</Button>
                           </Link>                              
                           <Link to='/about'>
-                            <li>about</li>
+                            <Button>about</Button>
                           </Link>
                           <Link to='/contact'>
-                            <li>contact</li>
+                            <Button>contact</Button>
                           </Link>                      
                       
                         <li>
-                            <Typography variant='button'>
-                                <span>{'cart '}</span>
-                            </Typography>
+            <MDBBtn color='link' onClick={toggleShow}>Cart 0</MDBBtn>
+
+<MDBModal
+  animationDirection='right'
+  show={topRightModal}
+  tabIndex='-1'
+  setShow={setTopRightModal}
+>
+  <MDBModalDialog position='top-right' side>
+    <MDBModalContent>
+      <MDBModalHeader className='bg-info text-white'>
+        <MDBModalTitle>Your cart</MDBModalTitle>
+        <MDBBtn
+          color='none'
+          className='btn-close btn-close-white'
+          onClick={toggleShow}
+        ></MDBBtn>
+      </MDBModalHeader>
+      <MDBModalBody>
+        <div className='row'>
+          <div className='col-3 text-center'>
+            <i className='fas fa-shopping-cart fa-4x text-info'></i>
+          </div>
+
+          <div className='col-9'>
+            <p>Show all items in the cart as a column of cards.</p>
+          </div>
+        </div>
+      </MDBModalBody>
+      <MDBModalFooter>
+        <MDBBtn color='link' >Proceed to checkout</MDBBtn>
+        <MDBBtn onClick={toggleShow}>
+          Close
+        </MDBBtn>
+      </MDBModalFooter>
+    </MDBModalContent>
+  </MDBModalDialog>
+</MDBModal>
+                            {/* <Button>Cart 0</Button> */}
                         </li>
                       </ul>
                   </div>
-          <Routes>
           {/* increase={increaseCart}  */}
+          {/* <Routes>
               <Route path='/Products/*' element={<Products />}/>
               <Route path='/About' element={<About />}/>
               <Route path='/Contact' element={<Contact />}/>
-          </Routes>                                
+          </Routes>                                 */}
         {/* </CartContext.Provider> */}
     </nav>
     )
