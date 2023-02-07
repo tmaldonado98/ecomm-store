@@ -1,20 +1,16 @@
 import React from "react";
 import Nav from "../Nav";
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 export default function Products(props){
-    // const [cartAmt, setCartAmt] = useState(cartAmt);
-
-    
-    // function increaseCart(){
-    //     setCartAmt(cartAmt + 1)
-    // }
-
+function hi(){
+    return props.increase
+}
     return (
-        <>
+    <>
         <Nav />
         <h1>Products</h1>
-        <button onClick={ props.increase }>Add Product 1 to Cart</button>
+        <button onClick={hi}>Add Product 1 to Cart</button>
     </>
     )
 }
