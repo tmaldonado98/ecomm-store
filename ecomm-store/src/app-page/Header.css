@@ -6,4 +6,16 @@ section {
 
 #header-box {
     width: 45%;
+    text-align: center;
 }
+
+#h-box-ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin-left: 0;
+    padding-left: 0;
+    align-content: center;
+    justify-content: center;
+    gap: 2rem;
+    }
