@@ -19,7 +19,7 @@ export default function Header(){
         <Link to='/contact'>
             <Button>Commissions/Contact</Button>
         </Link> 
-        <ul>
+        <ul id='h-box-ul'>
             <li>ig</li>
             <li>email</li>
         </ul>
@@ -27,7 +27,7 @@ export default function Header(){
        
 
     <section>
-<MDBCarousel showIndicators fade>
+{/* <MDBCarousel showIndicators fade>
       <MDBCarouselItem
         className='w-100 d-block'
         itemId={1}
@@ -57,7 +57,7 @@ export default function Header(){
         <h5>Third slide label</h5>
         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
       </MDBCarouselItem>
-    </MDBCarousel>
+    </MDBCarousel> */}
         {/* <input type="button" value='Browse'></input> */}
     </section>
     </> 
