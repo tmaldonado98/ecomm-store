@@ -6,7 +6,7 @@ import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
 import {  Button } from '@material-ui/core';
 // import ModalFive from "../ModalFive";
-import {ModalFive, ModalSix} from "../Modals";
+import {ModalProd} from "../Modals";
 
 import {
     MDBCard,
@@ -46,7 +46,7 @@ let dbList = {
     five: {
       name: 'random name',
       img: {
-        src: 'src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(18).webp"',
+        src: 'https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(18).webp',
         className: 'w-100 shadow-1-strong rounded mb-4',
         alt: 'Waves at Sea',
         },
@@ -161,9 +161,9 @@ let dbList = {
                 </a>
             </MDBRipple>          */}
 
-                <ModalFive data={dbList.five}/>
+                <ModalProd data={dbList.five}/>
         
-                <ModalSix data={dbList.six}/>
+                <ModalProd data={dbList.six}/>
       </MDBCol>
     </MDBRow>
 
