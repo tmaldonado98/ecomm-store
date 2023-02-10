@@ -7,7 +7,7 @@ import Products from './routes/Products';
 import About from './routes/About';
 import Contact from './routes/Contact';
 import { useState, useContext } from 'react';
-import CartContext from './CartContext';
+import {CartContext, CartProvider} from './CartContext';
 
 
 // import { useState } from 'react';
@@ -39,11 +39,11 @@ export default function Nav(){
 
     const toggleShow = () => setTopRightModal(!topRightModal);
     
-    const cartItems = useContext(CartContext);
+    // const cartItems = useContext(CartContext);
     
     return(
         <nav>
-        <CartContext.Provider value={}>
+        <CartProvider>
             <Typography variant='h1'>David Maldonado Art</Typography>
                   <div>
                       <ul id='nav-items'>
@@ -90,6 +90,7 @@ export default function Nav(){
 
           <div className='col-9'>
             <p>Show all items in the cart as a column of cards.</p>
+            <p>{CartProvider.cartItems}</p>
           </div>
         </div>
       </MDBModalBody>
@@ -107,7 +108,7 @@ export default function Nav(){
                       </ul>
                   </div>
           
-        </CartContext.Provider>
+        </CartProvider>
     </nav>
     )
 }

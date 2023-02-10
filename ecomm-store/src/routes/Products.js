@@ -36,38 +36,45 @@ import {
   } from 'mdb-react-ui-kit';
 
 
+  export const DBList = {
+      five: {
+        name: 'Name of fifth painting',
+        img: {
+          src: 'https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(18).webp',
+          className: 'w-100 shadow-1-strong rounded mb-4',
+          alt: 'Waves at Sea',
+          },
+        description: 'fifth painting description',
+        medium: 'acrylic on canvas',
+        dimensions: "35' x 50'",
+        price: '$300',
+        key: 'Five',
+    },
+    six: {
+        name: 'Sixth painting name',
+        img: {
+          src: 'https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain3.webp',
+          className: 'w-100 shadow-1-strong rounded mb-4',
+          alt: 'Vertical mountain'
+        },
+        description: 'descr for painting SIX',
+        medium: 'oil on canvas',
+        dimensions: "45' x 64'",
+        price: '$120',
+        key: 'Six',
+      },
+    };
+  
+    export function getItemData(key){
+      let itemData = DBList.find(item => item.key === key)
+      return itemData;
+    }
   
   export default function Products(){
       
       // function hi(){
           //     return props.increase
 // }
-let dbList = {
-    five: {
-      name: 'random name',
-      img: {
-        src: 'https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(18).webp',
-        className: 'w-100 shadow-1-strong rounded mb-4',
-        alt: 'Waves at Sea',
-        },
-      description: 'first painting description',
-      medium: 'acrylic on canvas',
-      dimensions: "35' x 50'",
-      price: '$300',
-      key: 'Five',
-  },
-  six: {
-      name: 'random name again',
-      img: {
-        src: 'https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain3.webp',
-      },
-      description: 'descr for painting SIX',
-      medium: 'acrylic on canvas',
-      dimensions: "45' x 64'",
-      price: '$120',
-      key: 'Six',
-  },
-  };
 
 // const contentFive = () => {
 //     <>
@@ -161,9 +168,9 @@ let dbList = {
                 </a>
             </MDBRipple>          */}
 
-                <ModalProd data={dbList.five}/>
+                <ModalProd data={DBList.five}/>
         
-                <ModalProd data={dbList.six}/>
+                <ModalProd data={DBList.six}/>
       </MDBCol>
     </MDBRow>
 
@@ -182,3 +189,4 @@ let dbList = {
     </>
     )
 }
+
