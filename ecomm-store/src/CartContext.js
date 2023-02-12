@@ -1,6 +1,5 @@
 import React, { createContext, useState } from "react";
-import { DBList, getItemData } from "./routes/Products";
-import Nav from "./Nav";
+import { dbList, getItemData } from "./routes/Products";
 
 export const CartContext = createContext({
     items: [],
@@ -11,9 +10,9 @@ export const CartContext = createContext({
     getTotalPrice: () => {},
 });
 
-export function CartProvider({children}){
+function CartProvider({children}){
     
-    const {cartItems, setCartItems} = useState([]);
+    const [cartItems, setCartItems] = useState([]);
     // cartItems = children;
     // console.log("test " + cartItems);
     function addItem(key){
@@ -27,7 +26,7 @@ export function CartProvider({children}){
         console.log(key);
 
     };
-
+/*
     function removeItem(key){
         setCartItems(
             cartItems => cartItems.filter(item => {
@@ -50,28 +49,27 @@ export function CartProvider({children}){
     function getTotalPrice(){
         let totalPrice = 0;
 
-        DBList.map(item => {
+        dbList.map(item => {
             const data = getItemData(item.key)
-            totalPrice += (data.price * DBList.length);
+            totalPrice += (data.price * dbList.length);
         })
         return totalPrice;
     }
-
+*/
     const contextValue = {
         items: cartItems,
         addItem,
-        removeItem,
-        totalQuantity,
-        clearAll,
-        getTotalPrice,
+        // removeItem,
+        // totalQuantity,
+        // clearAll,
+        // getTotalPrice,
     }
 
     return(
         <CartContext.Provider value={contextValue}>
-            {/* <Nav /> */}
             {children}
         </CartContext.Provider>
     )
 }
 
-// export default CartProvider;
+export default CartProvider;
