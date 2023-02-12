@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 import { DBList, getItemData } from "./routes/Products";
-
+import Nav from "./Nav";
 
 export const CartContext = createContext({
     items: [],
@@ -12,9 +12,10 @@ export const CartContext = createContext({
 });
 
 export function CartProvider({children}){
-
-    const [cartItems, setCartItems] = useState([]);
-
+    
+    const {cartItems, setCartItems} = useState([]);
+    // cartItems = children;
+    // console.log("test " + cartItems);
     function addItem(key){
         setCartItems([
             ...cartItems,
@@ -23,6 +24,8 @@ export function CartProvider({children}){
             }
         ])
         console.log(cartItems);
+        console.log(key);
+
     };
 
     function removeItem(key){
@@ -56,16 +59,19 @@ export function CartProvider({children}){
 
     const contextValue = {
         items: cartItems,
-        addItem: addItem,
-        removeItem: removeItem,
-        totalQuantity: totalQuantity,
-        clearAll: clearAll,
-        getTotalPrice: getTotalPrice,
+        addItem,
+        removeItem,
+        totalQuantity,
+        clearAll,
+        getTotalPrice,
     }
 
     return(
         <CartContext.Provider value={contextValue}>
+            {/* <Nav /> */}
             {children}
         </CartContext.Provider>
     )
 }
+
+// export default CartProvider;

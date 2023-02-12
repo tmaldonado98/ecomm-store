@@ -1,6 +1,7 @@
 import Products from './routes/Products';
-import { CartContext } from './CartContext';
+// import { CartContext, CartProvider } from './CartContext';
 import { useContext } from 'react';
+import Nav from './Nav';
 
 import {
     MDBCard,
@@ -34,8 +35,7 @@ export function ModalProd (props){
     
     const toggleShow = () => setOptSmModal(!optSmModal);
 
-    const cart = useContext(CartContext);
-
+    const cart = useContext(ProdContext);
     return(
         <>
 
@@ -80,7 +80,7 @@ export function ModalProd (props){
                         <p>{props.data.medium}</p>
                         <p>{props.data.dimensions}</p>
                         <p><strong>Price: USD{props.data.price}</strong></p>
-                        <Button onClick={()=> {cart.addItem(props.data.key)}}>Add to cart</Button>                
+                        <Button onClick={()=> {addItem(props.data.key)}}>Add to cart</Button>                
                     </MDBModalBody>
             </MDBModalContent>
             </MDBModalDialog>
