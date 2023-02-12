@@ -33,7 +33,7 @@ export default function Nav(){
     
     const cart = useContext(CartContext);
 
-    const cartCount = () => cart.items.reduce((sum, item) => sum + item.quantity, 0)
+    const cartCount = cart.items.length //cart.items.reduce((sum, item) => sum + item.quantity, 0)
 
     // const {cartItems, setCartItems} = useState([]);
     ////start prodContext
