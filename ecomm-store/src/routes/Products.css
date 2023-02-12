@@ -3,3 +3,14 @@
     transition: 250ms ease-in-out;
     /* translate(x) */
 }
+
+h1 {
+    width: 90%;
+    margin: 0 auto;
+    padding-left: 13.5px;
+}
+
+.row {
+    width: 90%;
+    margin: 1rem auto !important;
+}

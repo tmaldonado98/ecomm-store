@@ -25,7 +25,7 @@ function CartProvider({children}){
         // console.log(key);
 
     };
-/*
+
     function removeItem(key){
         setCartItems(
             cartItems => cartItems.filter(item => {
@@ -48,20 +48,22 @@ function CartProvider({children}){
     function getTotalPrice(){
         let totalPrice = 0;
 
-        dbList.map(item => {
-            const data = getItemData(item.key)
-            totalPrice += (data.price * dbList.length);
+        cartItems.map(currentItem => {
+            const data = currentItem.item.price;
+            // console.log(data);
+            totalPrice += data;
         })
-        return totalPrice;
+        console.log(Number(totalPrice))
+        return Number(totalPrice).toFixed(2);
     }
-*/
+
     const contextValue = {
         items: cartItems,
         addItem,
-        // removeItem,
-        // totalQuantity,
-        // clearAll,
-        // getTotalPrice,
+        removeItem,
+        totalQuantity,
+        clearAll,
+        getTotalPrice,
     }
 
     return(

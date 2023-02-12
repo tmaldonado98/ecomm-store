@@ -20,3 +20,23 @@ nav {
     margin-left: 0;
   padding-left: 0;
   }
+
+  .itemInCart {
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 0.25rem;
+
+    text-align: center;
+  }
+
+  .col-9 {
+    text-align: center;
+    margin: 1rem auto;
+  }
+
+  .col-9 div:nth-child(1) {
+    margin-bottom: 1.5rem;
+  }
+
+  .col-9 strong  {
+    text-align: start;
+  }
