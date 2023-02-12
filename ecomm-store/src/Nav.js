@@ -3,14 +3,14 @@ import React from 'react';
 import { createContext, ReactDOM } from 'react';
 import { Link, Route, Routes} from 'react-router-dom';
 import {  Button, Typography } from '@material-ui/core';
-import Products from './routes/Products';
+import Products, { getItemData } from './routes/Products';
 import About from './routes/About';
 import Contact from './routes/Contact';
 import { useState, useContext } from 'react';
-import {CartContext, CartProvider} from './CartContext';
+// import {CartContext, CartProvider} from './CartContext';
 
+import { DBList } from './routes/Products';
 
-// import { useState } from 'react';
 import {
   MDBBtn,
   MDBModal,
@@ -24,26 +24,66 @@ import {
 
 
 
-// export const CartContext = React.createContext();
 
-export default function Nav(){
-    const increase = useContext(CartContext);
-    // const [cartAmt, setCartAmt] = useState(0);
+export function Nav(){
 
-    // function increaseCart (){
-    //     // setCartAmt(cartAmt + 1)
-    //     setCartAmt(prevAmt => prevAmt + 1)
-    //     console.log('test')
-    // }
     const [topRightModal, setTopRightModal] = useState(false);
 
     const toggleShow = () => setTopRightModal(!topRightModal);
     
-    // const cartItems = useContext(CartContext);
+    const {cartItems, setCartItems} = useState([]);
+    ////start prodContext
     
+    export const ProdContext = createContext(
+      
+      
+      {
+      items: [cartItems],
+      addItem: (key) => {
+        setCartItems([
+          ...cartItems,
+            {
+              key: key,
+            }
+        ]);
+        console.log(cartItems);
+        console.log(key);
+      },
+
+      removeItem: (key) => {
+        setCartItems(
+            cartItems => cartItems.filter(item => {
+              return item.key != key
+            } 
+              ///Puts into array all items that do not have the key defined in the parameter.
+          )
+        )
+      },
+
+      totalQuantity: () => {
+        return cartItems.length;
+      },
+
+      clearAll: () => {
+        setCartItems([]);
+      },
+
+      getTotalPrice: () => {
+        let totalPrice = 0;
+
+        DBList.map(item => {
+            const data = getItemData(item.key)
+            totalPrice += (data.price * DBList.length);
+        })
+        return totalPrice;
+      },
+
+  })
+  ///end prodContext  
+
     return(
-        <nav>
-        <CartProvider>
+          <ProdContext.Provider value={cartItems}>
+      <nav>
             <Typography variant='h1'>David Maldonado Art</Typography>
                   <div>
                       <ul id='nav-items'>
@@ -90,7 +130,7 @@ export default function Nav(){
 
           <div className='col-9'>
             <p>Show all items in the cart as a column of cards.</p>
-            <p>{CartProvider.cartItems}</p>
+            <p>{cartItems}</p>
           </div>
         </div>
       </MDBModalBody>
@@ -108,8 +148,7 @@ export default function Nav(){
                       </ul>
                   </div>
           
-        </CartProvider>
     </nav>
+        </ProdContext.Provider>
     )
 }
-
