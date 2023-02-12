@@ -12,7 +12,7 @@ export default function Header(){
     return (
      <>
      <div id='header-box'>
-        <h2>Enter taaglinine herre</h2>
+        <h2>Enter tagline here</h2>
         <Link to='/products'>
             <Button>Browse Artwork</Button>
         </Link> 
@@ -27,7 +27,7 @@ export default function Header(){
        
 
     <section>
-{/* <MDBCarousel showIndicators fade>
+<MDBCarousel showIndicators fade>
       <MDBCarouselItem
         className='w-100 d-block'
         itemId={1}
@@ -57,7 +57,7 @@ export default function Header(){
         <h5>Third slide label</h5>
         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
       </MDBCarouselItem>
-    </MDBCarousel> */}
+    </MDBCarousel>
         {/* <input type="button" value='Browse'></input> */}
     </section>
     </> 

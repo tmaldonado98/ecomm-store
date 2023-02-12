@@ -35,6 +35,8 @@ export default function Nav(){
 
     const cartCount = cart.items.length //cart.items.reduce((sum, item) => sum + item.quantity, 0)
 
+    // const cartTotal = cart.getTotalPrice();
+
     // const {cartItems, setCartItems} = useState([]);
     ////start prodContext
     
@@ -87,7 +89,7 @@ export default function Nav(){
 
     return(
       <nav>
-            <Typography variant='h1'>David Maldonado Art</Typography>
+            <Typography variant='h1'>Vea Wolf Art Collection</Typography>
                   <div>
                       <ul id='nav-items'>
                           <Link to='/'>
@@ -127,19 +129,36 @@ export default function Nav(){
       </MDBModalHeader>
       <MDBModalBody>
         <div className='row'>
-          <div className='col-3 text-center'>
+          {/* <div className='col-3 text-center'>
             <i className='fas fa-shopping-cart fa-4x text-info'></i>
-          </div>
-
+          </div> */}
+          {cart.items.length > 0 ? 
           <div className='col-9'>
-            <p>Show all items in the cart as a column of cards.</p>
-              <p>
-                Items in your cart:
-              </p>
+            {/* <p>
+              Items in your cart:
+            </p> */}
+            <div>
               {cart.items.map(currentItem => (
-                <strong><p>{currentItem.item.name}, {currentItem.item.price}</p></strong>
-              ))}
+                <p className='itemInCart'>{currentItem.item.name} - ${currentItem.item.price}<br/><sub>Quantity: 1</sub></p>
+                ))}
+              
+            </div>
+            <strong>
+              <p>
+                <u>Total Price</u> (before taxes):
+              </p>
+              <p>${cart.getTotalPrice()} USD</p>
+            </strong>
           </div>
+          :
+            <div>
+              <h4>There are no items in your cart!</h4>
+              <p>Add new items to your cart</p>
+              <Button>Products</Button>
+            </div>
+          }
+        
+
         </div>
       </MDBModalBody>
       <MDBModalFooter>

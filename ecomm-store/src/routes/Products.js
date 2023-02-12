@@ -48,7 +48,7 @@ import {
         description: 'fifth painting description',
         medium: 'acrylic on canvas',
         dimensions: "35' x 50'",
-        price: '$300',
+        price: 300.00,
         key: 'Five',
     },
     six: {
@@ -61,13 +61,14 @@ import {
         description: 'descr for painting SIX',
         medium: 'oil on canvas',
         dimensions: "45' x 64'",
-        price: '$120',
+        price: 120.00,
         key: 'Six',
       },
     };
   
-    export function getItemData(key){
-      let itemData = dbList.find(item => item.key === key)
+    export function getItemData(currentItem){
+      let itemData = dbList.find(item => item === currentItem)
+      console.log(itemData);
       return itemData;
     }
   
@@ -76,70 +77,73 @@ import {
     return (
     <>
         <Nav />
-        <h1>Products</h1>
+      {/* <section> */}
+          
+          <h1>Products</h1>
+  
+      <MDBRow>
+        <MDBCol lg={4} md={12} className='mb-4 mb-lg-0'>
+              <MDBRipple rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
+                          <img
+                      src='https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp'
+                      className='w-100 shadow-1-strong rounded mb-4'
+                      alt='Boat on Calm Water'
+                      />
+                  <a>
+                      <div className='mask' style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}></div>
+                  </a>
+              </MDBRipple>
+  
+  
+     
+              <MDBRipple rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
+              <img
+            src='https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain1.webp'
+            className='w-100 shadow-1-strong rounded mb-4'
+            alt='Wintry Mountain Landscape'
+          />
+                  <a>
+                      <div className='mask' style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}></div>
+                  </a>
+              </MDBRipple>
+        </MDBCol>
+  
+        <MDBCol lg={4} className='mb-4 mb-lg-0'>
+              <MDBRipple rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
+              <img
+            src='https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain2.webp'
+            className='w-100 shadow-1-strong rounded mb-4'
+            alt='Mountains in the Clouds'
+          />
+                  <a>
+                      <div className='mask' style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}></div>
+                  </a>
+              </MDBRipple>
+              
+  
+          
+              <MDBRipple rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
+              <img
+            src='https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp'
+            className='w-100 shadow-1-strong rounded mb-4'
+            alt='Boat on Calm Water'
+          />
+                  <a>
+                      <div className='mask' style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}></div>
+                  </a>
+              </MDBRipple>
+        </MDBCol>
+  
+        <MDBCol lg={4} className='mb-4 mb-lg-0'>
+  
+                  <ModalProd data={dbList.five}/>
+          
+                  <ModalProd data={dbList.six}/>
+        </MDBCol>
+      </MDBRow>
+  
 
-    <MDBRow>
-      <MDBCol lg={4} md={12} className='mb-4 mb-lg-0'>
-            <MDBRipple rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
-                        <img
-                    src='https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp'
-                    className='w-100 shadow-1-strong rounded mb-4'
-                    alt='Boat on Calm Water'
-                    />
-                <a>
-                    <div className='mask' style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}></div>
-                </a>
-            </MDBRipple>
-
-
-   
-            <MDBRipple rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
-            <img
-          src='https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain1.webp'
-          className='w-100 shadow-1-strong rounded mb-4'
-          alt='Wintry Mountain Landscape'
-        />
-                <a>
-                    <div className='mask' style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}></div>
-                </a>
-            </MDBRipple>
-      </MDBCol>
-
-      <MDBCol lg={4} className='mb-4 mb-lg-0'>
-            <MDBRipple rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
-            <img
-          src='https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain2.webp'
-          className='w-100 shadow-1-strong rounded mb-4'
-          alt='Mountains in the Clouds'
-        />
-                <a>
-                    <div className='mask' style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}></div>
-                </a>
-            </MDBRipple>
-            
-
-        
-            <MDBRipple rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
-            <img
-          src='https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp'
-          className='w-100 shadow-1-strong rounded mb-4'
-          alt='Boat on Calm Water'
-        />
-                <a>
-                    <div className='mask' style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}></div>
-                </a>
-            </MDBRipple>
-      </MDBCol>
-
-      <MDBCol lg={4} className='mb-4 mb-lg-0'>
-
-                <ModalProd data={dbList.five}/>
-        
-                <ModalProd data={dbList.six}/>
-      </MDBCol>
-    </MDBRow>
-
-
+        {/* </section>   */}
 
     
 
