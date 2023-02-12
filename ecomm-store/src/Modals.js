@@ -38,6 +38,9 @@ export function ModalProd (props){
     
     const cart = useContext(CartContext);
     console.log(cart.items)
+    // let keys = Object.keys(cart.items);
+    // console.log(Object.values(keys)) //   cart.items)
+
     // console.log(    props.data.key        )
     return(
         <>
@@ -83,7 +86,7 @@ export function ModalProd (props){
                         <p>{props.data.medium}</p>
                         <p>{props.data.dimensions}</p>
                         <p><strong>Price: USD{props.data.price}</strong></p>
-                        <Button onClick={()=> {cart.addItem(props.data.key)}}>Add to cart</Button>                
+                        <Button onClick={()=> {cart.addItem(props.data)}}>Add to cart</Button>                
                     </MDBModalBody>
             </MDBModalContent>
             </MDBModalDialog>

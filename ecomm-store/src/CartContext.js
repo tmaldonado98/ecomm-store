@@ -13,17 +13,16 @@ export const CartContext = createContext({
 function CartProvider({children}){
     
     const [cartItems, setCartItems] = useState([]);
-    // cartItems = children;
-    // console.log("test " + cartItems);
-    function addItem(key){
+
+    function addItem(data){
         setCartItems([
             ...cartItems,
             {
-                key: key,
+                item: data,
             }
         ])
-        console.log(cartItems);
-        console.log(key);
+        // console.log(cartItems);
+        // console.log(key);
 
     };
 /*
