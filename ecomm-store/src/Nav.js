@@ -7,9 +7,9 @@ import Products, { getItemData } from './routes/Products';
 import About from './routes/About';
 import Contact from './routes/Contact';
 import { useState, useContext } from 'react';
-// import {CartContext, CartProvider} from './CartContext';
-
-import { DBList } from './routes/Products';
+import {CartContext} from './CartContext';
+import CartProvider from './CartContext';
+import { dbList } from './routes/Products';
 
 import {
   MDBBtn,
@@ -25,64 +25,65 @@ import {
 
 
 
-export function Nav(){
+export default function Nav(){
 
     const [topRightModal, setTopRightModal] = useState(false);
 
     const toggleShow = () => setTopRightModal(!topRightModal);
     
-    const {cartItems, setCartItems} = useState([]);
+    const cart = useContext(CartContext);
+
+    // const {cartItems, setCartItems} = useState([]);
     ////start prodContext
     
-    export const ProdContext = createContext(
+  //   const ProdContext = createContext(
       
       
-      {
-      items: [cartItems],
-      addItem: (key) => {
-        setCartItems([
-          ...cartItems,
-            {
-              key: key,
-            }
-        ]);
-        console.log(cartItems);
-        console.log(key);
-      },
+  //     {
+  //     items: [cartItems],
+  //     addItem: (key) => {
+  //       setCartItems([
+  //         ...cartItems,
+  //           {
+  //             key: key,
+  //           }
+  //       ]);
+  //       console.log(cartItems);
+  //       console.log(key);
+  //     },
 
-      removeItem: (key) => {
-        setCartItems(
-            cartItems => cartItems.filter(item => {
-              return item.key != key
-            } 
-              ///Puts into array all items that do not have the key defined in the parameter.
-          )
-        )
-      },
+  //     removeItem: (key) => {
+  //       setCartItems(
+  //           cartItems => cartItems.filter(item => {
+  //             return item.key != key
+  //           } 
+  //             ///Puts into array all items that do not have the key defined in the parameter.
+  //         )
+  //       )
+  //     },
 
-      totalQuantity: () => {
-        return cartItems.length;
-      },
+  //     totalQuantity: () => {
+  //       return cartItems.length;
+  //     },
 
-      clearAll: () => {
-        setCartItems([]);
-      },
+  //     clearAll: () => {
+  //       setCartItems([]);
+  //     },
 
-      getTotalPrice: () => {
-        let totalPrice = 0;
+  //     getTotalPrice: () => {
+  //       let totalPrice = 0;
 
-        DBList.map(item => {
-            const data = getItemData(item.key)
-            totalPrice += (data.price * DBList.length);
-        })
-        return totalPrice;
-      },
+  //       DBList.map(item => {
+  //           const data = getItemData(item.key)
+  //           totalPrice += (data.price * DBList.length);
+  //       })
+  //       return totalPrice;
+  //     },
 
-  })
+  // })
   ///end prodContext  
 
     return(
-          <ProdContext.Provider value={cartItems}>
       <nav>
             <Typography variant='h1'>David Maldonado Art</Typography>
                   <div>
@@ -130,7 +131,7 @@ export function Nav(){
 
           <div className='col-9'>
             <p>Show all items in the cart as a column of cards.</p>
-            <p>{cartItems}</p>
+            <p>{cart.items}</p>
           </div>
         </div>
       </MDBModalBody>
@@ -149,6 +150,6 @@ export function Nav(){
                   </div>
           
     </nav>
-        </ProdContext.Provider>
+        // </CartProvider>
     )
 }

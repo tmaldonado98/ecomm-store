@@ -1,5 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import CartProvider from './CartContext';
 import ReactDOM from 'react-dom/client';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 // import "@fontawesome/fontawesome-free/css/all.min.css";
@@ -12,6 +13,8 @@ import Contact from './routes/Contact';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+          <CartProvider>
+
     <Router>
           <Routes>
               <Route path='/' element={<App />}/>
@@ -21,6 +24,8 @@ root.render(
           </Routes>                                
 
     </Router>
+    </CartProvider>
+
     {/* <App /> */}
   </React.StrictMode>
 );
