@@ -33,6 +33,8 @@ export default function Nav(){
     
     const cart = useContext(CartContext);
 
+    const cartCount = () => cart.items.reduce((sum, item) => sum + item.quantity, 0)
+
     // const {cartItems, setCartItems} = useState([]);
     ////start prodContext
     
@@ -105,7 +107,7 @@ export default function Nav(){
             <MDBBtn 
             // cartItems
             color='link' 
-            onClick={toggleShow}>Cart 0</MDBBtn>
+            onClick={toggleShow}>Cart {cartCount}</MDBBtn>
 
 <MDBModal
   animationDirection='right'
@@ -131,7 +133,12 @@ export default function Nav(){
 
           <div className='col-9'>
             <p>Show all items in the cart as a column of cards.</p>
-            <p>{cart.items}</p>
+              <p>
+                Items in your cart:
+              </p>
+              {cart.items.map(currentItem => (
+                <strong><p>{currentItem.item.name}, {currentItem.item.price}</p></strong>
+              ))}
           </div>
         </div>
       </MDBModalBody>
