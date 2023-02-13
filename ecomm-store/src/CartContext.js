@@ -15,34 +15,21 @@ function CartProvider({children}){
     
     const [cartItems, setCartItems] = useState([]);
 
+    const [itemQuant, setItemQuant] = useState(0)
+
     function getSingleItemQuantity (value) {
-        // const quantity = items.find(item => item.key === key).quantity;
-        // return quantity;
-        let quantity = value;
-        return quantity;
+        setItemQuant(value);
+        console.log(value)
     }
 
     function addItem(data){
-
-        // const quantity = getSingleItemQuantity(data.key);
-        // if (quantity === 0) {
             setCartItems([
                 ...cartItems,
                 {
                     item: data,
-                    quantity: {getSingleItemQuantity},
+                    quantity: itemQuant,
                 }
             ])
-            
-        // } else {
-        //     setCartItems(
-        //         cartItems.map(currentItem => currentItem.item.quantity + 1)
-        //     )
-        // }
-
-        // console.log(cartItems);
-        // console.log(key);
-
     };
 
     function removeItem(key){
@@ -69,8 +56,9 @@ function CartProvider({children}){
 
         cartItems.map(currentItem => {
             const data = currentItem.item.price;
+            const currentQuant = currentItem.quantity;
             // console.log(data);
-            totalPrice += data;
+            totalPrice += data * currentQuant;
         })
         console.log(Number(totalPrice))
         return Number(totalPrice).toFixed(2);
