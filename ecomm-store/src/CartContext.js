@@ -3,6 +3,7 @@ import { dbList, getItemData } from "./routes/Products";
 
 export const CartContext = createContext({
     items: [],
+    getSingleItemQuantity: () => {},
     addItem: () => {},
     removeItem: () => {},
     totalQuantity: () => {},
@@ -14,13 +15,31 @@ function CartProvider({children}){
     
     const [cartItems, setCartItems] = useState([]);
 
+    function getSingleItemQuantity (value) {
+        // const quantity = items.find(item => item.key === key).quantity;
+        // return quantity;
+        let quantity = value;
+        return quantity;
+    }
+
     function addItem(data){
-        setCartItems([
-            ...cartItems,
-            {
-                item: data,
-            }
-        ])
+
+        // const quantity = getSingleItemQuantity(data.key);
+        // if (quantity === 0) {
+            setCartItems([
+                ...cartItems,
+                {
+                    item: data,
+                    quantity: {getSingleItemQuantity},
+                }
+            ])
+            
+        // } else {
+        //     setCartItems(
+        //         cartItems.map(currentItem => currentItem.item.quantity + 1)
+        //     )
+        // }
+
         // console.log(cartItems);
         // console.log(key);
 
@@ -59,6 +78,7 @@ function CartProvider({children}){
 
     const contextValue = {
         items: cartItems,
+        getSingleItemQuantity,
         addItem,
         removeItem,
         totalQuantity,

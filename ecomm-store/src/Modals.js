@@ -3,6 +3,7 @@ import Products from './routes/Products';
 import { useContext } from 'react';
 import { CartContext } from './CartContext';
 import Nav from './Nav';
+import BasicSelect from './Select';
 
 import {
     MDBCard,
@@ -38,10 +39,7 @@ export function ModalProd (props){
     
     const cart = useContext(CartContext);
     console.log(cart.items)
-    // let keys = Object.keys(cart.items);
-    // console.log(Object.values(keys)) //   cart.items)
 
-    // console.log(    props.data.key        )
     return(
         <>
 
@@ -85,8 +83,10 @@ export function ModalProd (props){
                         <p>{props.data.description}</p>
                         <p>{props.data.medium}</p>
                         <p>{props.data.dimensions}</p>
-                        <p><strong>Price: USD{props.data.price}</strong></p>
+                        <p><strong>Price: ${props.data.price} USD</strong></p>
                         <Button onClick={()=> {cart.addItem(props.data)}}>Add to cart</Button>                
+                        <br/>
+                        <BasicSelect />
                     </MDBModalBody>
             </MDBModalContent>
             </MDBModalDialog>
