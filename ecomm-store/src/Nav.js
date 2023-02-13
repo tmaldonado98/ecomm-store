@@ -33,8 +33,15 @@ export default function Nav(){
     
     const cart = useContext(CartContext);
 
-    const cartCount = cart.items.length //cart.items.reduce((sum, item) => sum + item.quantity, 0)
-
+    // const cartCount = cart.items.length //cart.items.reduce((sum, item) => sum + item.quantity, 0)
+      const cartCount = () => {
+        let count = 0;
+        cart.items.map(currentItem => {
+            count += currentItem.quantity;
+          }
+        )
+        return Number(count);
+    }
     // const cartTotal = cart.getTotalPrice();
 
     // const {cartItems, setCartItems} = useState([]);
@@ -109,7 +116,7 @@ export default function Nav(){
             <MDBBtn 
             // cartItems
             color='link' 
-            onClick={toggleShow}>Cart {cartCount}</MDBBtn>
+            onClick={toggleShow}>Cart {cartCount()}</MDBBtn>
 
 <MDBModal
   animationDirection='right'
@@ -139,7 +146,7 @@ export default function Nav(){
             </p> */}
             <div>
               {cart.items.map(currentItem => (
-                <p className='itemInCart'>{currentItem.item.name} - ${currentItem.item.price}<br/><sub>Quantity: 1</sub></p>
+                <p className='itemInCart'>{currentItem.item.name} - ${currentItem.item.price}<br/><sub>Quantity: {currentItem.quantity}</sub></p>
                 ))}
               
             </div>
@@ -170,7 +177,6 @@ export default function Nav(){
     </MDBModalContent>
   </MDBModalDialog>
 </MDBModal>
-                            {/* <Button>Cart 0</Button> */}
                         </li>
                       </ul>
                   </div>
