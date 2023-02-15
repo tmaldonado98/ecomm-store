@@ -161,7 +161,7 @@ export default function Nav(){
             <div>
               <h4>There are no items in your cart!</h4>
               <p>Add new items to your cart</p>
-              <Button>Products</Button>
+              {/* <Button>Products</Button> */}
             </div>
           }
         
@@ -169,7 +169,7 @@ export default function Nav(){
         </div>
       </MDBModalBody>
       <MDBModalFooter>
-        <MDBBtn color='link' >Proceed to checkout</MDBBtn>
+        <MDBBtn hidden={true ? cart.items.length === 0 : false} color='link' >Proceed to checkout</MDBBtn>
         <MDBBtn onClick={toggleShow}>
           Close
         </MDBBtn>
