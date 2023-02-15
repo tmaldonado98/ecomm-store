@@ -14,9 +14,20 @@ export default function BasicSelect() {
   const [quantity, setQuantity] = React.useState(0);
 
   const handleChange = (event) => {
-    setQuantity(event.target.value);
-    cart.getSingleItemQuantity(event.target.value);
-    // cart.addItem(() => {cart.addItem(data, quant)})
+    // if(event.target.value === '') {
+    //   return false
+    // } else {
+
+      setQuantity(event.target.value);
+      cart.getSingleItemQuantity(event.target.value);
+      
+      // if (event.target.value > 0) {
+        
+      // } else {
+      //   return false;
+      // }
+      // cart.addItem(() => {cart.addItem(data, quant)})
+    // }
   };
 
   console.log(quantity);
@@ -36,7 +47,7 @@ export default function BasicSelect() {
           label="Quantity"
           onChange={handleChange}
         >
-          <MenuItem value={0} >0</MenuItem>
+          <MenuItem value={''} > </MenuItem>
           <MenuItem value={1} >1</MenuItem>
           <MenuItem value={2} >2</MenuItem>
           <MenuItem value={3} >3</MenuItem>

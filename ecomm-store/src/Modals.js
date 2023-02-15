@@ -34,7 +34,7 @@ import { useState } from "react";
 
 export function ModalProd (props){
     const [optSmModal, setOptSmModal] = useState(false);
-    
+
     const toggleShow = () => setOptSmModal(!optSmModal);
     
     const cart = useContext(CartContext);
@@ -58,7 +58,7 @@ export function ModalProd (props){
                         {props.data.description}
                         </p> 
                         <p>
-                        USD{props.data.price}
+                        ${props.data.price} USD
                         </p> 
                         <Button onClick={toggleShow}>Enlarge</Button>
                         
@@ -84,7 +84,7 @@ export function ModalProd (props){
                         <p>{props.data.medium}</p>
                         <p>{props.data.dimensions}</p>
                         <p><strong>Price: ${props.data.price} USD</strong></p>
-                        <Button onClick={()=> {cart.addItem(props.data)}}>Add to cart</Button>                
+                        <Button disabled={cart.validity} onClick={()=> {cart.addItem(props.data)}}>Add to cart</Button>                
                         <br/>
                         <BasicSelect />
                     </MDBModalBody>
