@@ -31,8 +31,8 @@ export function ProdInCart(props) {
     setToggleEdit(!toggleEdit);
   }
   let itemKey = props.currentItem.item.key
-  function sendKey(itemKey){
-    cart.editQuant('Five')
+  function sendKey(){
+    cart.editQuant(itemKey)
   }
 
   return (
@@ -136,6 +136,19 @@ export default function Nav(){
   // })
   ///end prodContext  
 
+  function getTotalPrice(){
+    let totalPrice = 0;
+
+    cart.items.map(currentItem => {
+        const data = currentItem.item.price;
+        const currentQuant = currentItem.quantity;
+        // console.log(data);
+        totalPrice += data * currentQuant;
+    })
+    console.log(Number(totalPrice))
+    return Number(totalPrice).toFixed(2);
+}
+
     return(
       <nav>
             <Typography variant='h1'>Vea Wolf Art Collection</Typography>
@@ -198,7 +211,7 @@ export default function Nav(){
               <p>
                 <u>Total Price</u> (before taxes):
               </p>
-              <p>${cart.getTotalPrice()} USD</p>
+              <p>${getTotalPrice()} USD</p>
             </strong>
           </div>
           :
@@ -226,25 +239,5 @@ export default function Nav(){
                   </div>
           
     </nav>
-        // </CartProvider>
     )
 }
-
-
-// {cart.items.map(currentItem => (
-//   <p className='itemInCart'>{currentItem.item.name} - ${currentItem.item.price}<br/><sub>Quantity: {currentItem.quantity}</sub>
-//   {/* <Button onClick={showOrHideEdit}>Edit</Button> */}
-
-  
-
-//   {!toggleEdit ? <Button onClick={showOrHideEdit}>Edit</Button> : <Button onClick={showOrHideEdit}>Cancel</Button>}
-//   {toggleEdit && <CartSelect currentQuant={currentItem.quantity}/>
-//   //check button
-//   //cancel button
-  
-//   } 
-  
-
-  
-//   </p>
-//   ))}

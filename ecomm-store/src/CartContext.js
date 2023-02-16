@@ -8,7 +8,7 @@ export const CartContext = createContext({
     removeItem: () => {},
     totalQuantity: () => {},
     clearAll: () => {},
-    getTotalPrice: () => {},
+    // getTotalPrice: () => {},
     validity: [],
     modCartQuant: () => {},
     editQuant: () => {},
@@ -63,9 +63,21 @@ function CartProvider({children}){
         // if (itemToChange) {
             
         // }
+
+        const edited = cartItems.map(object =>{
+                if (object == itemToChange) {
+                    return {item: itemToChange, quantity: itemQuant}
+                    
+                    // object.item = itemToChange.item, object.quantity = itemToChange.quantity;
+                } else {
+                    return object
+                }
+            }
+            )
         
-        setCartItems(
-            {item: itemToChange.item, quantity:itemQuant}
+        setCartItems( edited
+            
+            // itemToChange = {item: itemToChange.item, quantity:itemQuant}
             //  ? (itemToChange.item.key === key) : '' ,
         )
         // console.log(itemToChange);
@@ -86,18 +98,18 @@ function CartProvider({children}){
         }
     };
 
-    function getTotalPrice(){
-        let totalPrice = 0;
+    // function getTotalPrice(){
+    //     let totalPrice = 0;
 
-        cartItems.map(currentItem => {
-            const data = currentItem.item.price;
-            const currentQuant = currentItem.quantity;
-            // console.log(data);
-            totalPrice += data * currentQuant;
-        })
-        console.log(Number(totalPrice))
-        return Number(totalPrice).toFixed(2);
-    }
+    //     cartItems.map(currentItem => {
+    //         const data = currentItem.item.price;
+    //         const currentQuant = currentItem.quantity;
+    //         // console.log(data);
+    //         totalPrice += data * currentQuant;
+    //     })
+    //     console.log(Number(totalPrice))
+    //     return Number(totalPrice).toFixed(2);
+    // }
 
     function modCartQuant () {
 
@@ -113,7 +125,7 @@ function CartProvider({children}){
         validity: cartValidate,
         modCartQuant,
         editQuant,
-        getTotalPrice,
+        // getTotalPrice,
         // editCartQuant: editCartQuant,
     }
 
