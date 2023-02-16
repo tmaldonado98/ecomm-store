@@ -57,6 +57,8 @@ export function CartSelect(props) {
   const handleChange = (event) => {
       setCartQuant(event.target.value);
       cart.getSingleItemQuantity(event.target.value);
+      // cart.editQuant(event.target.value);
+      console.log('quantity for cart select is '+ event.target.value)
   };
 
   return (

@@ -12,6 +12,7 @@ export const CartContext = createContext({
     validity: [],
     modCartQuant: () => {},
     editQuant: () => {},
+    editCartQuant: [],
 });
 
 function CartProvider({children}){
@@ -22,7 +23,7 @@ function CartProvider({children}){
 
     const [cartValidate, setCartValidate] = useState(true);
     
-    const [willUpdate, setWillUpdate] = useState(false);
+    // const [editCartQuant, setEditCartQuant] = useState(0);
 
     function getSingleItemQuantity (value) {
         if (value === '' || value === 0) {
@@ -54,11 +55,24 @@ function CartProvider({children}){
         )
     };
 
-    function editQuant (currentItem, currentQuant){
-        let itemToChange=  cartItems.find(currentItem => currentItem);
-        setCartItems([...cartItems,
-            itemToChange.quantity = currentQuant,  
-        ])
+    function editQuant (key){
+
+        let itemToChange=  cartItems.find(currentItem => currentItem.item.key === key);
+        console.log(itemToChange);
+        
+        // if (itemToChange) {
+            
+        // }
+        
+        setCartItems(
+            {item: itemToChange.item, quantity:itemQuant}
+            //  ? (itemToChange.item.key === key) : '' ,
+        )
+        // console.log(itemToChange);
+        console.log(cartItems);
+        // setCartValidate(true);
+        // setItemQuant(0);    
+        // currentItem, currentQuant
     }
     
     function totalQuantity(){
@@ -100,6 +114,7 @@ function CartProvider({children}){
         modCartQuant,
         editQuant,
         getTotalPrice,
+        // editCartQuant: editCartQuant,
     }
 
     return(

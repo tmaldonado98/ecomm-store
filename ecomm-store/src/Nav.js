@@ -30,9 +30,9 @@ export function ProdInCart(props) {
   function showOrHideEdit() {
     setToggleEdit(!toggleEdit);
   }
-
-  function confirmEdit(currentItem, currentQuant){
-    cart.editQuant(currentItem, currentQuant)
+  let itemKey = props.currentItem.item.key
+  function sendKey(itemKey){
+    cart.editQuant('Five')
   }
 
   return (
@@ -45,10 +45,10 @@ export function ProdInCart(props) {
 
                 {!toggleEdit ? <Button onClick={showOrHideEdit}>Edit</Button> : <Button onClick={showOrHideEdit}>Cancel</Button>}
                 {toggleEdit && 
-                <>
-                  <CartSelect currentQuant={props.currentItem.quantity}/>
-                  <Button onClick={confirmEdit(props.currentItem.item, 9)}>Confirm</Button>
-                </>} 
+                  <>
+                    <CartSelect currentQuant={props.currentItem.quantity}/>
+                    <Button onClick={sendKey}>Confirm</Button>
+                  </>} 
                 
 
                
@@ -62,7 +62,6 @@ export function ProdInCart(props) {
 ///////
 
 export default function Nav(){
-
     const [topRightModal, setTopRightModal] = useState(false);
 
     const toggleShow = () => setTopRightModal(!topRightModal);
@@ -74,6 +73,7 @@ export default function Nav(){
     }
 
     const cart = useContext(CartContext);
+    console.log(cart.items)
 
     // const cartCount = cart.items.length //cart.items.reduce((sum, item) => sum + item.quantity, 0)
       const cartCount = () => {
