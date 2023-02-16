@@ -65,8 +65,8 @@ function CartProvider({children}){
         // }
 
         const edited = cartItems.map(object =>{
-                if (object == itemToChange) {
-                    return {item: itemToChange, quantity: itemQuant}
+                if (object.item == itemToChange.item) {
+                    return {item: itemToChange.item, quantity: itemQuant}
                     
                     // object.item = itemToChange.item, object.quantity = itemToChange.quantity;
                 } else {
