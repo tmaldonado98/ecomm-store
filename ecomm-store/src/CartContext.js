@@ -10,6 +10,7 @@ export const CartContext = createContext({
     clearAll: () => {},
     getTotalPrice: () => {},
     validity: [],
+    modCartQuant: () => {},
 });
 
 function CartProvider({children}){
@@ -20,13 +21,14 @@ function CartProvider({children}){
 
     const [cartValidate, setCartValidate] = useState(true);
     
+    const [willUpdate, setWillUpdate] = useState(false);
 
     function getSingleItemQuantity (value) {
         if (value === '' || value === 0) {
             setCartValidate(true); /// true because this value is put into 'disabled' attribute in add to cart button, in ModalProd component.
         } else {
             setItemQuant(value);
-            console.log(value)
+            // console.log(value)
             setCartValidate(false);
         }   
     }
@@ -75,6 +77,10 @@ function CartProvider({children}){
         return Number(totalPrice).toFixed(2);
     }
 
+    function modCartQuant () {
+
+    }
+
     const contextValue = {
         items: cartItems,
         getSingleItemQuantity,
@@ -84,6 +90,7 @@ function CartProvider({children}){
         clearAll,
         getTotalPrice,
         validity: cartValidate,
+        modCartQuant,
     }
 
     return(

@@ -7,9 +7,10 @@ import Products, { getItemData } from './routes/Products';
 import About from './routes/About';
 import Contact from './routes/Contact';
 import { useState, useContext } from 'react';
-import {CartContext} from './CartContext';
+import {CartContext, willUpdate} from './CartContext';
 import CartProvider from './CartContext';
 import { dbList } from './routes/Products';
+import { CartSelect } from './Select';
 
 import {
   MDBBtn,
@@ -31,6 +32,17 @@ export default function Nav(){
 
     const toggleShow = () => setTopRightModal(!topRightModal);
     
+    const [toggleEdit, setToggleEdit] = useState(false);  //true so that button is hidden by default
+
+    function showOrHideEdit(key) {
+      if (key) {
+        setToggleEdit(!toggleEdit);
+      } else {
+        return false
+      }
+
+    }
+
     const cart = useContext(CartContext);
 
     // const cartCount = cart.items.length //cart.items.reduce((sum, item) => sum + item.quantity, 0)
@@ -113,10 +125,10 @@ export default function Nav(){
                           </Link>                      
                       
                         <li>
-            <MDBBtn 
+            <Button 
             // cartItems
             color='link' 
-            onClick={toggleShow}>Cart {cartCount()}</MDBBtn>
+            onClick={toggleShow}>Cart {cartCount()}</Button>
 
 <MDBModal
   animationDirection='right'
@@ -146,7 +158,21 @@ export default function Nav(){
             </p> */}
             <div>
               {cart.items.map(currentItem => (
-                <p className='itemInCart'>{currentItem.item.name} - ${currentItem.item.price}<br/><sub>Quantity: {currentItem.quantity}</sub></p>
+                <p className='itemInCart'>{currentItem.item.name} - ${currentItem.item.price}<br/><sub>Quantity: {currentItem.quantity}</sub>
+                {/* <Button onClick={showOrHideEdit}>Edit</Button> */}
+
+                
+
+                {!toggleEdit ? <Button onClick={showOrHideEdit(currentItem.item.key)}>Edit</Button> : <Button onClick={showOrHideEdit}>Cancel</Button>}
+                {toggleEdit && <CartSelect currentQuant={currentItem.quantity}/>
+                //check button
+                //cancel button
+                
+                } 
+                
+
+                
+                </p>
                 ))}
               
             </div>
