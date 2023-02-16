@@ -3,7 +3,7 @@ import Products from './routes/Products';
 import { useContext } from 'react';
 import { CartContext } from './CartContext';
 import Nav from './Nav';
-import BasicSelect from './Select';
+import {BasicSelect, CartSelect} from './Select';
 
 import {
     MDBCard,
@@ -38,7 +38,7 @@ export function ModalProd (props){
     const toggleShow = () => setOptSmModal(!optSmModal);
     
     const cart = useContext(CartContext);
-    console.log(cart.items)
+    // console.log(cart.items)
 
     return(
         <>
