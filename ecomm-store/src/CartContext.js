@@ -11,6 +11,7 @@ export const CartContext = createContext({
     getTotalPrice: () => {},
     validity: [],
     modCartQuant: () => {},
+    editQuant: () => {},
 });
 
 function CartProvider({children}){
@@ -52,6 +53,13 @@ function CartProvider({children}){
             )
         )
     };
+
+    function editQuant (currentItem, currentQuant){
+        let itemToChange=  cartItems.find(currentItem => currentItem);
+        setCartItems([...cartItems,
+            itemToChange.quantity = currentQuant,  
+        ])
+    }
     
     function totalQuantity(){
         return cartItems.length;
@@ -88,9 +96,10 @@ function CartProvider({children}){
         removeItem,
         totalQuantity,
         clearAll,
-        getTotalPrice,
         validity: cartValidate,
         modCartQuant,
+        editQuant,
+        getTotalPrice,
     }
 
     return(

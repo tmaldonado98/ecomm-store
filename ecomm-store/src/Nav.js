@@ -23,8 +23,43 @@ import {
   MDBModalFooter,
 } from 'mdb-react-ui-kit';
 
+export function ProdInCart(props) {
+  const cart = useContext(CartContext);
+  const [toggleEdit, setToggleEdit] = useState(false);  //true so that button is hidden by default
+
+  function showOrHideEdit() {
+    setToggleEdit(!toggleEdit);
+  }
+
+  function confirmEdit(currentItem, currentQuant){
+    cart.editQuant(currentItem, currentQuant)
+  }
+
+  return (
+    <>
+      {/* {cart.items.map(currentItem => ( */}
+                <p className='itemInCart'>{props.currentItem.item.name} - ${props.currentItem.item.price}<br/><sub>Quantity: {props.currentItem.quantity}</sub>
+                {/* <Button onClick={showOrHideEdit}>Edit</Button> */}
+
+                
+
+                {!toggleEdit ? <Button onClick={showOrHideEdit}>Edit</Button> : <Button onClick={showOrHideEdit}>Cancel</Button>}
+                {toggleEdit && 
+                <>
+                  <CartSelect currentQuant={props.currentItem.quantity}/>
+                  <Button onClick={confirmEdit(props.currentItem.item, 9)}>Confirm</Button>
+                </>} 
+                
+
+               
+                </p>
+                {/* ))} */}
+    </>
+  )
+}
 
 
+///////
 
 export default function Nav(){
 
@@ -34,13 +69,8 @@ export default function Nav(){
     
     const [toggleEdit, setToggleEdit] = useState(false);  //true so that button is hidden by default
 
-    function showOrHideEdit(key) {
-      if (key) {
-        setToggleEdit(!toggleEdit);
-      } else {
-        return false
-      }
-
+    function showOrHideEdit() {
+      setToggleEdit(!toggleEdit);
     }
 
     const cart = useContext(CartContext);
@@ -158,22 +188,10 @@ export default function Nav(){
             </p> */}
             <div>
               {cart.items.map(currentItem => (
-                <p className='itemInCart'>{currentItem.item.name} - ${currentItem.item.price}<br/><sub>Quantity: {currentItem.quantity}</sub>
-                {/* <Button onClick={showOrHideEdit}>Edit</Button> */}
-
+                  <ProdInCart currentItem = {currentItem}
+                  />
                 
-
-                {!toggleEdit ? <Button onClick={showOrHideEdit(currentItem.item.key)}>Edit</Button> : <Button onClick={showOrHideEdit}>Cancel</Button>}
-                {toggleEdit && <CartSelect currentQuant={currentItem.quantity}/>
-                //check button
-                //cancel button
-                
-                } 
-                
-
-                
-                </p>
-                ))}
+                ))}              
               
             </div>
             <strong>
@@ -211,3 +229,22 @@ export default function Nav(){
         // </CartProvider>
     )
 }
+
+
+// {cart.items.map(currentItem => (
+//   <p className='itemInCart'>{currentItem.item.name} - ${currentItem.item.price}<br/><sub>Quantity: {currentItem.quantity}</sub>
+//   {/* <Button onClick={showOrHideEdit}>Edit</Button> */}
+
+  
+
+//   {!toggleEdit ? <Button onClick={showOrHideEdit}>Edit</Button> : <Button onClick={showOrHideEdit}>Cancel</Button>}
+//   {toggleEdit && <CartSelect currentQuant={currentItem.quantity}/>
+//   //check button
+//   //cancel button
+  
+//   } 
+  
+
+  
+//   </p>
+//   ))}
