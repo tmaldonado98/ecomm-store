@@ -6,13 +6,14 @@ export const CartContext = createContext({
     getSingleItemQuantity: () => {},
     addItem: () => {},
     removeItem: () => {},
+    editQuant: () => {},
     totalQuantity: () => {},
     clearAll: () => {},
     // getTotalPrice: () => {},
     validity: [],
-    modCartQuant: () => {},
-    editQuant: () => {},
-    editCartQuant: [],
+    handleCardSelect: () => {},
+    showSelect: [],
+    // editCartQuant: [],
 });
 
 function CartProvider({children}){
@@ -23,7 +24,9 @@ function CartProvider({children}){
 
     const [cartValidate, setCartValidate] = useState(true);
     
-    // const [editCartQuant, setEditCartQuant] = useState(0);
+    const [showSelect, setShowSelect] = useState(false);
+
+    // const [showCardSelect, setShowCardSelect] = useState(true);
 
     function getSingleItemQuantity (value) {
         if (value === '' || value === 0) {
@@ -49,8 +52,8 @@ function CartProvider({children}){
 
     function removeItem(key){
         setCartItems(
-            cartItems => cartItems.filter(item => {
-                return item.key != key} ///Puts into array all items that do not have the key defined in the parameter.
+            cartItems => cartItems.filter(object => {
+                return object.item.key != key} ///Puts into array all items that do not have the key defined in the parameter.
             )
         )
     };
@@ -107,8 +110,8 @@ function CartProvider({children}){
     //     return Number(totalPrice).toFixed(2);
     // }
 
-    function modCartQuant () {
-
+    function handleCardSelect () {
+        setShowSelect(!showSelect);
     }
 
     const contextValue = {
@@ -116,11 +119,12 @@ function CartProvider({children}){
         getSingleItemQuantity,
         addItem,
         removeItem,
+        editQuant,
         totalQuantity,
         clearAll,
         validity: cartValidate,
-        modCartQuant,
-        editQuant,
+        handleCardSelect,
+        showSelect: showSelect,
         // getTotalPrice,
         // editCartQuant: editCartQuant,
     }
