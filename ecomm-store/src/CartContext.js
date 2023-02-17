@@ -75,16 +75,12 @@ function CartProvider({children}){
             }
             )
         
-        setCartItems( edited
-            
-            // itemToChange = {item: itemToChange.item, quantity:itemQuant}
-            //  ? (itemToChange.item.key === key) : '' ,
-        )
-        // console.log(itemToChange);
+        setCartItems(edited)
+
         console.log(cartItems);
-        // setCartValidate(true);
-        // setItemQuant(0);    
-        // currentItem, currentQuant
+        setCartValidate(true);
+        setItemQuant(0);
+
     }
     
     function totalQuantity(){

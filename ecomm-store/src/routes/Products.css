@@ -2,6 +2,7 @@
     transform: scale(1.05);
     transition: 250ms ease-in-out;
     /* translate(x) */
+    cursor: pointer;
 }
 
 h1 {

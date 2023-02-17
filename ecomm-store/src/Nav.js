@@ -27,12 +27,17 @@ export function ProdInCart(props) {
   const cart = useContext(CartContext);
   const [toggleEdit, setToggleEdit] = useState(false);  //true so that button is hidden by default
 
+  // const [showCartSelect, setShowCartSelect] = useState(true);
+
   function showOrHideEdit() {
     setToggleEdit(!toggleEdit);
   }
   let itemKey = props.currentItem.item.key
   function sendKey(){
-    cart.editQuant(itemKey)
+    cart.editQuant(itemKey);
+    // setShowCartSelect(!showCartSelect)
+    setToggleEdit(!toggleEdit);
+
   }
 
   return (
@@ -46,7 +51,7 @@ export function ProdInCart(props) {
                 {!toggleEdit ? <Button onClick={showOrHideEdit}>Edit</Button> : <Button onClick={showOrHideEdit}>Cancel</Button>}
                 {toggleEdit && 
                   <>
-                    <CartSelect currentQuant={props.currentItem.quantity}/>
+                    <CartSelect hidden={!toggleEdit} currentQuant={props.currentItem.quantity}/>
                     <Button onClick={sendKey}>Confirm</Button>
                   </>} 
                 

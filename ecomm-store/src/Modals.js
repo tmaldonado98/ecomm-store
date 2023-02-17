@@ -37,13 +37,35 @@ export function ModalProd (props){
 
     const toggleShow = () => setOptSmModal(!optSmModal);
     
+    const [showSelect, setShowSelect] = useState(false);
+
     const cart = useContext(CartContext);
-    // console.log(cart.items)
+    console.log(cart.items)
+
+    function addToCart(){
+        // let itemToChange=  cart.items.map(currentItem => currentItem.item.key === props.data.key);
+        let itemToChange=  cart.items.find(currentItem => currentItem.item.key === props.data.key);
+
+        console.log(itemToChange)
+        // console.log(itemToChange.quantity)
+
+        // if (itemToChange.quantity === 0) {
+        //     cart.addItem(props.data)
+        // } else {
+        //     cart.editQuant(props.data.key)
+        // }
+        // return itemToChange.quantity === 0 ? cart.addItem(props.data) : cart.editQuant(props.data.key)
+        // return cart.editQuant(props.data.key) ? itemToChange.quantity > 0 : 's'
+        cart.addItem(props.data);
+        setShowSelect(!showSelect);
+        // document.querySelector('.modalCard').append('Your item(s) have been added to you cart! To modify your order, please go to your cart.')
+    }    
+    
 
     return(
         <>
 
-            <MDBRipple rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
+            <MDBRipple onClick={toggleShow} rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
                     <img
                     src={props.data.img.src}
                     className={props.data.img.className}
@@ -54,13 +76,16 @@ export function ModalProd (props){
                         <p>
                             {props.data.name}
                         </p> 
-                        <p>
+                        {/* <p>
                         {props.data.description}
-                        </p> 
+                        </p>  */}
                         <p>
                         ${props.data.price} USD
                         </p> 
-                        <Button onClick={toggleShow}>Enlarge</Button>
+                            {/* <sub>
+                                Click on image to see more.
+                            </sub> */}
+                        <Button onClick={toggleShow}>Buy</Button>
                         
                     </div>
                 </a>  
@@ -80,13 +105,16 @@ export function ModalProd (props){
                     alt={props.data.img.alt}    
                     />
 
-                        <p>{props.data.description}</p>
-                        <p>{props.data.medium}</p>
-                        <p>{props.data.dimensions}</p>
-                        <p><strong>Price: ${props.data.price} USD</strong></p>
-                        <Button disabled={cart.validity} onClick={()=> {cart.addItem(props.data)}}>Add to cart</Button>                
-                        <br/>
-                        <BasicSelect />
+                        <div className='modalCard'>
+                            <p>{props.data.description}</p>
+                            <p>{props.data.medium}</p>
+                            <p>{props.data.dimensions}</p>
+                            <p><strong>Price: ${props.data.price} USD</strong></p>
+                            <Button hidden={showSelect} disabled={cart.validity} onClick={addToCart}>Add to cart</Button>                
+                            <br/>
+                            <BasicSelect show={showSelect} hidden={showSelect} />
+                            <p hidden={!showSelect}>Your item(s) have been added to you cart! <br/> To modify your order, please go to your cart.</p>
+                        </div>
                     </MDBModalBody>
             </MDBModalContent>
             </MDBModalDialog>

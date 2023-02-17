@@ -8,7 +8,7 @@ import { CartContext } from './CartContext';
 import { useContext } from 'react';
 import Nav from './Nav';
 
-export function BasicSelect() {
+export function BasicSelect(props) {
   const cart = useContext(CartContext);
 
 
@@ -22,7 +22,7 @@ export function BasicSelect() {
   // console.log(quantity);
 
   return (
-    <Box >
+    <Box hidden={props.show} >
       <FormControl sx={{ minWidth: 150 }} size="small">
         <InputLabel id="demo-simple-select-label">Quantity</InputLabel>
         <Select
