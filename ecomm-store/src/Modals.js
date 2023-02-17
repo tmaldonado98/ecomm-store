@@ -37,10 +37,19 @@ export function ModalProd (props){
 
     const toggleShow = () => setOptSmModal(!optSmModal);
     
-    const [showSelect, setShowSelect] = useState(false);
+    const [showSelect, setShowSelect] = useState(true);
 
     const cart = useContext(CartContext);
     console.log(cart.items)
+
+    function negative(){
+        cart.handleCardSelect(false);
+    }
+
+    function positive(){
+        cart.handleCardSelect(true);
+    }
+
 
     function addToCart(){
         // let itemToChange=  cart.items.map(currentItem => currentItem.item.key === props.data.key);
@@ -56,12 +65,14 @@ export function ModalProd (props){
         // }
         // return itemToChange.quantity === 0 ? cart.addItem(props.data) : cart.editQuant(props.data.key)
         // return cart.editQuant(props.data.key) ? itemToChange.quantity > 0 : 's'
+
         cart.addItem(props.data);
+        // negative();
+        cart.handleCardSelect()
+        // cart.showSelect.setShowSelect(!showSelect)
         setShowSelect(!showSelect);
-        // document.querySelector('.modalCard').append('Your item(s) have been added to you cart! To modify your order, please go to your cart.')
     }    
     
-
     return(
         <>
 
@@ -85,7 +96,7 @@ export function ModalProd (props){
                             {/* <sub>
                                 Click on image to see more.
                             </sub> */}
-                        <Button onClick={toggleShow}>Buy</Button>
+                        <Button onClick={toggleShow}>View</Button>
                         
                     </div>
                 </a>  
@@ -110,10 +121,10 @@ export function ModalProd (props){
                             <p>{props.data.medium}</p>
                             <p>{props.data.dimensions}</p>
                             <p><strong>Price: ${props.data.price} USD</strong></p>
-                            <Button hidden={showSelect} disabled={cart.validity} onClick={addToCart}>Add to cart</Button>                
+                            <Button hidden={cart.showSelect} disabled={cart.validity} onClick={addToCart}>Add to cart</Button>                
                             <br/>
-                            <BasicSelect show={showSelect} hidden={showSelect} />
-                            <p hidden={!showSelect}>Your item(s) have been added to you cart! <br/> To modify your order, please go to your cart.</p>
+                            <BasicSelect show={cart.showSelect} hidden={cart.showSelect} />
+                            <p hidden={!cart.showSelect}>Your item(s) have been added to you cart! <br/> To modify your order, please go to your cart.</p>
                         </div>
                     </MDBModalBody>
             </MDBModalContent>

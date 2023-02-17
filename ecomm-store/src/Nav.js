@@ -32,12 +32,21 @@ export function ProdInCart(props) {
   function showOrHideEdit() {
     setToggleEdit(!toggleEdit);
   }
+
   let itemKey = props.currentItem.item.key
   function sendKey(){
     cart.editQuant(itemKey);
     // setShowCartSelect(!showCartSelect)
     setToggleEdit(!toggleEdit);
 
+  }
+
+  function remove(){
+    let itemKey = props.currentItem.item.key
+
+    cart.removeItem(itemKey)
+    cart.handleCardSelect()
+    // cart.set
   }
 
   return (
@@ -55,8 +64,8 @@ export function ProdInCart(props) {
                     <Button onClick={sendKey}>Confirm</Button>
                   </>} 
                 
-
-               
+                <Button onClick={remove}>Remove</Button>
+                               
                 </p>
                 {/* ))} */}
     </>
@@ -89,57 +98,7 @@ export default function Nav(){
         )
         return Number(count);
     }
-    // const cartTotal = cart.getTotalPrice();
-
-    // const {cartItems, setCartItems} = useState([]);
-    ////start prodContext
     
-  //   const ProdContext = createContext(
-      
-      
-  //     {
-  //     items: [cartItems],
-  //     addItem: (key) => {
-  //       setCartItems([
-  //         ...cartItems,
-  //           {
-  //             key: key,
-  //           }
-  //       ]);
-  //       console.log(cartItems);
-  //       console.log(key);
-  //     },
-
-  //     removeItem: (key) => {
-  //       setCartItems(
-  //           cartItems => cartItems.filter(item => {
-  //             return item.key != key
-  //           } 
-  //             ///Puts into array all items that do not have the key defined in the parameter.
-  //         )
-  //       )
-  //     },
-
-  //     totalQuantity: () => {
-  //       return cartItems.length;
-  //     },
-
-  //     clearAll: () => {
-  //       setCartItems([]);
-  //     },
-
-  //     getTotalPrice: () => {
-  //       let totalPrice = 0;
-
-  //       DBList.map(item => {
-  //           const data = getItemData(item.key)
-  //           totalPrice += (data.price * DBList.length);
-  //       })
-  //       return totalPrice;
-  //     },
-
-  // })
-  ///end prodContext  
 
   function getTotalPrice(){
     let totalPrice = 0;
@@ -214,16 +173,19 @@ export default function Nav(){
             </div>
             <strong>
               <p>
-                <u>Total Price</u> (before taxes):
+                <u>Price (before shipping & taxes) - ${getTotalPrice()}</u>
               </p>
-              <p>${getTotalPrice()} USD</p>
+              {/* <p>Shipping - $4.99</p>
+              <p>Estimated Tax - $1.22</p>
+              <p>
+                <u>Total Price - $ amt USD</u>
+              </p> */}
             </strong>
           </div>
           :
             <div>
               <h4>There are no items in your cart!</h4>
-              <p>Add new items to your cart</p>
-              {/* <Button>Products</Button> */}
+              <p>Check out the products section to browse my artwork.</p>
             </div>
           }
         
