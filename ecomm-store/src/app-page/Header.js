@@ -26,7 +26,7 @@ export default function Header(){
     </div>
        
 
-    <section>
+    {/* <section>
 <MDBCarousel showIndicators fade>
       <MDBCarouselItem
         className='w-100 d-block'
@@ -58,8 +58,7 @@ export default function Header(){
         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
       </MDBCarouselItem>
     </MDBCarousel>
-        {/* <input type="button" value='Browse'></input> */}
-    </section>
+    </section> */}
     </> 
     )
 }
