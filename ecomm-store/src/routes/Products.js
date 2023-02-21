@@ -40,15 +40,15 @@ import {
   export const dbList = {
       five: {
         name: 'Name of fifth painting',
+        dimensions: "35' x 50'",
+        medium: 'acrylic on canvas',
+        price: 300.00,
         img: {
           src: 'https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(18).webp',
           className: 'w-100 shadow-1-strong rounded mb-4',
           alt: 'Waves at Sea',
           },
-        description: 'fifth painting description',
-        medium: 'acrylic on canvas',
-        dimensions: "35' x 50'",
-        price: 300.00,
+        // description: 'fifth painting description',
         key: 'Five',
     },
     six: {

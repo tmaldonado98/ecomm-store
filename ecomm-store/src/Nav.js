@@ -1,15 +1,10 @@
 import './Nav.css';
 import React from 'react';
-import { createContext, ReactDOM } from 'react';
-import { Link, Route, Routes} from 'react-router-dom';
+import Axios from 'axios';
+import { Link} from 'react-router-dom';
 import {  Button, Typography } from '@material-ui/core';
-import Products, { getItemData } from './routes/Products';
-import About from './routes/About';
-import Contact from './routes/Contact';
 import { useState, useContext } from 'react';
-import {CartContext, willUpdate} from './CartContext';
-import CartProvider from './CartContext';
-import { dbList } from './routes/Products';
+import {CartContext} from './CartContext';
 import { CartSelect } from './Select';
 
 import {
@@ -113,6 +108,13 @@ export default function Nav(){
     return Number(totalPrice).toFixed(2);
 }
 
+function insertTest(){
+  const itemsToInsert = cart.items;
+  Axios.post('http://localhost:3001/api/insert', 
+  {test: 'test'}).then(()=>{alert('test inserted')}).catch(error => alert(error))
+}
+
+
     return(
       <nav>
             <Typography variant='h1'>Vea Wolf Art Collection</Typography>
@@ -197,6 +199,9 @@ export default function Nav(){
         <MDBBtn onClick={toggleShow}>
           Close
         </MDBBtn>
+
+        <MDBBtn onClick={insertTest}>Test insert sql</MDBBtn>
+
       </MDBModalFooter>
     </MDBModalContent>
   </MDBModalDialog>

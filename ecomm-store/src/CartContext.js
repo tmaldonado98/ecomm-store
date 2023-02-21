@@ -1,5 +1,4 @@
 import React, { createContext, useState } from "react";
-import { dbList, getItemData } from "./routes/Products";
 
 export const CartContext = createContext({
     items: [],
