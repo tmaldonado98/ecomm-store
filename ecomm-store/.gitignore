@@ -9,7 +9,7 @@
 /coverage
 
 #server directory
-/server
+/server/node_modules
 
 # production
 /build

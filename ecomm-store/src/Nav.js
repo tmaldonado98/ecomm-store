@@ -111,13 +111,13 @@ export default function Nav(){
 function insertTest(){
   const itemsToInsert = cart.items;
   Axios.post('http://localhost:3001/api/insert', 
-  {test: 'test'}).then(()=>{alert('test inserted')}).catch(error => alert(error))
+  {test: 'test2'}).then(()=>{alert('test inserted')}).catch(error => alert(error))
 }
 
 
     return(
       <nav>
-            <Typography variant='h1'>Vea Wolf Art Collection</Typography>
+            <Typography variant='h1'>Vea Art Collection</Typography>
                   <div>
                       <ul id='nav-items'>
                           <Link to='/'>
