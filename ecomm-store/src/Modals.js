@@ -40,7 +40,7 @@ export function ModalProd (props){
     const [showSelect, setShowSelect] = useState(true);
 
     const cart = useContext(CartContext);
-    console.log(cart.items)
+    // console.log(cart.items)
 
     function negative(){
         cart.handleCardSelect(false);
@@ -72,11 +72,12 @@ export function ModalProd (props){
         // cart.showSelect.setShowSelect(!showSelect)
         setShowSelect(!showSelect);
     }    
+
+      
     
     return(
         <>
-
-            <MDBRipple onClick={toggleShow} rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
+            {/* <MDBRipple onClick={toggleShow} rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
                     <img
                     src={props.data.img.src}
                     className={props.data.img.className}
@@ -87,15 +88,11 @@ export function ModalProd (props){
                         <p>
                             {props.data.name}
                         </p> 
-                        {/* <p>
-                        {props.data.description}
-                        </p>  */}
+
                         <p>
                         ${props.data.price} USD
                         </p> 
-                            {/* <sub>
-                                Click on image to see more.
-                            </sub> */}
+
                         <Button onClick={toggleShow}>View</Button>
                         
                     </div>
@@ -129,7 +126,7 @@ export function ModalProd (props){
                     </MDBModalBody>
             </MDBModalContent>
             </MDBModalDialog>
-        </MDBModal>
+        </MDBModal> */}
 </>
     );  
 }
