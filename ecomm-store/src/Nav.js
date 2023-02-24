@@ -108,13 +108,6 @@ export default function Nav(){
     return Number(totalPrice).toFixed(2);
 }
 
-function insertTest(){
-  const itemsToInsert = cart.items;
-  Axios.post('http://localhost:3001/api/insert', 
-  {test: 'test2'}).then(()=>{alert('test inserted')}).catch(error => alert(error))
-}
-
-
     return(
       <nav>
             <Typography variant='h1'>Vea Art Collection</Typography>
@@ -200,7 +193,7 @@ function insertTest(){
           Close
         </MDBBtn>
 
-        <MDBBtn onClick={insertTest}>Test insert sql</MDBBtn>
+        <MDBBtn>Test insert sql</MDBBtn>
 
       </MDBModalFooter>
     </MDBModalContent>

@@ -18,12 +18,19 @@ app.use(express.json());
 app.use(bodyparser.urlencoded({extended: true}))
 
 
-app.post('/api/insert', (req, res) => {
+app.get('/api/insert', (req, res) => {
 
-    const test = req.body.test;  
+    // const name = res.body.name; 
+    // const size = res.body.size;  
+    // const medium = res.body.medium;  
+    // const price = res.body.price;  
+    // const blob = res.body.blob;  
+    // const key = res.body.prodkey;  
     // const test = 'test';
-    const insert = 'INSERT INTO inventory (name, size, medium, prodkey, imgsrc, price) VALUES (?, ?, ?, ?, ?, ?)';
-    db.query(insert, [test, test, test, test, test, 5400], (err, result) => {
+    // (name, size, medium, price, imgsrc, prodkey) VALUES (?, ?, ?, ?, ?, ?)
+    //[name, size, medium, price, blob, key],
+    const fetch = 'SELECT * FROM inventory';
+    db.query(fetch, (err, result) => {
         if (err) {console.log(err)}
         console.log(result);
         // res.send(insert);
@@ -39,4 +46,6 @@ app.listen(3001, () => {
     })
 })
 
-    // "devStart": "nodemon index.js",
+    // "devStart": "nodemon index.js", 
+    // "start": "CHOKIDAR_USEPOLLING=true react-scripts start",   <--for react on package.json
+
