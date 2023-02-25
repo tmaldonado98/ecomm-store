@@ -2,7 +2,7 @@ import React from "react";
 import Nav from "../Nav";
 import './Products.css';
 import { CartContext } from "../CartContext";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
 import {  Button } from '@material-ui/core';
@@ -77,15 +77,25 @@ import {
     
     
     export default function Products(){
-      async function fetchDBData(){
-        // let rows = {};
-        const response = await Axios.get('http://localhost:3001/data')
-        // {config: {'Content-Type': 'multipart/form-data'}}, 
-        const rowsArr = response.data;
-        // const arrValues = Object.values(rowsArr)
-        console.log(rowsArr);
 
+      const [rows, setRows] = useState(null);
+      useEffect(() => {
+        Axios.get('http://localhost:3001/data')
+        .then(response => setRows(response.data))
+        // .then(const blob = new Blob([rows], {type: 'image/*'} ))
+        .catch(error => alert(error))
+        
+      }, []);
+      
+      if (!rows) {
+        return <div>Loading...</div>
       }
+      
+      function fetchDBData(){
+        console.log(rows);
+      }
+
+        // {config: {'Content-Type': 'multipart/form-data'}}, 
 
     return (
     <>
@@ -93,15 +103,26 @@ import {
       {/* <section> */}
           
           <h1>Products</h1>
-  
+          
           <Button onClick={fetchDBData}>asdfasf</Button>
 
           <div>
-            <p id='test'> hi </p>
-            {rowsArr.map(currentRow => { 
-              <img src={currentRow.imgsrc}    
-               />
-            })}
+            <p id='test'> {rows} ? {rows.map(item => (
+              <>
+                <p key={item.prodkey}> {item.name} 
+                {console.log(item.imgsrc.data.toString('base64'))}
+                </p>
+                <img src={(item.imgsrc.data).toString('base64')}    
+                              />
+              </>
+            ))} : (
+              <div>Loading...</div>
+            ) </p>
+
+
+
+            {/* {rowsArr.map(currentRow => { 
+            })} */}
           </div>
 
       <MDBRow>

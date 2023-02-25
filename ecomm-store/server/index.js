@@ -30,7 +30,7 @@ app.get('/data', readBuffer.single('img'), (req, res) => {
     db.query(fetch, (err, result) => {
         if (err) {console.log(err)};
         res.json(result);
-        // console.log(rows);
+        console.log(result);
         // rows = result.map(currentObj => {
         //     objs += currentObj;
         // });
