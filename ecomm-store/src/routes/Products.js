@@ -36,6 +36,7 @@ import {
     MDBCol,
     MDBRow,
   } from 'mdb-react-ui-kit';
+// import { response } from "express";
 
 
   export const dbList = {
@@ -73,13 +74,18 @@ import {
       return itemData;
     }
   
-    function fetchDBData(){
-      Axios.get('http://localhost:3001/api/insert', 
-      {config: {'Content-Type': 'multipart/form-data'}}, 
-      ).then(response => console.log(response)).catch(error => alert(error))
-    }
+    
+    
+    export default function Products(){
+      async function fetchDBData(){
+        // let rows = {};
+        const response = await Axios.get('http://localhost:3001/data')
+        // {config: {'Content-Type': 'multipart/form-data'}}, 
+        const rowsArr = response.data;
+        // const arrValues = Object.values(rowsArr)
+        console.log(rowsArr);
 
-  export default function Products(){
+      }
 
     return (
     <>
@@ -89,7 +95,15 @@ import {
           <h1>Products</h1>
   
           <Button onClick={fetchDBData}>asdfasf</Button>
-  
+
+          <div>
+            <p id='test'> hi </p>
+            {rowsArr.map(currentRow => { 
+              <img src={currentRow.imgsrc}    
+               />
+            })}
+          </div>
+
       <MDBRow>
         <MDBCol lg={4} md={12} className='mb-4 mb-lg-0'>
               <MDBRipple rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>

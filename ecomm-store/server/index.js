@@ -3,7 +3,8 @@ const express = require('express');
 const bodyparser = require('body-parser');
 const app = express();
 const cors = require('cors');
-const mysql = require('mysql');
+const mysql = require('mysql2');
+const multer = require('multer');
 
 const db = mysql.createConnection({
     host: 'localhost',
@@ -15,31 +16,34 @@ const db = mysql.createConnection({
 
 app.use(cors());
 app.use(express.json());
-app.use(bodyparser.urlencoded({extended: true}))
+// app.use(bodyparser.urlencoded({extended: true}))
 
+const readBuffer =  multer({storage: multer.memoryStorage()});
 
-app.get('/api/insert', (req, res) => {
+app.get('/data', readBuffer.single('img'), (req, res) => {
 
-    // const name = res.body.name; 
-    // const size = res.body.size;  
-    // const medium = res.body.medium;  
-    // const price = res.body.price;  
-    // const blob = res.body.blob;  
-    // const key = res.body.prodkey;  
-    // const test = 'test';
-    // (name, size, medium, price, imgsrc, prodkey) VALUES (?, ?, ?, ?, ?, ?)
-    //[name, size, medium, price, blob, key],
+    let rows = null;
+    
+    // .then(console.log(rows)).then(response => rows.push(response))   , { rowAsArray: false })
+
     const fetch = 'SELECT * FROM inventory';
     db.query(fetch, (err, result) => {
-        if (err) {console.log(err)}
-        console.log(result);
-        // res.send(insert);
+        if (err) {console.log(err)};
+        res.json(result);
+        // console.log(rows);
+        // rows = result.map(currentObj => {
+        //     objs += currentObj;
+        // });
+
+
+        // console.log(result[1].imgsrc.toString('base64'));
     })
 })
  
+const port = 3001;
 
-app.listen(3001, () => {
-    console.log('running on port 3001')
+app.listen(port, () => {
+    console.log('running on port ' + port)
     db.connect( function (err){
         if(err) throw err;
         console.log('database connected')
