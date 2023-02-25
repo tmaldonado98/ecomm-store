@@ -1,6 +1,5 @@
 import './Nav.css';
 import React from 'react';
-import Axios from 'axios';
 import { Link} from 'react-router-dom';
 import {  Button, Typography } from '@material-ui/core';
 import { useState, useContext } from 'react';
