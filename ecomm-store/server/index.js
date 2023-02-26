@@ -5,6 +5,7 @@ const app = express();
 const cors = require('cors');
 const mysql = require('mysql2');
 const multer = require('multer');
+const fs = require('fs');
 
 const db = mysql.createConnection({
     host: 'localhost',
@@ -20,23 +21,13 @@ app.use(express.json());
 
 const readBuffer =  multer({storage: multer.memoryStorage()});
 
-app.get('/data', readBuffer.single('img'), (req, res) => {
-
-    let rows = null;
-    
+app.get('/data', readBuffer.single('img'), (req, res) => {  
     // .then(console.log(rows)).then(response => rows.push(response))   , { rowAsArray: false })
-
     const fetch = 'SELECT * FROM inventory';
     db.query(fetch, (err, result) => {
         if (err) {console.log(err)};
         res.json(result);
-        console.log(result);
-        // rows = result.map(currentObj => {
-        //     objs += currentObj;
-        // });
 
-
-        // console.log(result[1].imgsrc.toString('base64'));
     })
 })
  
