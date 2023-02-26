@@ -9,6 +9,7 @@ import {  Button } from '@material-ui/core';
 // import ModalFive from "../ModalFive";
 import {ModalProd} from "../Modals";
 import  Axios from 'axios';
+import { Buffer } from "buffer";
 
 import {
     MDBCard,
@@ -79,9 +80,11 @@ import {
     export default function Products(){
 
       const [rows, setRows] = useState(null);
+      // const [binData, setBinData] = useState(null)
       useEffect(() => {
         Axios.get('http://localhost:3001/data')
         .then(response => setRows(response.data))
+        // .then(setBinData(rows.map(item => {return item.imgsrc.data})))
         // .then(const blob = new Blob([rows], {type: 'image/*'} ))
         .catch(error => alert(error))
         
@@ -93,9 +96,23 @@ import {
       
       function fetchDBData(){
         console.log(rows);
+        // console.log(binData)
       }
 
-        // {config: {'Content-Type': 'multipart/form-data'}}, 
+      const imgData = rows.map(item => (
+        item.imgsrc.data
+        )
+        // const buf = Buffer.from(item.imgsrc.data)
+      )
+      console.log(imgData)
+      const buf = Buffer.from(imgData[0])
+
+      console.log(buf.toString('base64'))
+
+        // {config: {'Content-Type': 'multipart/form-data'}},  {createImg(item.imgsrc.data)}
+        const base64String = 'QzpcZmFrZXBhdGhccmVtb3RlIGpvYiBib2FyZHMucG5n';
+        const dataUrl = `data:image/*;base64,${base64String}`;
+        let base64ToString = Buffer.from(dataUrl, "base64").toString();
 
     return (
     <>
@@ -107,17 +124,16 @@ import {
           <Button onClick={fetchDBData}>asdfasf</Button>
 
           <div>
-            <p id='test'> {rows} ? {rows.map(item => (
-              <>
-                <p key={item.prodkey}> {item.name} 
-                {console.log(item.imgsrc.data.toString('base64'))}
+            <p id='test'> {rows.map(item => (
+              
+                <p key={item.prodkey}> {item.name} {(item.imgsrc.data.toString('base64'))} {console.log(item.imgsrc.data)}
+                              
+                {/* {console.log(Buffer.from(item.imgsrc.data).toString('base64'))} */}
                 </p>
-                <img src={(item.imgsrc.data).toString('base64')}    
-                              />
-              </>
-            ))} : (
-              <div>Loading...</div>
-            ) </p>
+                ))}
+            </p>
+            <p>{dataUrl}, {console.log(base64ToString)}</p>
+                <img height={'50px'} width={'50px'} src={dataUrl} ></img>   
 
 
 
