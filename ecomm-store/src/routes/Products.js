@@ -96,24 +96,39 @@ import {
       
       function fetchDBData(){
         console.log(rows);
-        // console.log(binData)
+
       }
 
       const imgData = rows.map(item => (
-        item.imgsrc.data
+        item.imgsrc
         )
-        // const buf = Buffer.from(item.imgsrc.data)
+
       )
-      console.log(imgData)
-      const buf = Buffer.from(imgData[0])
+      // console.log(imgData)
+  
+        let pathsObject = {};
+        for (let i = 0; i < rows.length; i++) {
+          const key = rows[i].prodkey;
+          const itemSrc = rows[i].imgsrc;
+          const itemName = rows[i].name;
+          const itemSize = rows[i].size;
+          const itemMedium = rows[i].medium;
+          const itemPrice = rows[i].price;
 
-      console.log(buf.toString('base64'))
+          if (!pathsObject[key]) {
+            pathsObject[key] = {};
+          }
+          // let src = {};
+          pathsObject[key].src = itemSrc;
+          pathsObject[key].name = itemName;
+          pathsObject[key].size = itemSize;
 
-        // {config: {'Content-Type': 'multipart/form-data'}},  {createImg(item.imgsrc.data)}
-        const base64String = 'QzpcZmFrZXBhdGhccmVtb3RlIGpvYiBib2FyZHMucG5n';
-        const dataUrl = `data:image/*;base64,${base64String}`;
-        let base64ToString = Buffer.from(dataUrl, "base64").toString();
-
+          pathsObject[key].medium = itemMedium;
+          pathsObject[key].price = itemPrice;
+          pathsObject[key].className = 'w-100 shadow-1-strong rounded mb-4';
+          console.log(pathsObject)  
+        }
+        console.log(pathsObject.one)
     return (
     <>
         <Nav />
@@ -123,38 +138,36 @@ import {
           
           <Button onClick={fetchDBData}>asdfasf</Button>
 
-          <div>
-            <p id='test'> {rows.map(item => (
-              
-                <p key={item.prodkey}> {item.name} {(item.imgsrc.data.toString('base64'))} {console.log(item.imgsrc.data)}
-                              
-                {/* {console.log(Buffer.from(item.imgsrc.data).toString('base64'))} */}
-                </p>
-                ))}
-            </p>
-            <p>{dataUrl}, {console.log(base64ToString)}</p>
-                <img height={'50px'} width={'50px'} src={dataUrl} ></img>   
+          {/* <div>
+            <> {rows.map(item => {
 
-
-
-            {/* {rowsArr.map(currentRow => { 
-            })} */}
-          </div>
+              const imageSrc = item.imgsrc;
+            
+              return (
+              <>
+                <p key={item.prodkey}>{item.name} {item.prodkey}</p>
+                <img height={'100px'} width={'200px'} src={item.imgsrc} />   
+              </>
+              )
+              })}
+            </>
+          </div> */}
 
       <MDBRow>
         <MDBCol lg={4} md={12} className='mb-4 mb-lg-0'>
-              <MDBRipple rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
+              {/* <MDBRipple rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
                           <img
-                      src='https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp'
+                      // src='https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp'
+                      src={pathsObject.one}
                       className='w-100 shadow-1-strong rounded mb-4'
                       alt='Boat on Calm Water'
                       />
                   <a>
                       <div className='mask' style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}></div>
                   </a>
-              </MDBRipple>
+              </MDBRipple> */}
   
-  
+              <ModalProd data={pathsObject.one}/>
      
               <MDBRipple rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
               <img
