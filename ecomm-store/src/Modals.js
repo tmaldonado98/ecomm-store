@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { CartContext } from './CartContext';
 import Nav from './Nav';
 import {BasicSelect, CartSelect} from './Select';
+import './Modals.css';
 
 import {
     MDBCard,
@@ -32,7 +33,7 @@ import { useState } from "react";
 
 
 
-export function ModalProd (props){
+export default function ModalProd (props){
     const [optSmModal, setOptSmModal] = useState(false);
 
     const toggleShow = () => setOptSmModal(!optSmModal);
@@ -52,44 +53,46 @@ export function ModalProd (props){
 
 
     function addToCart(){
-        // let itemToChange=  cart.items.map(currentItem => currentItem.item.key === props.data.key);
-        let itemToChange=  cart.items.find(currentItem => currentItem.item.key === props.data.prodkey);
+        // let itemToChange=  cart.items.map(currentItem => currentItem.item.key === props.key);
+        let itemToChange=  cart.items.find(currentItem => currentItem.item.prodkey === props.prodkey);
 
         console.log(itemToChange)
         // console.log(itemToChange.quantity)
 
         // if (itemToChange.quantity === 0) {
-        //     cart.addItem(props.data)
+        //     cart.addItem(props.one.data)
         // } else {
         //     cart.editQuant(props.data.key)
         // }
         // return itemToChange.quantity === 0 ? cart.addItem(props.data) : cart.editQuant(props.data.key)
         // return cart.editQuant(props.data.key) ? itemToChange.quantity > 0 : 's'
-
-        cart.addItem(props.data);
+        // const propertiesToAdd = props.
+        cart.addItem(props);
         // negative();
         cart.handleCardSelect()
         // cart.showSelect.setShowSelect(!showSelect)
         setShowSelect(!showSelect);
     }    
 
-      
+    // const src = props.src;
+    //   console.log(src);
     
     return(
         <>
             <MDBRipple onClick={toggleShow} rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
+                    {/* {console.log(src)} */}
                     <img
-                    src={props.data.src}
-                    className={props.data.className}
+                    src={props.src}
+                    className={props.className}
                     />
                 <a>
                     <div className='mask' style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}>
                         <p>
-                            {props.data.name}
+                            {props.name}
                         </p> 
-
+                        <p>test est</p>
                         <p>
-                        ${props.data.price} USD
+                        ${props.price} USD
                         </p> 
 
                         <Button onClick={toggleShow}>View</Button>
@@ -102,21 +105,21 @@ export function ModalProd (props){
         <MDBModalDialog size='lg'>
         <MDBModalContent>
             <MDBModalHeader>
-            <MDBModalTitle>"{props.data.name}"</MDBModalTitle>
+            <MDBModalTitle>{props.name}</MDBModalTitle>
             <MDBBtn className='btn-close' color='none' onClick={toggleShow}></MDBBtn>
             </MDBModalHeader>
                 <MDBModalBody>
                     <img
-                    src={props.data.src}
-                    className={props.data.className}
-                    // alt={props.data.img.alt}    
+                    src={props.src}
+                    className={props.className}
+                    // alt={props..img.alt}    
                     />
 
                         <div className='modalCard'>
-                            {/* <p>{props.data.description}</p> */}
-                            <p>{props.data.medium}</p>
-                            <p>{props.data.size}</p>
-                            <p><strong>Price: ${props.data.price} USD</strong></p>
+                            {/* <p>{props.description}</p> */}
+                            <p>{props.medium}</p>
+                            <p>{props.size}</p>
+                            <p><strong>Price: ${props.price} USD</strong></p>
                             <Button hidden={cart.showSelect} disabled={cart.validity} onClick={addToCart}>Add to cart</Button>                
                             <br/>
                             <BasicSelect show={cart.showSelect} hidden={cart.showSelect} />
@@ -130,7 +133,7 @@ export function ModalProd (props){
     );  
 }
 
-// export function ModalSix (props){
+// export function ModalSix (props.one){
 //     const [optSmModal, setOptSmModal] = useState(false);
     
 //     const toggleShow = () => setOptSmModal(!optSmModal);
