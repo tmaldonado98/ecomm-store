@@ -19,9 +19,9 @@ app.use(cors());
 app.use(express.json());
 // app.use(bodyparser.urlencoded({extended: true}))
 
-const readBuffer =  multer({storage: multer.memoryStorage()});
+// const readBuffer =  multer({storage: multer.memoryStorage()});
 
-app.get('/data', readBuffer.single('img'), (req, res) => {  
+app.get('/data', (req, res) => {  
     // .then(console.log(rows)).then(response => rows.push(response))   , { rowAsArray: false })
     const fetch = 'SELECT * FROM inventory';
     db.query(fetch, (err, result) => {

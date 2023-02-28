@@ -53,7 +53,7 @@ export function ModalProd (props){
 
     function addToCart(){
         // let itemToChange=  cart.items.map(currentItem => currentItem.item.key === props.data.key);
-        let itemToChange=  cart.items.find(currentItem => currentItem.item.key === props.data.key);
+        let itemToChange=  cart.items.find(currentItem => currentItem.item.key === props.data.prodkey);
 
         console.log(itemToChange)
         // console.log(itemToChange.quantity)
@@ -77,11 +77,10 @@ export function ModalProd (props){
     
     return(
         <>
-            {/* <MDBRipple onClick={toggleShow} rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
+            <MDBRipple onClick={toggleShow} rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
                     <img
-                    src={props.data.img.src}
-                    className={props.data.img.className}
-                    alt={props.data.img.alt}    
+                    src={props.data.src}
+                    className={props.data.className}
                     />
                 <a>
                     <div className='mask' style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}>
@@ -103,20 +102,20 @@ export function ModalProd (props){
         <MDBModalDialog size='lg'>
         <MDBModalContent>
             <MDBModalHeader>
-            <MDBModalTitle>"Painting {props.data.key}"</MDBModalTitle>
+            <MDBModalTitle>"{props.data.name}"</MDBModalTitle>
             <MDBBtn className='btn-close' color='none' onClick={toggleShow}></MDBBtn>
             </MDBModalHeader>
                 <MDBModalBody>
                     <img
-                    src={props.data.img.src}
-                    className={props.data.img.className}
-                    alt={props.data.img.alt}    
+                    src={props.data.src}
+                    className={props.data.className}
+                    // alt={props.data.img.alt}    
                     />
 
                         <div className='modalCard'>
-                            <p>{props.data.description}</p>
+                            {/* <p>{props.data.description}</p> */}
                             <p>{props.data.medium}</p>
-                            <p>{props.data.dimensions}</p>
+                            <p>{props.data.size}</p>
                             <p><strong>Price: ${props.data.price} USD</strong></p>
                             <Button hidden={cart.showSelect} disabled={cart.validity} onClick={addToCart}>Add to cart</Button>                
                             <br/>
@@ -126,7 +125,7 @@ export function ModalProd (props){
                     </MDBModalBody>
             </MDBModalContent>
             </MDBModalDialog>
-        </MDBModal> */}
+        </MDBModal>
 </>
     );  
 }
