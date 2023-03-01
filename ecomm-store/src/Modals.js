@@ -54,7 +54,7 @@ export default function ModalProd (props){
 
     function addToCart(){
         // let itemToChange=  cart.items.map(currentItem => currentItem.item.key === props.key);
-        let itemToChange=  cart.items.find(currentItem => currentItem.item.prodkey === props.prodkey);
+        let itemToChange=  cart.items.find(currentItem => currentItem.item.prodkey === props.oneprodkey);
 
         console.log(itemToChange)
         // console.log(itemToChange.quantity)
@@ -62,9 +62,9 @@ export default function ModalProd (props){
         // if (itemToChange.quantity === 0) {
         //     cart.addItem(props.one.data)
         // } else {
-        //     cart.editQuant(props.data.key)
+        //     cart.editQuant(props.onedata.key)
         // }
-        // return itemToChange.quantity === 0 ? cart.addItem(props.data) : cart.editQuant(props.data.key)
+        // return itemToChange.quantity === 0 ? cart.addItem(props.onedata) : cart.editQuant(props.data.key)
         // return cart.editQuant(props.data.key) ? itemToChange.quantity > 0 : 's'
         // const propertiesToAdd = props.
         cart.addItem(props);
@@ -75,24 +75,37 @@ export default function ModalProd (props){
     }    
 
     // const src = props.src;
-    //   console.log(src);
     
+    if (props) {
+        // const received = props;
+        // console.log(received);
+        console.log(props)
+    } else {
+        console.log('props not received yet');
+
+    }
+
+    // {props ?     {
+    //     }
+    //     }    
     return(
+        <>
+        {props ? 
         <>
             <MDBRipple onClick={toggleShow} rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
                     {/* {console.log(src)} */}
                     <img
-                    src={props.src}
-                    className={props.className}
+                    src={props.one.src}
+                    className={props.one.className}
                     />
                 <a>
                     <div className='mask' style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}>
                         <p>
-                            {props.name}
+                            {props.one.name}
                         </p> 
                         <p>test est</p>
                         <p>
-                        ${props.price} USD
+                        ${props.one.price} USD
                         </p> 
 
                         <Button onClick={toggleShow}>View</Button>
@@ -100,26 +113,25 @@ export default function ModalProd (props){
                     </div>
                 </a>  
             </MDBRipple>
-
         <MDBModal show={optSmModal} tabIndex='-1' setShow={setOptSmModal}>
         <MDBModalDialog size='lg'>
         <MDBModalContent>
             <MDBModalHeader>
-            <MDBModalTitle>{props.name}</MDBModalTitle>
+            <MDBModalTitle>{props.one.name}</MDBModalTitle>
             <MDBBtn className='btn-close' color='none' onClick={toggleShow}></MDBBtn>
             </MDBModalHeader>
                 <MDBModalBody>
                     <img
-                    src={props.src}
-                    className={props.className}
-                    // alt={props..img.alt}    
+                    src={props.one.src}
+                    className={props.one.className}
+                    // alt={props.one..img.alt}    
                     />
 
                         <div className='modalCard'>
-                            {/* <p>{props.description}</p> */}
-                            <p>{props.medium}</p>
-                            <p>{props.size}</p>
-                            <p><strong>Price: ${props.price} USD</strong></p>
+                            {/* <p>{props.one.description}</p> */}
+                            <p>{props.one.medium}</p>
+                            <p>{props.one.size}</p>
+                            <p><strong>Price: ${props.one.price} USD</strong></p>
                             <Button hidden={cart.showSelect} disabled={cart.validity} onClick={addToCart}>Add to cart</Button>                
                             <br/>
                             <BasicSelect show={cart.showSelect} hidden={cart.showSelect} />
@@ -129,11 +141,14 @@ export default function ModalProd (props){
             </MDBModalContent>
             </MDBModalDialog>
         </MDBModal>
+    </>
+: 'Loading...'}
+
 </>
     );  
 }
 
-// export function ModalSix (props.one){
+// export function ModalSix (props.oneone){
 //     const [optSmModal, setOptSmModal] = useState(false);
     
 //     const toggleShow = () => setOptSmModal(!optSmModal);

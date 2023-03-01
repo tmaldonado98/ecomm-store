@@ -36,6 +36,7 @@ import {
     MDBCol,
     MDBRow,
   } from 'mdb-react-ui-kit';
+import { textAlign, width } from "@mui/system";
 // import { response } from "express";
 
 
@@ -129,11 +130,16 @@ import {
         
         console.log("Rows state updated:", rows);
         console.log('mainObj set ', mainObj);
-        // console.log('obj one of mainObj ', mainObj.one);
       }, [rows]);
       
       if (!rows) {
-        return <div>Loading...</div>
+        return (
+        <>
+          <Nav />
+          <h1>Artworks For Sale</h1>
+          <div style={{textAlign:'center', width:'100%', height:'100%'}}><p style={{fontSize:'35px'}}>Loading...</p></div>
+        </>
+        )
       } 
       
       
@@ -154,10 +160,10 @@ import {
       // console.log(rows);
       // console.log(mainObj)
 
-      function fetchDBData(){
-        console.log(mainObj)
+      // function fetchDBData(){
+      //   console.log(mainObj)
 
-      }
+      // }
 
       // console.log(imgData)
       // useEffect(()=> {
@@ -204,9 +210,9 @@ import {
         <Nav />
       {/* <section> */}
           
-          <h1>Products</h1>
+          <h1>Artworks For Sale</h1>
           
-          <Button onClick={fetchDBData}>asdfasf</Button>
+          {/* <Button onClick={fetchDBData}>asdfasf</Button> */}
 
           {/* <div>
             <> {rows.map(item => {
@@ -238,7 +244,9 @@ import {
                   </a>
               </MDBRipple> */}
             {mainObj && (
-              <ModalProd data={mainObj.one}/>)}
+              // <ModalProd {...mainObj.one ? data={...mainObj.one} : null}   />)}
+              <ModalProd one={mainObj.one}   />)}
+
               {/* {console.log(pathsObject.one)} */}
             {/* {mainObj && (
               <MDBRipple rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
