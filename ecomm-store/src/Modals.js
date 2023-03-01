@@ -54,20 +54,21 @@ export default function ModalProd (props){
 
     function addToCart(){
         // let itemToChange=  cart.items.map(currentItem => currentItem.item.key === props.key);
-        let itemToChange=  cart.items.find(currentItem => currentItem.item.prodkey === props.oneprodkey);
+        let itemToChange=  cart.items.find(currentItem => currentItem.item.product.prodkey === props.product.prodkey);
 
         console.log(itemToChange)
         // console.log(itemToChange.quantity)
 
         // if (itemToChange.quantity === 0) {
-        //     cart.addItem(props.one.data)
+        //     cart.addItem(props.producto.data)
         // } else {
-        //     cart.editQuant(props.onedata.key)
+        //     cart.editQuant(props.product.key)
         // }
-        // return itemToChange.quantity === 0 ? cart.addItem(props.onedata) : cart.editQuant(props.data.key)
+        // return itemToChange.quantity === 0 ? cart.addItem(props.productdata) : cart.editQuant(props.data.key)
         // return cart.editQuant(props.data.key) ? itemToChange.quantity > 0 : 's'
         // const propertiesToAdd = props.
         cart.addItem(props);
+        console.log(props)
         // negative();
         cart.handleCardSelect()
         // cart.showSelect.setShowSelect(!showSelect)
@@ -76,18 +77,15 @@ export default function ModalProd (props){
 
     // const src = props.src;
     
-    if (props) {
-        // const received = props;
-        // console.log(received);
-        console.log(props)
-    } else {
-        console.log('props not received yet');
+    // if (props) {
+    //     // const received = props;
+    //     // console.log(received);
+    //     console.log(props)
+    // } else {
+    //     console.log('props not received yet');
 
-    }
-
-    // {props ?     {
-    //     }
-    //     }    
+    // }
+  
     return(
         <>
         {props ? 
@@ -95,17 +93,16 @@ export default function ModalProd (props){
             <MDBRipple onClick={toggleShow} rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
                     {/* {console.log(src)} */}
                     <img
-                    src={props.one.src}
-                    className={props.one.className}
+                    src={props.product.src}
+                    className={props.product.className}
                     />
                 <a>
                     <div className='mask' style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}>
                         <p>
-                            {props.one.name}
+                            {props.product.name}
                         </p> 
-                        <p>test est</p>
                         <p>
-                        ${props.one.price} USD
+                            ${props.product.price} USD
                         </p> 
 
                         <Button onClick={toggleShow}>View</Button>
@@ -117,21 +114,21 @@ export default function ModalProd (props){
         <MDBModalDialog size='lg'>
         <MDBModalContent>
             <MDBModalHeader>
-            <MDBModalTitle>{props.one.name}</MDBModalTitle>
+            <MDBModalTitle>{props.product.name}</MDBModalTitle>
             <MDBBtn className='btn-close' color='none' onClick={toggleShow}></MDBBtn>
             </MDBModalHeader>
                 <MDBModalBody>
                     <img
-                    src={props.one.src}
-                    className={props.one.className}
-                    // alt={props.one..img.alt}    
+                    src={props.product.src}
+                    className={props.product.className}
+                    alt={[props.product.name, props.product.medium, props.product.size]}    
                     />
 
                         <div className='modalCard'>
-                            {/* <p>{props.one.description}</p> */}
-                            <p>{props.one.medium}</p>
-                            <p>{props.one.size}</p>
-                            <p><strong>Price: ${props.one.price} USD</strong></p>
+                            {/* <p>{props.product.description}</p> */}
+                            <p>{props.product.medium}</p>
+                            <p>{props.product.size}</p>
+                            <p><strong>Price: ${props.product.price} USD</strong></p>
                             <Button hidden={cart.showSelect} disabled={cart.validity} onClick={addToCart}>Add to cart</Button>                
                             <br/>
                             <BasicSelect show={cart.showSelect} hidden={cart.showSelect} />

@@ -27,7 +27,7 @@ export function ProdInCart(props) {
     setToggleEdit(!toggleEdit);
   }
 
-  let itemKey = props.currentItem.item.key
+  let itemKey = props.prod.product.prodkey
   function sendKey(){
     cart.editQuant(itemKey);
     // setShowCartSelect(!showCartSelect)
@@ -36,7 +36,7 @@ export function ProdInCart(props) {
   }
 
   function remove(){
-    let itemKey = props.currentItem.item.key
+    let itemKey = props.prod.product.prodkey
 
     cart.removeItem(itemKey)
     cart.handleCardSelect()
@@ -46,7 +46,15 @@ export function ProdInCart(props) {
   return (
     <>
       {/* {cart.items.map(currentItem => ( */}
-                <p className='itemInCart'>{props.currentItem.item.name} - ${props.currentItem.item.price}<br/><sub>Quantity: {props.currentItem.quantity}</sub>
+                  {/* {props.currentItem.item.name} ${props.currentItem.item.price} */}
+                <div className='itemInCart'>
+                  {<img src={props.prod.product.src} style={{width:'120px',height:'85px',borderRadius:'15px'}}/>}
+                  <p>
+                    {props.prod.product.name} - ${props.prod.product.price}
+                    <br/>
+                    <sub>Quantity: {props.quantity}</sub>
+                  </p>
+
                 {/* <Button onClick={showOrHideEdit}>Edit</Button> */}
 
                 
@@ -60,7 +68,7 @@ export function ProdInCart(props) {
                 
                 <Button onClick={remove}>Remove</Button>
                                
-                </p>
+                </div>
                 {/* ))} */}
     </>
   )
@@ -96,9 +104,9 @@ export default function Nav(){
 
   function getTotalPrice(){
     let totalPrice = 0;
-
     cart.items.map(currentItem => {
-        const data = currentItem.item.price;
+      // console.log(currentItem.item.one.price)
+        const data = currentItem.item.product.price;
         const currentQuant = currentItem.quantity;
         // console.log(data);
         totalPrice += data * currentQuant;
@@ -159,15 +167,18 @@ export default function Nav(){
             </p> */}
             <div>
               {cart.items.map(currentItem => (
-                  <ProdInCart currentItem = {currentItem}
-                  />
+                  <ProdInCart prod = {currentItem.item} quantity={currentItem.quantity}
+                  />  ///NEED TO HOOK UP DYNAMIC KEY. CREATE IT IN PRODUCTS COMP AND SEND TO MODALS VIA PROPS. CART CONTEXT WILL PICK IT UP.
                 
                 ))}              
               
             </div>
             <strong>
               <p>
-                <u>Price (before shipping & taxes) - ${getTotalPrice()}</u>
+                <u>Cost (before shipping & taxes):</u> 
+                <p>
+                  ${getTotalPrice()}
+                </p>
               </p>
               {/* <p>Shipping - $4.99</p>
               <p>Estimated Tax - $1.22</p>
@@ -191,8 +202,6 @@ export default function Nav(){
         <MDBBtn onClick={toggleShow}>
           Close
         </MDBBtn>
-
-        <MDBBtn>Test insert sql</MDBBtn>
 
       </MDBModalFooter>
     </MDBModalContent>

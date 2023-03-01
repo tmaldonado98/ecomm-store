@@ -88,9 +88,9 @@ import { textAlign, width } from "@mui/system";
                 setRows(response.data);
                 // console.log(response.data)
               })
-        .then(() => {
-                console.log('rows state set ')
-              })
+        // .then(() => {
+        //         console.log('rows state set ')
+        //       })
         .catch(error => alert(error))
         
       }, []);
@@ -121,15 +121,15 @@ import { textAlign, width } from "@mui/system";
           pathsObject[key].price = itemPrice;
           pathsObject[key].prodkey = itemProdkey;
           
-          pathsObject[key].className = 'w-100 shadow-1-strong rounded mb-4';
+          pathsObject[key].className = className;
           // console.log(pathsObject)  
           }
         setMainObj(pathsObject);
+        console.log('mainObj set ', mainObj);
         }
 
         
-        console.log("Rows state updated:", rows);
-        console.log('mainObj set ', mainObj);
+        // console.log("Rows state updated:", rows);
       }, [rows]);
       
       if (!rows) {
@@ -208,26 +208,10 @@ import { textAlign, width } from "@mui/system";
     return (
     <>
         <Nav />
-      {/* <section> */}
           
           <h1>Artworks For Sale</h1>
           
           {/* <Button onClick={fetchDBData}>asdfasf</Button> */}
-
-          {/* <div>
-            <> {rows.map(item => {
-
-              const imageSrc = item.imgsrc;
-            
-              return (
-              <>
-                <p key={item.prodkey}>{item.name} {item.prodkey}</p>
-                <img height={'100px'} width={'200px'} src={item.imgsrc} />   
-              </>
-              )
-              })}
-            </>
-          </div> */}
 
       <MDBRow>
         <MDBCol lg={4} md={12} className='mb-4 mb-lg-0'>
@@ -244,22 +228,13 @@ import { textAlign, width } from "@mui/system";
                   </a>
               </MDBRipple> */}
             {mainObj && (
-              // <ModalProd {...mainObj.one ? data={...mainObj.one} : null}   />)}
-              <ModalProd one={mainObj.one}   />)}
+              <ModalProd product={mainObj.one}   />)
+            }
 
-              {/* {console.log(pathsObject.one)} */}
-            {/* {mainObj && (
-              <MDBRipple rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
-              <img
-            // src='https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain1.webp'
-            src={mainObj.one.src}
-            className='w-100 shadow-1-strong rounded mb-4'
-            alt='Wintry Mountain Landscape'
-          />
-                  <a>
-                      <div className='mask' style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}></div>
-                  </a>
-              </MDBRipple> )} */}
+            {mainObj && (
+              <ModalProd product={mainObj.two}   />)
+            }
+
         </MDBCol>
   
         <MDBCol lg={4} className='mb-4 mb-lg-0'>
@@ -324,13 +299,6 @@ import { textAlign, width } from "@mui/system";
           {/* <ModalProd/> */}
         </MDBCol>
       </MDBRow>
-        {/* </section>   */}
-
-    
-
-
-
-
 
     {/* <MDBBtn onClick={toggleShow}>Small modal</MDBBtn> */}
       
