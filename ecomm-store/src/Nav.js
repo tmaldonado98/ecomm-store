@@ -1,5 +1,5 @@
 import './Nav.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link} from 'react-router-dom';
 import {  Button, Typography } from '@material-ui/core';
 import { useState, useContext } from 'react';
@@ -27,9 +27,20 @@ export function ProdInCart(props) {
     setToggleEdit(!toggleEdit);
   }
   
-  const itemKey = props.prod.product.prodkey;
-  console.log(itemKey)   ///correct
+  // const itemKey = props.prod.product.prodkey; ///INSTEAD OF USING PROPS, TRY USING CART.ITEMS.MAP
+
+  
+  
+  // useEffect(() => {
+  //   console.log(findItem);
+    
+  //   console.log(itemKey)   ///correct
+  // }, [cart.items])
+  
   function sendKey(){
+    const findItem = cart.items.find(cur => cur.item.product.prodkey === props.prod.product.prodkey)
+    const itemKey = findItem.item.product.prodkey;
+    console.log(findItem, itemKey)
     cart.editQuant(itemKey);
     // setShowCartSelect(!showCartSelect)
     setToggleEdit(!toggleEdit);
@@ -38,6 +49,9 @@ export function ProdInCart(props) {
 
   function remove(){
     // let itemKey = props.prod.product.prodkey
+    const findItem = cart.items.find(cur => cur.item.product.prodkey === props.prod.product.prodkey)
+    const itemKey = findItem.item.product.prodkey;
+    console.log(findItem, itemKey)
     cart.removeItem(itemKey)
     cart.handleCardSelect()
     // cart.set
@@ -51,14 +65,9 @@ export function ProdInCart(props) {
                   {<img src={props.prod.product.src} style={{width:'120px',height:'85px',borderRadius:'15px'}}/>}
                   <p>
                     {props.prod.product.name} - ${props.prod.product.price}
-                    <br/>
-                    <sub>Quantity: {cart.items.map(curIt => curIt.item.product.prodkey === props.prod.product.prodkey && curIt.quantity)}</sub>  {/*THIS MIGHT BE THE PROBLEM: WORKS FINE ON FIRST RENDER BC IT COMES FROM PROPS. BREAKS ON RE-RENDER BECAUSE DEPENDS ON CART CONTEXT CART ITEMS QUANTITY*/}
-                   {/* {props.quantity} */}
-                    {/* {cart.items.quantity}  TRIED THIS, DIDN'T WORK AT FIRST, BUT MAYBE NEEDS DIFFERENT ANGLE */}
-                  </p>
-                {/* <Button onClick={showOrHideEdit}>Edit</Button> */}
-
-                
+                    <br/> {console.log(props.quantity)}
+                    <sub>Quantity: {props.quantity}</sub>  
+                  </p>              
 
                 {!toggleEdit ? <Button onClick={showOrHideEdit}>Edit</Button> : <Button onClick={showOrHideEdit}>Cancel</Button>}
                 {toggleEdit && 
@@ -109,7 +118,7 @@ export default function Nav(){
       // console.log(currentItem.item.one.price)
         const data = currentItem.item.product.price;
         const currentQuant = currentItem.quantity;
-        // console.log(data);
+        console.log(data);
         totalPrice += data * currentQuant;
     })
     console.log(Number(totalPrice))
@@ -163,12 +172,10 @@ export default function Nav(){
           </div> */}
           {cart.items.length > 0 ? 
           <div className='col-9'>
-            {/* <p>
-              Items in your cart:
-            </p> */}
+
             <div>
               {cart.items.map(currentItem => (
-                  <ProdInCart prod = {currentItem.item} quantity={currentItem.quantity}
+                  <ProdInCart prod = {currentItem.item} quantity={currentItem.quantity} 
                   />  
 
                   ))}              
@@ -178,7 +185,7 @@ export default function Nav(){
               <p>
                 <u>Cost (before shipping & taxes):</u> 
                 <p>
-                  {/* ${getTotalPrice()} */}
+                  ${getTotalPrice()}
                 </p>
               </p>
               {/* <p>Shipping - $4.99</p>

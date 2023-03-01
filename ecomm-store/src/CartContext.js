@@ -52,7 +52,7 @@ function CartProvider({children}){
     function removeItem(key){
         setCartItems(
             cartItems => cartItems.filter(object => {
-                return object.item.product.key != key} ///Puts into array all items that do not have the key defined in the parameter.
+                return object.item.product.prodkey != key} ///Puts into array all items that do not have the key defined in the parameter.
             )
         )
     };
@@ -61,16 +61,12 @@ function CartProvider({children}){
 
         const itemToChange=  cartItems.find(currentItem => currentItem.item.product.prodkey === itemKey);
         console.log(itemToChange);
-        
-        // if (itemToChange) {
-            
-        // }
 
         const edited = cartItems.map(object =>{
                 if (object.item.product === itemToChange.item.product) {  //,aybe add .product
-                    return {item: itemToChange.item.product, quantity: itemQuant}
-                    
-                    // object.item = itemToChange.item, object.quantity = itemToChange.quantity;
+                    // console.log({item: itemToChange.item.product, quantity: itemQuant})
+                    return {item: itemToChange.item, quantity: itemQuant}                    
+                    // return {item: itemToChange.item.product, quantity: itemQuant} --> old version. This makes cart.items start from the product object, which then nullifies all the code in the other components which start from item
                 } else {
                     return object
                 }
@@ -81,7 +77,7 @@ function CartProvider({children}){
 
         console.log(cartItems);
         setCartValidate(true);
-        // setItemQuant(0);
+        setItemQuant(0);
 
     }
     
