@@ -70,9 +70,9 @@ export default function ModalProd (props){
         cart.addItem(props);
         console.log(props)
         // negative();
-        // cart.handleCardSelect()
+        cart.handleCardSelect()
         // cart.showSelect.setShowSelect(!showSelect)
-        setShowSelect(!showSelect);
+        // setShowSelect(cart.showSelect);
     }    
 
     // const src = props.src;
@@ -129,11 +129,11 @@ export default function ModalProd (props){
                             <p>{props.product.medium}</p>
                             <p>{props.product.size}</p>
                             <p><strong>Price: ${props.product.price} USD</strong></p>
-                            <Button hidden={!showSelect} disabled={cart.validity} onClick={addToCart}>Add to cart</Button>                
+                            <Button hidden={cart.showSelect} disabled={cart.validity} onClick={addToCart}>Add to cart</Button>                
                             {/* cart.showSelect}   show={showSelect} */}
                             <br/>
-                            <BasicSelect hidden={!showSelect} />
-                            <p hidden={showSelect}>Your item(s) have been added to you cart! <br/> To modify your order, please go to your cart.</p>
+                            <BasicSelect hidden={cart.showSelect} />
+                            <p hidden={!cart.showSelect}>Your item(s) have been added to you cart! <br/> To modify your order, please go to your cart.</p>
                         </div>
                     </MDBModalBody>
             </MDBModalContent>
