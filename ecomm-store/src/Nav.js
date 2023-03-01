@@ -22,12 +22,13 @@ export function ProdInCart(props) {
   const [toggleEdit, setToggleEdit] = useState(false);  //true so that button is hidden by default
 
   // const [showCartSelect, setShowCartSelect] = useState(true);
-
+  
   function showOrHideEdit() {
     setToggleEdit(!toggleEdit);
   }
-
-  let itemKey = props.prod.product.prodkey
+  
+  const itemKey = props.prod.product.prodkey;
+  console.log(itemKey)   ///correct
   function sendKey(){
     cart.editQuant(itemKey);
     // setShowCartSelect(!showCartSelect)
@@ -36,8 +37,7 @@ export function ProdInCart(props) {
   }
 
   function remove(){
-    let itemKey = props.prod.product.prodkey
-
+    // let itemKey = props.prod.product.prodkey
     cart.removeItem(itemKey)
     cart.handleCardSelect()
     // cart.set
@@ -52,9 +52,10 @@ export function ProdInCart(props) {
                   <p>
                     {props.prod.product.name} - ${props.prod.product.price}
                     <br/>
-                    <sub>Quantity: {props.quantity}</sub>
+                    <sub>Quantity: {cart.items.map(curIt => curIt.item.product.prodkey === props.prod.product.prodkey && curIt.quantity)}</sub>  {/*THIS MIGHT BE THE PROBLEM: WORKS FINE ON FIRST RENDER BC IT COMES FROM PROPS. BREAKS ON RE-RENDER BECAUSE DEPENDS ON CART CONTEXT CART ITEMS QUANTITY*/}
+                   {/* {props.quantity} */}
+                    {/* {cart.items.quantity}  TRIED THIS, DIDN'T WORK AT FIRST, BUT MAYBE NEEDS DIFFERENT ANGLE */}
                   </p>
-
                 {/* <Button onClick={showOrHideEdit}>Edit</Button> */}
 
                 
@@ -62,7 +63,7 @@ export function ProdInCart(props) {
                 {!toggleEdit ? <Button onClick={showOrHideEdit}>Edit</Button> : <Button onClick={showOrHideEdit}>Cancel</Button>}
                 {toggleEdit && 
                   <>
-                    <CartSelect hidden={!toggleEdit} currentQuant={props.currentItem.quantity}/>
+                    <CartSelect hidden={!toggleEdit} currentQuant={props.quantity}/>
                     <Button onClick={sendKey}>Confirm</Button>
                   </>} 
                 
@@ -168,16 +169,16 @@ export default function Nav(){
             <div>
               {cart.items.map(currentItem => (
                   <ProdInCart prod = {currentItem.item} quantity={currentItem.quantity}
-                  />  ///NEED TO HOOK UP DYNAMIC KEY. CREATE IT IN PRODUCTS COMP AND SEND TO MODALS VIA PROPS. CART CONTEXT WILL PICK IT UP.
-                
-                ))}              
+                  />  
+
+                  ))}              
               
             </div>
             <strong>
               <p>
                 <u>Cost (before shipping & taxes):</u> 
                 <p>
-                  ${getTotalPrice()}
+                  {/* ${getTotalPrice()} */}
                 </p>
               </p>
               {/* <p>Shipping - $4.99</p>
