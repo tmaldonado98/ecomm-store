@@ -1,3 +1,5 @@
 .mask p {
-    z-index: 1000;
+    /* z-index: 1000; */
+    color: ivory;
+    font-size: 24px;
 }
