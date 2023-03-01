@@ -52,14 +52,14 @@ function CartProvider({children}){
     function removeItem(key){
         setCartItems(
             cartItems => cartItems.filter(object => {
-                return object.item.key != key} ///Puts into array all items that do not have the key defined in the parameter.
+                return object.item.product.key != key} ///Puts into array all items that do not have the key defined in the parameter.
             )
         )
     };
 
-    function editQuant (key){
+    function editQuant (itemKey){
 
-        let itemToChange=  cartItems.find(currentItem => currentItem.item.key === key);
+        const itemToChange=  cartItems.find(currentItem => currentItem.item.product.prodkey === itemKey);
         console.log(itemToChange);
         
         // if (itemToChange) {
@@ -67,8 +67,8 @@ function CartProvider({children}){
         // }
 
         const edited = cartItems.map(object =>{
-                if (object.item == itemToChange.item) {
-                    return {item: itemToChange.item, quantity: itemQuant}
+                if (object.item.product === itemToChange.item.product) {  //,aybe add .product
+                    return {item: itemToChange.item.product, quantity: itemQuant}
                     
                     // object.item = itemToChange.item, object.quantity = itemToChange.quantity;
                 } else {
@@ -81,7 +81,7 @@ function CartProvider({children}){
 
         console.log(cartItems);
         setCartValidate(true);
-        setItemQuant(0);
+        // setItemQuant(0);
 
     }
     
@@ -96,18 +96,6 @@ function CartProvider({children}){
         }
     };
 
-    // function getTotalPrice(){
-    //     let totalPrice = 0;
-
-    //     cartItems.map(currentItem => {
-    //         const data = currentItem.item.price;
-    //         const currentQuant = currentItem.quantity;
-    //         // console.log(data);
-    //         totalPrice += data * currentQuant;
-    //     })
-    //     console.log(Number(totalPrice))
-    //     return Number(totalPrice).toFixed(2);
-    // }
 
     function handleCardSelect () {
         setShowSelect(!showSelect);

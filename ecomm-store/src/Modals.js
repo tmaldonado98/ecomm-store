@@ -54,7 +54,7 @@ export default function ModalProd (props){
 
     function addToCart(){
         // let itemToChange=  cart.items.map(currentItem => currentItem.item.key === props.key);
-        let itemToChange=  cart.items.find(currentItem => currentItem.item.product.prodkey === props.product.prodkey);
+        let itemToChange =  cart.items.find(currentItem => currentItem.item.product.prodkey === props.product.prodkey);
 
         console.log(itemToChange)
         // console.log(itemToChange.quantity)
@@ -70,7 +70,7 @@ export default function ModalProd (props){
         cart.addItem(props);
         console.log(props)
         // negative();
-        cart.handleCardSelect()
+        // cart.handleCardSelect()
         // cart.showSelect.setShowSelect(!showSelect)
         setShowSelect(!showSelect);
     }    
@@ -129,10 +129,11 @@ export default function ModalProd (props){
                             <p>{props.product.medium}</p>
                             <p>{props.product.size}</p>
                             <p><strong>Price: ${props.product.price} USD</strong></p>
-                            <Button hidden={cart.showSelect} disabled={cart.validity} onClick={addToCart}>Add to cart</Button>                
+                            <Button hidden={!showSelect} disabled={cart.validity} onClick={addToCart}>Add to cart</Button>                
+                            {/* cart.showSelect}   show={showSelect} */}
                             <br/>
-                            <BasicSelect show={cart.showSelect} hidden={cart.showSelect} />
-                            <p hidden={!cart.showSelect}>Your item(s) have been added to you cart! <br/> To modify your order, please go to your cart.</p>
+                            <BasicSelect hidden={!showSelect} />
+                            <p hidden={showSelect}>Your item(s) have been added to you cart! <br/> To modify your order, please go to your cart.</p>
                         </div>
                     </MDBModalBody>
             </MDBModalContent>
