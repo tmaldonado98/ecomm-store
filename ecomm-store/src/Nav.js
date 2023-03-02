@@ -99,7 +99,7 @@ export default function Nav(){
     }
 
     const cart = useContext(CartContext);
-    console.log(cart.items)
+    // console.log(cart.items)
 
     // const cartCount = cart.items.length //cart.items.reduce((sum, item) => sum + item.quantity, 0)
       const cartCount = () => {
@@ -118,10 +118,10 @@ export default function Nav(){
       // console.log(currentItem.item.one.price)
         const data = currentItem.item.product.price;
         const currentQuant = currentItem.quantity;
-        console.log(data);
+        // console.log(data);
         totalPrice += data * currentQuant;
     })
-    console.log(Number(totalPrice))
+    // console.log(Number(totalPrice))
     return Number(totalPrice).toFixed(2);
 }
 
