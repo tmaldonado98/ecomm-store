@@ -1,5 +1,4 @@
 import Products from './routes/Products';
-// import { CartContext, CartProvider } from './CartContext';
 import { useContext } from 'react';
 import { CartContext } from './CartContext';
 import Nav from './Nav';

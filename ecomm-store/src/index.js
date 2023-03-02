@@ -8,7 +8,7 @@ import App from './App';
 import Products from './routes/Products';
 import About from './routes/About';
 import Contact from './routes/Contact';
-
+import Checkout from './routes/Checkout';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,6 +21,7 @@ root.render(
               <Route path='/Products' element={<Products />}/>
               <Route path='/About' element={<About />}/>
               <Route path='/Contact' element={<Contact />}/>
+              <Route path='/Checkout' element={<Checkout />}/>
           </Routes>                                
 
     </Router>

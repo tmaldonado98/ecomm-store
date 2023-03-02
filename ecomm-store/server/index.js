@@ -30,6 +30,18 @@ app.get('/data', (req, res) => {
 
     })
 })
+
+
+app.post('/orderData', (request, response) => {
+    const insert = 'INSERT INTO vea_orders () VALUES (?, )';
+    
+    db.query(insert, [], (error, result) => {
+        if (error) {console.log(error)};
+        // res.json(result);
+
+    })
+
+})
  
 const port = 3001;
 
