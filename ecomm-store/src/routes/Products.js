@@ -1,7 +1,6 @@
 import React from "react";
 import Nav from "../Nav";
 import './Products.css';
-import { CartContext } from "../CartContext";
 import { useState, useContext, useEffect } from "react";
 import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
@@ -238,7 +237,7 @@ import { textAlign, width } from "@mui/system";
         </MDBCol>
   
         <MDBCol lg={4} className='mb-4 mb-lg-0'>
-              <MDBRipple rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
+              {/* <MDBRipple rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
               <img
             src='https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain2.webp'
             className='w-100 shadow-1-strong rounded mb-4'
@@ -247,11 +246,9 @@ import { textAlign, width } from "@mui/system";
                   <a>
                       <div className='mask' style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}></div>
                   </a>
-              </MDBRipple>
+              </MDBRipple> */}
               
-  
-          
-              <MDBRipple rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
+              {/* <MDBRipple rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
               <img
             src='https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp'
             className='w-100 shadow-1-strong rounded mb-4'
@@ -260,7 +257,17 @@ import { textAlign, width } from "@mui/system";
                   <a>
                       <div className='mask' style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}></div>
                   </a>
-              </MDBRipple>
+              </MDBRipple> */}
+
+            {/* {mainObj && (
+              <ModalProd product={mainObj.three}   />)
+            }
+
+            {mainObj && (
+              <ModalProd product={mainObj.four}   />)
+            } */}
+
+
         </MDBCol>
   
         <MDBCol lg={4} className='mb-4 mb-lg-0'>

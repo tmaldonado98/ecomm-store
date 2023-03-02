@@ -206,10 +206,12 @@ export default function Nav(){
         </div>
       </MDBModalBody>
       <MDBModalFooter>
-        <MDBBtn hidden={true ? cart.items.length === 0 : false} color='link' >Proceed to checkout</MDBBtn>
-        <MDBBtn onClick={toggleShow}>
-          Close
-        </MDBBtn>
+        <Link to={'/Checkout'}>
+          <MDBBtn hidden={true ? cart.items.length === 0 : false} color='link' >Proceed to checkout</MDBBtn>
+        </Link>
+          <MDBBtn onClick={toggleShow}>
+            Close
+          </MDBBtn>
 
       </MDBModalFooter>
     </MDBModalContent>
