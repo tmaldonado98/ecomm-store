@@ -46,52 +46,68 @@ app.post('/checkout-session', async (req, res) => {
 
     const cartArr = [];
     cartItems.map(currentObj => {
-        cartArr.push(currentObj.item.product, currentObj.quantity)
+        cartArr.push(currentObj.item.product)
     });
-    // console.log(cartArr);
-    // console.log(cartArr[0].prodkey);
+    console.log(cartArr);
+    const prodQuant = [];
+    cartItems.map(curr => {
+        prodQuant.push(curr.quantity)
+    })
+    console.log(prodQuant)
+    // + currentObj.quantity
 
-    // const 
 
-    let product = [];
-    let productId = undefined;
+    const stripeProdArr = [];
+    const stripeProdId = [];
 
     await stripe.products.list()
     // .then(item => console.log(item.data[0].metadata))
     .then(item => { 
         for (let i = 0; i < cartArr.length; i++) {
-            product.push(item.data.find(prod => prod.metadata.prodkey === cartArr[i].prodkey))
+            stripeProdArr.push(item.data.find(prod => prod.metadata.prodkey === cartArr[i].prodkey))
+            // stripeProdId.push(stripeProdArr.id)
+            //  = product.id;
             
         }
-        console.log(product)
-        // productId = product.id;
+        // const stripeProdSet = new Set(stripeProdArr)
+
+        console.log(stripeProdArr)
+        // console.log(stripeProdSet.length)
+        // console.log(stripeProdId)
         
-        // console.log(product.id)
      })
     .catch(error => console.log(error))
 
+    const priceArr = [];
+    // const priceArrId = [];
+    // const priceIdArr = [];
+    const forLineItems = [];
 
-    // let price = undefined;
-    // let priceId = undefined;
-    // await stripe.prices.list()
-    // .then(curIt => {
-    //     price = curIt.data.find(price => price.product === productId);
-    //     priceId = price.id;
-    //     console.log(price);
-    //     console.log(priceId);
+    await stripe.prices.list()
+    .then(curIt => {
+        for (let i = 0; i < cartArr.length; i++) {
+            priceArr.push(curIt.data.find(price => price.product === stripeProdArr[i].id));
 
-    
-    
-    // })
+            forLineItems.push({price: priceArr[i].id, quantity: prodQuant[i]})
+        }
+        // priceId = price.id;
+        // console.log(priceArrItems);
+        console.log(priceArr);    
+        console.log(forLineItems);    
 
-    //     const session = await stripe.checkout.sessions.create({
-    //     payment_method_types: ['card'],
-    //     success_url: 'http://localhost:3000/success',
-    //     line_items: [
-    //       {price: priceId, quantity: itemsInCart.quantity}, /// retrieve price id and quantity in cart
-    //     ],
-    //     mode: 'payment',
-    //   });
+    })
+    .then()
+    .catch(error => console.log(error))
+
+
+
+        const session = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        success_url: 'http://localhost:3000/success',
+        cancel_url: 'http://localhost:3000/products',
+        line_items: forLineItems,
+        mode: 'payment',
+      });
 
     
     
