@@ -33,34 +33,90 @@ app.get('/data', (req, res) => {
 })
 
 app.post('/checkout-session', async (req, res) => {
-    const itemsInCart = req.body;
-    console.log(itemsInCart)
+    
+    const cartItems = req.body;
+    // console.log(cartItems)
+    // console.log(cartItems[0].item);
 
-    const keyArray = [];
-    const prodkey = itemsInCart.forEach(element => {
-        keyArray.push(element.item.product.prodkey)
-        
+    // const cartMap = new Map([]);
+    // cartItems.map(currentObj => {
+    //     cartMap.set({prodkey: currentObj.item.product.prodkey, price: currentObj.item.product.price, name: currentObj.item.product.name}, {quantity: currentObj.quantity})
+    // });
+    // console.log(cartMap);
+
+    const cartArr = [];
+    cartItems.map(currentObj => {
+        cartArr.push(currentObj.item.product, currentObj.quantity)
     });
-    console.log(keyArray)
+    // console.log(cartArr);
+    // console.log(cartArr[0].prodkey);
+
+    // const 
+
+    let product = [];
+    let productId = undefined;
 
     await stripe.products.list()
-    .then(item => {
-        const productToUpd = item.data.find(prod => prod.metadata.prodkey === prodkey)
-        productId = productToUpd.id;
-        console.log(productId);
-    })
+    // .then(item => console.log(item.data[0].metadata))
+    .then(item => { 
+        for (let i = 0; i < cartArr.length; i++) {
+            product.push(item.data.find(prod => prod.metadata.prodkey === cartArr[i].prodkey))
+            
+        }
+        console.log(product)
+        // productId = product.id;
+        
+        // console.log(product.id)
+     })
+    .catch(error => console.log(error))
 
-    stripe.prices.list()
-    .then(curIt => {
-        const priceItem = curIt.data.find(price => price.product === itemsInCart.item.product)
-    })
-    // const session = await stripe.checkout.sessions.create({
+
+    // let price = undefined;
+    // let priceId = undefined;
+    // await stripe.prices.list()
+    // .then(curIt => {
+    //     price = curIt.data.find(price => price.product === productId);
+    //     priceId = price.id;
+    //     console.log(price);
+    //     console.log(priceId);
+
+    
+    
+    // })
+
+    //     const session = await stripe.checkout.sessions.create({
+    //     payment_method_types: ['card'],
     //     success_url: 'http://localhost:3000/success',
     //     line_items: [
-    //       {price: 'price_H5ggYwtDq4fbrJ', quantity: itemsInCart.quantity}, /// retrieve price id and quantity in cart
+    //       {price: priceId, quantity: itemsInCart.quantity}, /// retrieve price id and quantity in cart
     //     ],
     //     mode: 'payment',
     //   });
+
+    
+    
+    
+    // const itemsInCart = req.body;
+    // console.log(itemsInCart)
+
+    // const keyArray = [];
+    // const prodkey = itemsInCart.forEach(element => {
+    //     keyArray.push(element.item.product.prodkey)
+        
+    // });
+    // console.log(keyArray)
+
+    // await stripe.products.list()
+    // .then(item => {
+    //     const productToUpd = item.data.find(prod => prod.metadata.prodkey === prodkey)
+    //     productId = productToUpd.id;
+    //     console.log(productId);
+    // })
+
+    // stripe.prices.list()
+    // .then(curIt => {
+    //     const priceItem = curIt.data.find(price => price.product === itemsInCart.item.product)
+    // })
 
 
     // const cartMap = new Map([]);
