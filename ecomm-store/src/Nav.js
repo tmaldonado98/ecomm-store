@@ -145,11 +145,18 @@ function proceedCheckout(){
   //   // console.log(cartMap)
   // })
 
-    Axios.post('http://localhost:3001/checkout-session', cart.items
-    // cart.items,
-    
-    )
-    
+    Axios.post('http://localhost:3001/checkout-session', cart.items)
+    // .then(res => {
+    //   if (res.ok) return res.json()
+    //   return res.json().then(json => Promise.reject(json))
+    // })
+    // .then(response => console.log(response.data.url))
+    .then(response => {
+      window.location = response.data.url;
+    })
+    .catch(e => {
+      console.error(e.error)
+    })
 
 }
 
@@ -235,9 +242,9 @@ function proceedCheckout(){
         </div>
       </MDBModalBody>
       <MDBModalFooter>
-        <Link to={'/Checkout'}>
+        {/* <Link to={'/Checkout'}> */}
           <MDBBtn hidden={true ? cart.items.length === 0 : false} color='link' onClick={proceedCheckout}>Proceed to checkout</MDBBtn>
-        </Link>
+        {/* </Link> */}
           <MDBBtn onClick={toggleShow}>
             Close
           </MDBBtn>

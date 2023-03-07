@@ -101,16 +101,24 @@ app.post('/checkout-session', async (req, res) => {
 
 
 
-        const session = await stripe.checkout.sessions.create({
+    const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         success_url: 'http://localhost:3000/success',
         cancel_url: 'http://localhost:3000/products',
         line_items: forLineItems,
         mode: 'payment',
-      });
+    })
 
-    
-    
+      
+    console.log(session);
+
+    res.json({ url: session.url });
+
+    //   .then(console.log(res.json()))
+    //   .then(res.json({ url }))
+})
+
+
     
     // const itemsInCart = req.body;
     // console.log(itemsInCart)
@@ -142,7 +150,7 @@ app.post('/checkout-session', async (req, res) => {
     // // cartMap.set(itemsInCart)
     // console.log(cartMap);
 
-})
+// })
 
 app.post('/orderData', (request, response) => {
     const insert = 'INSERT INTO vea_orders () VALUES (?, )';
