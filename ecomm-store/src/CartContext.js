@@ -1,4 +1,5 @@
-import React, { createContext, useState } from "react";
+import { Axios } from "axios";
+import React, { createContext, useState, useEffect } from "react";
 
 export const CartContext = createContext({
     items: [],
@@ -78,7 +79,6 @@ function CartProvider({children}){
         console.log(cartItems);
         setCartValidate(true);
         setItemQuant(0);
-
     }
     
     function totalQuantity(){

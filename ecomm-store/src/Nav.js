@@ -5,6 +5,7 @@ import {  Button, Typography } from '@material-ui/core';
 import { useState, useContext } from 'react';
 import {CartContext} from './CartContext';
 import { CartSelect } from './Select';
+import Axios from 'axios';
 
 import {
   MDBBtn,
@@ -22,6 +23,8 @@ export function ProdInCart(props) {
   const [toggleEdit, setToggleEdit] = useState(false);  //true so that button is hidden by default
 
   // const [showCartSelect, setShowCartSelect] = useState(true);
+
+
   
   function showOrHideEdit() {
     setToggleEdit(!toggleEdit);
@@ -125,6 +128,32 @@ export default function Nav(){
     return Number(totalPrice).toFixed(2);
 }
 
+function proceedCheckout(){
+
+  // const cartMap = new Map([]);
+  // const cartArra
+  // cart.items.map(currIt => {
+  //   // const name = currIt.item.product.name;
+  //   // const prod = {product: currIt.item.product};
+  //   // const quantity = {quantity: currIt.quantity};
+
+  //   const product = currIt.item.product;
+  //   const prodkey = currIt.item.product.prodkey;
+  //   const quantity = currIt.quantity;
+
+  //   // cartMap.set(prod, quantity)
+  //   // console.log(cartMap)
+  // })
+
+    Axios.post('http://localhost:3001/checkout-session', cart.items
+    // cart.items,
+    
+    )
+    
+
+}
+
+
     return(
       <nav>
             <Typography variant='h1'>Vea Art Collection</Typography>
@@ -207,7 +236,7 @@ export default function Nav(){
       </MDBModalBody>
       <MDBModalFooter>
         <Link to={'/Checkout'}>
-          <MDBBtn hidden={true ? cart.items.length === 0 : false} color='link' >Proceed to checkout</MDBBtn>
+          <MDBBtn hidden={true ? cart.items.length === 0 : false} color='link' onClick={proceedCheckout}>Proceed to checkout</MDBBtn>
         </Link>
           <MDBBtn onClick={toggleShow}>
             Close
