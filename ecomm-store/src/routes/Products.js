@@ -135,7 +135,7 @@ import { textAlign, width } from "@mui/system";
         return (
         <>
           <Nav />
-          <h1>Artworks For Sale</h1>
+          <h2 id="prod-h2">Artworks For Sale</h2>
           <div style={{textAlign:'center', width:'100%', height:'100%'}}><p style={{fontSize:'35px'}}>Loading...</p></div>
         </>
         )
@@ -208,7 +208,7 @@ import { textAlign, width } from "@mui/system";
     <>
         <Nav />
           
-          <h1>Artworks For Sale</h1>
+          <h2 id="prod-h2">Artworks For Sale</h2>
           
           {/* <Button onClick={fetchDBData}>asdfasf</Button> */}
 

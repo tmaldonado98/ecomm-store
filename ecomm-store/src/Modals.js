@@ -104,7 +104,8 @@ export default function ModalProd (props){
                             ${props.product.price} USD
                         </p> 
 
-                        <Button onClick={toggleShow}>View</Button>
+                        <sub>Click to expand</sub>
+                        {/* <Button onClick={toggleShow}>View</Button> */}
                         
                     </div>
                 </a>  
@@ -128,9 +129,11 @@ export default function ModalProd (props){
                             <p>{props.product.medium}</p>
                             <p>{props.product.size}</p>
                             <p><strong>Price: ${props.product.price} USD</strong></p>
-                            <Button hidden={!localShowSelect} disabled={cart.validity} onClick={addToCart}>Add to cart</Button>                
+                            <Button hidden={!localShowSelect} disabled={cart.validity} onClick={addToCart}>Add to cart<i  class='fas'>&#xf217;</i></Button>                
                             {/* cart.showSelect}   show={showSelect} */}
                             <br/>
+                            {/* style='font-size:24px' */}
+                            
                             <BasicSelect hidden={cart.showSelect} />
                             <p hidden={localShowSelect}>Your item(s) have been added to you cart! <br/> To modify your order, please go to your cart.</p>
                             {/* !cart.showSelect */}

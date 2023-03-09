@@ -111,7 +111,11 @@ export default function Nav(){
             count += currentItem.quantity;
           }
         )
-        return Number(count);
+        if (count === 0) {
+          return ''
+        } else  {
+          return Number(count);
+        }
     }
     
 
@@ -128,29 +132,9 @@ export default function Nav(){
     return Number(totalPrice).toFixed(2);
 }
 
+////ADD SHIPPING FUNCTIONALITY ==> ASK FOR SHIPPING ADDRESS. CALCULATE SHIPPING COST + TAXES WITH STRIPE
 function proceedCheckout(){
-
-  // const cartMap = new Map([]);
-  // const cartArra
-  // cart.items.map(currIt => {
-  //   // const name = currIt.item.product.name;
-  //   // const prod = {product: currIt.item.product};
-  //   // const quantity = {quantity: currIt.quantity};
-
-  //   const product = currIt.item.product;
-  //   const prodkey = currIt.item.product.prodkey;
-  //   const quantity = currIt.quantity;
-
-  //   // cartMap.set(prod, quantity)
-  //   // console.log(cartMap)
-  // })
-
     Axios.post('http://localhost:3001/checkout-session', cart.items)
-    // .then(res => {
-    //   if (res.ok) return res.json()
-    //   return res.json().then(json => Promise.reject(json))
-    // })
-    // .then(response => console.log(response.data.url))
     .then(response => {
       window.location = response.data.url;
     })
@@ -163,9 +147,9 @@ function proceedCheckout(){
 
     return(
       <nav>
-            <Typography variant='h1'>Vea Art Collection</Typography>
-                  <div>
-                      <ul id='nav-items'>
+            <Typography variant='h1'>Vea Collections</Typography>
+                  <div id='navBtns'>
+                      {/* <ul id='nav-items'> */}
                           <Link to='/'>
                               <Button>home</Button>
                           </Link>
@@ -179,7 +163,7 @@ function proceedCheckout(){
                             <Button>contact</Button>
                           </Link>                      
                       
-                        <li>
+                        {/* <li> */}
             <Button 
             // cartItems
             color='link' 
@@ -234,7 +218,7 @@ function proceedCheckout(){
           :
             <div>
               <h4>There are no items in your cart!</h4>
-              <p>Check out the products section to browse my artwork.</p>
+              <p>Check out the products section to browse our art collection.</p>
             </div>
           }
         
@@ -253,8 +237,8 @@ function proceedCheckout(){
     </MDBModalContent>
   </MDBModalDialog>
 </MDBModal>
-                        </li>
-                      </ul>
+                        {/* </li>
+                      </ul> */}
                   </div>
           
     </nav>

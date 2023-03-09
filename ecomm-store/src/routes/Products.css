@@ -5,10 +5,11 @@
     cursor: pointer;
 }
 
-h1 {
+#prod-h2 {
     width: 90%;
     margin: 0 auto;
     padding-left: 13.5px;
+    text-align: center;
 }
 
 .row {
