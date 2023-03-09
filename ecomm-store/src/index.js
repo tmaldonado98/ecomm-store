@@ -9,6 +9,7 @@ import Products from './routes/Products';
 import About from './routes/About';
 import Contact from './routes/Contact';
 import Checkout from './routes/Checkout';
+import Success from './routes/Success';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,6 +23,7 @@ root.render(
               <Route path='/About' element={<About />}/>
               <Route path='/Contact' element={<Contact />}/>
               <Route path='/Checkout' element={<Checkout />}/>
+              <Route path='/Success' element={<Success />}/>
           </Routes>                                
 
     </Router>

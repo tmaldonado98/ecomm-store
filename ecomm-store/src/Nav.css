@@ -4,11 +4,9 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 2rem 0.5rem;
 }
-#container-nav{
-    /* padding: 1rem 1.5rem; */
-  }
-  
+
   #container-nav div {
     display: flex;
   }
@@ -19,6 +17,10 @@ nav {
     flex-direction: row;
     margin-left: 0;
   padding-left: 0;
+  }
+
+  #navBtns {
+    display: flex;
   }
 
   .itemInCart {
