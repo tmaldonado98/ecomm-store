@@ -74,16 +74,23 @@ export default function ModalProd (props){
         setLocalShowSelect(!localShowSelect);
     }    
 
-    // const src = props.src;
-    
-    // if (props) {
-    //     // const received = props;
-    //     // console.log(received);
-    //     console.log(props)
-    // } else {
-    //     console.log('props not received yet');
+    function addOriginalOrPrint () {
+        if (props.product.invType === 'Original') {
+            return <><p>Selling original - only one in stock</p> <Button hidden={true ? cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) : false} onClick={addToCart}>Add to cart<i  class='fas'>&#xf217;</i></Button></>
+         } else if (props.product.invType === 'Print to order'){
+            return <Button hidden={true ? cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) : false} disabled={cart.validity} onClick={addToCart}>Add to cart<i  class='fas'>&#xf217;</i></Button>
+         }
+    }
 
-    // }
+    function selectOriginalOrPrint() {
+        if (cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) || props.product.invType === 'Original') {
+           return '' 
+        } else {
+            return <BasicSelect />
+        }
+
+    }
+
   
     return(
         <>
@@ -129,12 +136,13 @@ export default function ModalProd (props){
                             <p>{props.product.medium}</p>
                             <p>{props.product.size}</p>
                             <p><strong>Price: ${props.product.price} USD</strong></p>
-                            <Button hidden={true ? cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) : false} disabled={cart.validity} onClick={addToCart}>Add to cart<i  class='fas'>&#xf217;</i></Button>                
-
+                            {/* <Button hidden={true ? cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) : false} disabled={cart.validity} onClick={addToCart}>Add to cart<i  class='fas'>&#xf217;</i></Button>                 */}
+                            {addOriginalOrPrint()}
                             <br/>
                             
-                            {cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) ? '' : <BasicSelect />}
-                            
+                            {/* {cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) ? '' : <BasicSelect />} */}
+                            {selectOriginalOrPrint()}
+
                             {cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) && <p>Your item(s) have been added to you cart! <br/> To modify your order, please go to your cart.</p>}
 
                         </div>

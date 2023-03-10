@@ -29,17 +29,7 @@ export function ProdInCart(props) {
   function showOrHideEdit() {
     setToggleEdit(!toggleEdit);
   }
-  
-  // const itemKey = props.prod.product.prodkey; ///INSTEAD OF USING PROPS, TRY USING CART.ITEMS.MAP
 
-  
-  
-  // useEffect(() => {
-  //   console.log(findItem);
-    
-  //   console.log(itemKey)   ///correct
-  // }, [cart.items])
-  
   function sendKey(){
     const findItem = cart.items.find(cur => cur.item.product.prodkey === props.prod.product.prodkey)
     const itemKey = findItem.item.product.prodkey;
@@ -62,8 +52,6 @@ export function ProdInCart(props) {
 
   return (
     <>
-      {/* {cart.items.map(currentItem => ( */}
-                  {/* {props.currentItem.item.name} ${props.currentItem.item.price} */}
                 <div className='itemInCart'>
                   {<img src={props.prod.product.src} style={{width:'120px',height:'85px',borderRadius:'15px'}}/>}
                   <p>
@@ -72,17 +60,25 @@ export function ProdInCart(props) {
                     <sub>Quantity: {props.quantity}</sub>  
                   </p>              
 
-                {!toggleEdit ? <Button onClick={showOrHideEdit}>Edit</Button> : <Button onClick={showOrHideEdit}>Cancel</Button>}
-                {toggleEdit && 
+                {props.prod.product.invType === 'Print to order' ?
+                  !toggleEdit ?
+                    <Button onClick={showOrHideEdit}>Edit</Button> 
+                    :
+                    <Button onClick={showOrHideEdit}>Cancel</Button>
+                  :
+                  null
+                }
+
+                {props.prod.product.invType === 'Print to order' && toggleEdit &&
                   <>
                     <CartSelect hidden={!toggleEdit} currentQuant={props.quantity}/>
                     <Button onClick={sendKey}>Confirm</Button>
-                  </>} 
-                
+                  </>
+                }
+
                 <Button onClick={remove}>Remove</Button>
                                
                 </div>
-                {/* ))} */}
     </>
   )
 }
