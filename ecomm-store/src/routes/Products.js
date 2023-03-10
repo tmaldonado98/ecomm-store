@@ -226,13 +226,33 @@ import { textAlign, width } from "@mui/system";
                       <div className='mask' style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}></div>
                   </a>
               </MDBRipple> */}
-            {mainObj && (
+
+
+            {/* {mainObj && (
               <ModalProd product={mainObj.one}   />)
             }
 
             {mainObj && (
               <ModalProd product={mainObj.two}   />)
-            }
+            } */}
+
+            {console.log(mainObj)}
+            {mainObj && console.log(Object.values(mainObj))}
+
+            {mainObj && Object.values(mainObj).map(item => {
+              console.log(item)
+              return <ModalProd product={item} />
+            })}
+
+            {/* {mainObj && 
+              mainObj.map(each => {
+                <ModalProd product={each} />
+              }
+
+
+
+            )} */}
+
 
         </MDBCol>
   
