@@ -39,6 +39,9 @@ function CartProvider({children}){
     }
 
     function addItem(data){
+        console.log(data)
+
+        if (data.product.invType === 'Print to order') {
             setCartItems([
                 ...cartItems,
                 {
@@ -47,7 +50,20 @@ function CartProvider({children}){
                 }
             ])
             setCartValidate(true);
+            setItemQuant(0);    
+
+        } else {
+            setCartItems([
+                ...cartItems,
+                {
+                    item: data,
+                    quantity: 1,
+                }
+            ])
+            setCartValidate(true);
             setItemQuant(0);
+
+        }
     };
 
     function removeItem(key){
