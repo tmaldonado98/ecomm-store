@@ -129,13 +129,21 @@ export default function ModalProd (props){
                             <p>{props.product.medium}</p>
                             <p>{props.product.size}</p>
                             <p><strong>Price: ${props.product.price} USD</strong></p>
-                            <Button hidden={!localShowSelect} disabled={cart.validity} onClick={addToCart}>Add to cart<i  class='fas'>&#xf217;</i></Button>                
+                            <Button hidden={true ? cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) : false} disabled={cart.validity} onClick={addToCart}>Add to cart<i  class='fas'>&#xf217;</i></Button>                
                             {/* cart.showSelect}   show={showSelect} */}
+
+                            {/* props.product === cart.items.find(item => item.prodkey === props.product.prodkey */}
+
+                            {/* Make so that add to cart displays if prodkey of deleted item matches prodkey of this modal's item */}
                             <br/>
                             {/* style='font-size:24px' */}
                             
                             <BasicSelect hidden={cart.showSelect} />
-                            <p hidden={localShowSelect}>Your item(s) have been added to you cart! <br/> To modify your order, please go to your cart.</p>
+                            {cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) && <p>Your item(s) have been added to you cart! <br/> To modify your order, please go to your cart.</p>}
+                            {console.log(cart.items, localShowSelect)}
+                            {/* false ? cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) : true */}
+                            {/* true ? cart.showSelect === false : false */}
+                            {/* localShowSelect */}
                             {/* !cart.showSelect */}
                         </div>
                     </MDBModalBody>
