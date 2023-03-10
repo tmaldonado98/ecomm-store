@@ -214,6 +214,7 @@ function proceedCheckout(){
                 <u>Total Price - $ amt USD</u>
               </p> */}
             </strong>
+          <p style={{fontSize:'14px', padding:' 0 2rem', textAlign: 'center'}}>Safe, secure payment with Stripe</p>
           </div>
           :
             <div>

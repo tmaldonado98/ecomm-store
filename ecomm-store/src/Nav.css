@@ -42,3 +42,7 @@ nav {
   .col-9 strong  {
     text-align: start;
   }
+
+  .modal-footer {
+    justify-content: space-evenly !important;
+  }
