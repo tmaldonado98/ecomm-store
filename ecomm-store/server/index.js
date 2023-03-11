@@ -102,6 +102,10 @@ app.post('/checkout-session', async (req, res) => {
 
 
     const session = await stripe.checkout.sessions.create({
+        shipping_address_collection: {
+            allowed_countries: ['US'],
+            // required: true,
+          },
         payment_method_types: ['card'],
         success_url: 'http://localhost:3000/Success',
         cancel_url: 'http://localhost:3000/Products',
@@ -152,16 +156,16 @@ app.post('/checkout-session', async (req, res) => {
 
 // })
 
-app.post('/orderData', (request, response) => {
-    const insert = 'INSERT INTO vea_orders () VALUES (?, )';
+// app.post('/orderData', (request, response) => {
+//     const insert = 'INSERT INTO vea_orders () VALUES (?, )';
     
-    db.query(insert, [], (error, result) => {
-        if (error) {console.log(error)};
-        // res.json(result);
+//     db.query(insert, [], (error, result) => {
+//         if (error) {console.log(error)};
+//         // res.json(result);
 
-    })
+//     })
 
-})
+// })
  
 const port = 3001;
 
