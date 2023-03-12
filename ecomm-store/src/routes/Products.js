@@ -207,15 +207,24 @@ import { textAlign, width } from "@mui/system";
       // const testProps = pathsObject;
 
     return (
-    <>
-        <Nav />
-          
-          <h2 id="prod-h2">Artworks For Sale</h2>
-          
-          {/* <Button onClick={fetchDBData}>asdfasf</Button> */}
+    <div>
+      <Nav />    
+      <h2 id="prod-h2">Artworks For Sale</h2>
+      <section id="products-section">
 
-      <MDBRow>
-        <MDBCol lg={4} md={12} className='mb-4 mb-lg-0'>
+        <div id="glass">            
+            {console.log(mainObj)}
+                  {mainObj && console.log(Object.values(mainObj))}
+        
+                  {mainObj && Object.values(mainObj).map(item => {
+                    console.log(item)
+                    return <ModalProd key={item.prodkey} product={item} />
+                  })}
+        </div>
+      </section>
+
+      {/* <MDBRow>
+        <MDBCol lg={4} md={12} className='mb-4 mb-lg-0'> */}
               {/* <MDBRipple rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
                           <img
                       // src='https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp'
@@ -230,35 +239,9 @@ import { textAlign, width } from "@mui/system";
               </MDBRipple> */}
 
 
-            {/* {mainObj && (
-              <ModalProd product={mainObj.one}   />)
-            }
-
-            {mainObj && (
-              <ModalProd product={mainObj.two}   />)
-            } */}
-
-            {console.log(mainObj)}
-            {mainObj && console.log(Object.values(mainObj))}
-
-            {mainObj && Object.values(mainObj).map(item => {
-              console.log(item)
-              return <ModalProd product={item} />
-            })}
-
-            {/* {mainObj && 
-              mainObj.map(each => {
-                <ModalProd product={each} />
-              }
-
-
-
-            )} */}
-
-
-        </MDBCol>
+        {/* </MDBCol> */}
   
-        <MDBCol lg={4} className='mb-4 mb-lg-0'>
+        {/* <MDBCol lg={4} className='mb-4 mb-lg-0'> */}
               {/* <MDBRipple rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
               <img
             src='https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain2.webp'
@@ -281,19 +264,10 @@ import { textAlign, width } from "@mui/system";
                   </a>
               </MDBRipple> */}
 
-            {/* {mainObj && (
-              <ModalProd product={mainObj.three}   />)
-            }
-
-            {mainObj && (
-              <ModalProd product={mainObj.four}   />)
-            } */}
-
-
-        </MDBCol>
+        {/* </MDBCol> */}
   
-        <MDBCol lg={4} className='mb-4 mb-lg-0'>
-        <MDBRipple rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
+        {/* <MDBCol lg={4} className='mb-4 mb-lg-0'> */}
+        {/* <MDBRipple rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
               <img
             src='https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp'
             className='w-100 shadow-1-strong rounded mb-4'
@@ -312,28 +286,25 @@ import { textAlign, width } from "@mui/system";
                   <a>
                       <div className='mask' style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}></div>
                   </a>
-              </MDBRipple>
-                  {/* <ModalProd data={dbList.five}/>
-          
-                  <ModalProd data={dbList.six}/> */}
-        </MDBCol>
-      </MDBRow>
+              </MDBRipple> */}
+        {/* </MDBCol>
+      </MDBRow> */}
   
 
-      <MDBRow>
-        <MDBCol>
+      {/* <MDBRow>
+        <MDBCol> */}
           {/* <MDBRipple rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
 
           </MDBRipple> */}
           {/* <ModalProd/> */}
-        </MDBCol>
-      </MDBRow>
+        {/* </MDBCol>
+      </MDBRow> */}
 
     {/* <MDBBtn onClick={toggleShow}>Small modal</MDBBtn> */}
       
 
         {/* <button >Add Product 1 to Cart</button> */}
-    </>
+    </div>
     )
 }
 

@@ -3,3 +3,9 @@
     color: ivory;
     font-size: 24px;
 }
+
+#selectAndAdd {
+    display: flex;
+    gap: 32px;
+    align-content: center;
+}
