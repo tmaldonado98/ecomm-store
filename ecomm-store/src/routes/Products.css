@@ -8,11 +8,42 @@
 #prod-h2 {
     width: 90%;
     margin: 0 auto;
-    padding-left: 13.5px;
+    /* padding-left: 13.5px; */
     text-align: center;
+    padding-bottom: 20px;
 }
 
 .row {
     width: 90%;
     margin: 1rem auto !important;
+}
+
+#products-section {
+    /* display: flex;
+    flex-wrap: wrap;
+    width: 85%;
+    gap: 64px;
+    justify-content: center;
+    align-content: center;
+    margin: 0 auto; */
+    width: 100% !important;
+    background-color: #252525;
+    padding: 20px 0;
+}
+
+.prod {
+    width: 250px !important;
+}
+
+#glass {
+    background-color: rgba(234, 234, 234, 0.1);
+    padding: 20px;
+    border-radius: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 85%;
+    gap: 64px;
+    justify-content: center;
+    align-content: center;
+    margin: 0 auto;
 }
