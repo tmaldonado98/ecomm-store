@@ -12,14 +12,15 @@ export function BasicSelect(props) {
   const cart = useContext(CartContext);
 
 
-  const [quantity, setQuantity] = React.useState(0);
+  const [quantity, setQuantity] = React.useState(1);
 
   const handleChange = (event) => {
       setQuantity(event.target.value);
-      cart.getSingleItemQuantity(event.target.value);
-      
     };
-  // console.log(quantity);
+
+    React.useEffect(() => {
+      cart.getSingleItemQuantity(quantity);
+    }, [quantity])
 
   return (
     <Box >
@@ -33,7 +34,7 @@ export function BasicSelect(props) {
           label="Quantity"
           onChange={handleChange}
         >
-          <MenuItem value={''} > </MenuItem>
+          {/* <MenuItem value={''} > </MenuItem> */}
           <MenuItem value={1} >1</MenuItem>
           <MenuItem value={2} >2</MenuItem>
           <MenuItem value={3} >3</MenuItem>
@@ -73,7 +74,7 @@ export function CartSelect(props) {
           label="Quantity"
           onChange={handleChange}
         >
-          <MenuItem value={''} > </MenuItem>
+          {/* <MenuItem value={''} > </MenuItem> */}
           <MenuItem value={1} >1</MenuItem>
           <MenuItem value={2} >2</MenuItem>
           <MenuItem value={3} >3</MenuItem>

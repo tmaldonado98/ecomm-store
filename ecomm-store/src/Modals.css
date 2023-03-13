@@ -4,8 +4,53 @@
     font-size: 24px;
 }
 
+/* mask overlay */
+.mb-4 {
+    margin: 0 !important;
+}
+
 #selectAndAdd {
     display: flex;
     gap: 32px;
     align-content: center;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+}
+
+.modal-header {
+    border-bottom: 2px solid #f5f5f578;
+}
+
+.modal-content {
+    background-color: #f0f8ff1c;
+    backdrop-filter: blur(5px);
+}
+
+.modal-body {color: ivory;}
+
+.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+    background-color: #ffffff38; 
+    backdrop-filter: blur(5px);
+}
+
+#flex-container-card {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+}
+
+/* add to cart button */
+.MuiButton-contained {
+    background-color: #e0e0e0a6;
+}
+
+.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+    background-color: transparent !important;
+    color: ivory;
+}
+
+.css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+    color: ivory;
+background-color: #fffff026;
 }

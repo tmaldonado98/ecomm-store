@@ -79,6 +79,8 @@ export function ProdInCart(props) {
                 <Button onClick={remove}>Remove</Button>
                                
                 </div>
+
+                <div class="modal-dialog modal-dialog-centered">...</div>
     </>
   )
 }
@@ -216,6 +218,8 @@ function proceedCheckout(){
             <div>
               <h4>There are no items in your cart!</h4>
               <p>Check out the products section to browse our art collection.</p>
+              <div class="modal-dialog modal-dialog-centered">...</div>
+            
             </div>
           }
         

@@ -10,7 +10,9 @@ export const CartContext = createContext({
     totalQuantity: () => {},
     clearAll: () => {},
     // getTotalPrice: () => {},
-    validity: [],
+    validateKey: [],
+    validity: () => {},
+    removeValidity: () => {},
     handleCardSelect: () => {},
     showSelect: [],
     // editCartQuant: [],
@@ -22,7 +24,7 @@ function CartProvider({children}){
 
     const [itemQuant, setItemQuant] = useState(0)
 
-    const [cartValidate, setCartValidate] = useState(true);
+    const [cartValidate, setCartValidate] = useState({prodkey: 'default'});
     
     const [showSelect, setShowSelect] = useState(false);
 
@@ -30,11 +32,12 @@ function CartProvider({children}){
 
     function getSingleItemQuantity (value) {
         if (value === '' || value === 0) {
-            setCartValidate(true); /// true because this value is put into 'disabled' attribute in add to cart button, in ModalProd component.
+            // setCartValidate(true); /// true because this value is put into 'disabled' attribute in add to cart button, in ModalProd component.
+            setItemQuant(1)
         } else {
             setItemQuant(value);
             // console.log(value)
-            setCartValidate(false);
+            // setCartValidate(false);
         }   
     }
 
@@ -113,6 +116,14 @@ function CartProvider({children}){
         setShowSelect(!showSelect);
     }
 
+    function validity (prodkey) {
+        setCartValidate({prodkey: prodkey});
+        // console.log(prodkey)    
+    }
+    function removeValidity(){
+        setCartValidate({})
+    }
+
     const contextValue = {
         items: cartItems,
         getSingleItemQuantity,
@@ -121,7 +132,9 @@ function CartProvider({children}){
         editQuant,
         totalQuantity,
         clearAll,
-        validity: cartValidate,
+        validateKey: cartValidate,
+        validity,
+        removeValidity,
         handleCardSelect,
         showSelect: showSelect,
         // getTotalPrice,
