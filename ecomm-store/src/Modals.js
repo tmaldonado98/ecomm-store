@@ -1,5 +1,5 @@
 import Products from './routes/Products';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { CartContext } from './CartContext';
 import Nav from './Nav';
 import {BasicSelect, CartSelect} from './Select';
@@ -72,13 +72,20 @@ export default function ModalProd (props){
         cart.handleCardSelect()
         // cart.showSelect.setShowSelect(!showSelect)
         setLocalShowSelect(!localShowSelect);
+
+        cart.removeValidity();
     }    
+
+    // useEffect(() => {
+        
+    // }, [cart.validateKey])
 
     function addOriginalOrPrint () {
         if (props.product.invType === 'Original') {
             return <><p>Selling original - only one in stock</p> <Button hidden={true ? cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) : false} onClick={addToCart}>Add to cart<i  class='fas'>&#xf217;</i></Button></>
          } else if (props.product.invType === 'Print to order'){
-            return <Button variant='contained' hidden={true ? cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) : false} disabled={cart.validity} onClick={addToCart}>Add to cart<i  class='fas'>&#xf217;</i></Button>
+            // console.log(cart.validateKey.prodkey, props.product.prodkey)
+            return <Button variant='contained' hidden={true ? cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) : false} onClick={addToCart}>Add to cart<i  class='fas'>&#xf217;</i></Button>
          }
     }
 
@@ -86,7 +93,7 @@ export default function ModalProd (props){
         if (cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) || props.product.invType === 'Original') {
            return '' 
         } else {
-            return <BasicSelect />
+            return <BasicSelect data={props.product.prodkey}/>
         }
 
     }
@@ -125,37 +132,35 @@ export default function ModalProd (props){
             <MDBBtn className='btn-close' color='none' onClick={toggleShow}></MDBBtn>
             </MDBModalHeader>
                 <MDBModalBody>
-{/* STYLING FOR .modal-content {background-color: #f0f8ff1c;
-backdrop-filter: blur(5px);}
-
-.modal-body: color: ivory;
-STYLING FOR basicSelect   .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {background-color: #ffffff38; backdrop-filter: blur(5px);}
-
-*/}
-                        <div className='modalCard'>
-                            {/* <p>{props.product.description}</p> */}
-                            <p>{props.product.medium}</p>
-                            <p>{props.product.size}</p>
-                            <p><strong>Price: ${props.product.price} USD</strong></p>
-                            {/* <Button hidden={true ? cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) : false} disabled={cart.validity} onClick={addToCart}>Add to cart<i  class='fas'>&#xf217;</i></Button>                 */}
-                            <div id='selectAndAdd'>
-                                {selectOriginalOrPrint()}
-                                {addOriginalOrPrint()}
+                    <div className='modalCard'>
+                        <div id='flex-container-card'>
+                            <div id='container-card-text'>   
+                                <p>Artwork by {props.product.author}</p>
+                                <p>{props.product.medium}</p>
+                                <p>{props.product.size}</p>
+                                <p><strong>Price: ${props.product.price} USD</strong></p>
                             </div>
+                            <div id='selectAndAdd'>
+                                    {selectOriginalOrPrint()}
+                                {/* <div>
+                                </div> */}
+                                    {addOriginalOrPrint()}
+                                {/* <div>
+                                </div> */}
+                            
+                            </div>
+                            {cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) && <p>Your item(s) have been added to you cart! <br/> To modify your order, please go to your cart.</p>}
+                        </div>
+                        {/* <Button hidden={true ? cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) : false} disabled={cart.validity} onClick={addToCart}>Add to cart<i  class='fas'>&#xf217;</i></Button>                 */}
                     <img
                     src={props.product.src}
                     className={props.product.className}
                     alt={[props.product.name, props.product.medium, props.product.size]}    
                     />
-
-                            {/* <br/> */}
-                            
-                            {/* {cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) ? '' : <BasicSelect />} */}
-
-                            {cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) && <p>Your item(s) have been added to you cart! <br/> To modify your order, please go to your cart.</p>}
-
-                        </div>
-                    </MDBModalBody>
+                        
+                        {/* {cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) ? '' : <BasicSelect />} */}
+                    </div>
+                </MDBModalBody>
             </MDBModalContent>
             </MDBModalDialog>
         </MDBModal>

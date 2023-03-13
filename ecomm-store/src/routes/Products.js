@@ -107,6 +107,7 @@ import { textAlign, width } from "@mui/system";
             const itemMedium = rows[i].medium;
             const itemPrice = rows[i].price;
             const itemProdkey = rows[i].prodkey;
+            const author = rows[i].author;
             const className = 'w-100 shadow-1-strong rounded mb-4';
             const invType = rows[i].invtype;
             if (!pathsObject[key]) {
@@ -123,6 +124,7 @@ import { textAlign, width } from "@mui/system";
           
           pathsObject[key].className = className;
           pathsObject[key].invType = invType;
+          pathsObject[key].author = author;
           // console.log(pathsObject)  
           }
         setMainObj(pathsObject);
