@@ -47,3 +47,9 @@
     align-content: center;
     margin: 0 auto;
 }
+
+#btn-policy {
+    padding: 0;
+    width: min-content;
+    font-size: 12px;
+}

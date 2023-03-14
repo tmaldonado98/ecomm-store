@@ -6,7 +6,9 @@ import { useState, useContext } from 'react';
 import {CartContext} from './CartContext';
 import { CartSelect } from './Select';
 import Axios from 'axios';
-
+import CircularProgress, {
+  CircularProgressProps,
+} from '@mui/material/CircularProgress';
 import {
   MDBBtn,
   MDBModal,
@@ -17,6 +19,7 @@ import {
   MDBModalBody,
   MDBModalFooter,
 } from 'mdb-react-ui-kit';
+import { display } from '@mui/system';
 
 export function ProdInCart(props) {
   const cart = useContext(CartContext);
@@ -79,8 +82,6 @@ export function ProdInCart(props) {
                 <Button onClick={remove}>Remove</Button>
                                
                 </div>
-
-                <div class="modal-dialog modal-dialog-centered">...</div>
     </>
   )
 }
@@ -93,7 +94,13 @@ export default function Nav(){
 
     const toggleShow = () => setTopRightModal(!topRightModal);
     
+    const [centralModal, setCentralModal] = useState(false);
+
+    const toggleShowCentral = () => setCentralModal(!centralModal);
+
     const [toggleEdit, setToggleEdit] = useState(false);  //true so that button is hidden by default
+
+  const [proceed, setProceed] = useState(false);
 
     function showOrHideEdit() {
       setToggleEdit(!toggleEdit);
@@ -133,7 +140,9 @@ export default function Nav(){
 ////ADD SHIPPING FUNCTIONALITY ==> ASK FOR SHIPPING ADDRESS. CALCULATE SHIPPING COST + TAXES WITH STRIPE
 function proceedCheckout(){
     Axios.post('http://localhost:3001/checkout-session', cart.items)
+    .then(setProceed(true))
     .then(response => {
+      
       window.location = response.data.url;
     })
     .catch(e => {
@@ -159,13 +168,13 @@ function proceedCheckout(){
                           </Link>
                           <Link to='/contact'>
                             <Button>contact</Button>
-                          </Link>                      
-                      
-                        {/* <li> */}
-            <Button 
-            // cartItems
-            color='link' 
-            onClick={toggleShow}>Cart {cartCount()}</Button>
+                          </Link>           
+                          
+                          <Button onClick={toggleShowCentral}>Return/Refund Policy</Button>                            
+                          <Button 
+                          // cartItems
+                          color='link' 
+                          onClick={toggleShow}>Cart {cartCount()}</Button>
 
 <MDBModal
   animationDirection='right'
@@ -217,9 +226,7 @@ function proceedCheckout(){
           :
             <div>
               <h4>There are no items in your cart!</h4>
-              <p>Check out the products section to browse our art collection.</p>
-              <div class="modal-dialog modal-dialog-centered">...</div>
-            
+              <p>Check out the products section to browse our art collection.</p>            
             </div>
           }
         
@@ -228,7 +235,12 @@ function proceedCheckout(){
       </MDBModalBody>
       <MDBModalFooter>
         {/* <Link to={'/Checkout'}> */}
-          <MDBBtn hidden={true ? cart.items.length === 0 : false} color='link' onClick={proceedCheckout}>Proceed to checkout</MDBBtn>
+          {proceed === false ?
+          (<MDBBtn hidden={true ? cart.items.length === 0 : false} color='link' onClick={proceedCheckout}>Proceed to checkout</MDBBtn>
+        )
+        :  <CircularProgress/>
+        }
+        
         {/* </Link> */}
           <MDBBtn onClick={toggleShow}>
             Close
@@ -242,6 +254,44 @@ function proceedCheckout(){
                       </ul> */}
                   </div>
           
+<MDBModal
+  animationDirection='right'
+  show={centralModal}
+  tabIndex='-2'
+  setShow={setCentralModal}
+>
+  <MDBModalDialog position='central'  id='policy-modal' >
+    <MDBModalContent>
+      <MDBModalHeader className='bg-info text-white'>
+        <MDBModalTitle>Return/Refund Policy</MDBModalTitle>
+        <MDBBtn
+          color='none'
+          className='btn-close btn-close-white'
+          onClick={toggleShowCentral}
+        ></MDBBtn>
+      </MDBModalHeader>
+      <MDBModalBody>
+        <p>
+          We understand that you may have concerns about your purchase and we want to assure you that we stand behind the quality of our products. However, due to the nature of our business, we regret to inform you that we <u>do not</u> accept returns or offer refunds at this time.
+        </p>
+        <p>
+          We believe that our products are of the highest quality and we strive to provide our customers with an exceptional shopping experience. We carefully select and curate each item to ensure that it meets our standards for quality and value.        
+        </p>
+        <p>
+          We are committed to providing you with accurate and detailed product information, so that you can make an informed decision when purchasing from us. <br/><br/>If you have any questions or concerns about a product, please don't hesitate to contact us and we will be happy to assist you.
+        </p>
+        <p>
+          Thank you for choosing our products and we appreciate your business.
+        </p>
+
+      </MDBModalBody>
+      <MDBModalFooter>
+          Vea Collections 2023
+      </MDBModalFooter>
+    </MDBModalContent>
+  </MDBModalDialog>
+</MDBModal>
+
     </nav>
     )
 }

@@ -17,14 +17,14 @@ export function BasicSelect(props) {
   const handleChange = (event) => {
       setQuantity(event.target.value);
     };
-
+    
     React.useEffect(() => {
       cart.getSingleItemQuantity(quantity);
+      console.log(quantity)
     }, [quantity])
 
   return (
-    <Box >
-      {/* hidden={props.show}  */}
+    <Box>
       <FormControl sx={{ minWidth: 150 }} size="small">
         <InputLabel id="demo-simple-select-label">Quantity</InputLabel>
         <Select
