@@ -7,7 +7,7 @@ import 'react-medium-image-zoom/dist/styles.css';
 import {  Button } from '@material-ui/core';
 import ModalProd from "../Modals";
 import  Axios from 'axios';
-import { Buffer } from "buffer";
+import Particles from "../Particles";
 
 import {
     MDBCard,
@@ -215,7 +215,7 @@ import { textAlign, width } from "@mui/system";
       // const testProps = pathsObject;
 
     return (
-    <div>
+    <div style={{backgroundColor: '#252525'}}>
       <Nav />    
       <h2 id="prod-h2">Artworks For Sale</h2>
       <section id="products-section">
@@ -247,7 +247,8 @@ import { textAlign, width } from "@mui/system";
     </MDBModalContent>
   </MDBModalDialog>
 </MDBModal> */}
-        <div id="glass">            
+          <Particles/>
+        <div id="glass">       
             {console.log(mainObj)}
                   {mainObj && console.log(Object.values(mainObj))}
         
@@ -256,6 +257,7 @@ import { textAlign, width } from "@mui/system";
                     return <ModalProd key={item.prodkey} product={item} />
                   })}
         </div>
+            {/* </Parti cles> */}
       </section>
 
       {/* <MDBRow>
