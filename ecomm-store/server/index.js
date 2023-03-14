@@ -107,7 +107,7 @@ app.post('/checkout-session', async (req, res) => {
             // required: true,
           },
         payment_method_types: ['card'],
-        success_url: 'http://localhost:3000/Success',
+        success_url: `http://localhost:3000/Success?session_id=${session.id}`,
         cancel_url: 'http://localhost:3000/Products',
         line_items: forLineItems,
         mode: 'payment',

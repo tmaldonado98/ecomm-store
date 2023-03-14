@@ -5,6 +5,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 2rem 0.5rem;
+    font-family: Helvetica, sans-serif;
 }
 
   #container-nav div {
@@ -21,6 +22,10 @@ nav {
 
   #navBtns {
     display: flex;
+  }
+
+  .MuiButton-label {
+    color: lightpink !important;
   }
 
   .itemInCart {
@@ -49,4 +54,17 @@ nav {
 
 #policy-modal {
   width: 800px;
+}
+
+#stripe-banner {
+  max-width: 50%;
+  margin: auto;
+  background-color: #623ea2;
+  border-radius: 0px;
+}
+
+#empty-c-banner {
+  text-align: center;
+  display: flex;
+flex-direction: column;
 }
