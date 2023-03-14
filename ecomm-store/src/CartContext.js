@@ -31,7 +31,7 @@ function CartProvider({children}){
     // const [showCardSelect, setShowCardSelect] = useState(true);
 
     function getSingleItemQuantity (value) {
-        if (value === '' || value === 0) {
+        if (value === 0) {
             // setCartValidate(true); /// true because this value is put into 'disabled' attribute in add to cart button, in ModalProd component.
             setItemQuant(1)
         } else {
@@ -52,8 +52,8 @@ function CartProvider({children}){
                     quantity: itemQuant,
                 }
             ])
-            setCartValidate(true);
-            setItemQuant(0);    
+            // setCartValidate(true);
+            setItemQuant(1);    
 
         } else {
             setCartItems([
@@ -63,9 +63,8 @@ function CartProvider({children}){
                     quantity: 1,
                 }
             ])
-            setCartValidate(true);
-            setItemQuant(0);
-
+            // setCartValidate(true);
+            setItemQuant(1);
         }
     };
 

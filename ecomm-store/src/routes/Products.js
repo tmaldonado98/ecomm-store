@@ -27,7 +27,8 @@ import {
     MDBModalContent,
     MDBModalHeader,
     MDBModalTitle,
-    MDBModalBody
+    MDBModalBody,
+    MDBModalFooter,
   } from 'mdb-react-ui-kit';
 
   import {
@@ -77,6 +78,11 @@ import { textAlign, width } from "@mui/system";
     
     
     export default function Products(){
+
+    const [centralModal, setCentralModal] = useState(false);
+
+    const toggleShowCentral = () => setCentralModal(!centralModal);
+
       const [rows, setRows] = useState(null);
 
       const [mainObj, setMainObj] = useState(null);
@@ -213,7 +219,34 @@ import { textAlign, width } from "@mui/system";
       <Nav />    
       <h2 id="prod-h2">Artworks For Sale</h2>
       <section id="products-section">
+{/* payment disclaimer */}
+{/* <Button id="btn-policy" onClick={toggleShowCentral}>Return/Refund Policy</Button> */}
 
+    {/* <MDBModal
+  animationDirection='right'
+  show={centralModal}
+  tabIndex='-2'
+  setShow={setCentralModal}
+>
+  <MDBModalDialog position='central'  id='policy-modal' >
+    <MDBModalContent>
+      <MDBModalHeader className='bg-info text-white'>
+        <MDBModalTitle>Return/Refund Policy</MDBModalTitle>
+        <MDBBtn
+          color='none'
+          className='btn-close btn-close-white'
+          onClick={toggleShowCentral}
+        ></MDBBtn>
+      </MDBModalHeader>
+      <MDBModalBody>
+        Write policy here
+      </MDBModalBody>
+      <MDBModalFooter>
+          Copyright Vea Collections LLC
+      </MDBModalFooter>
+    </MDBModalContent>
+  </MDBModalDialog>
+</MDBModal> */}
         <div id="glass">            
             {console.log(mainObj)}
                   {mainObj && console.log(Object.values(mainObj))}

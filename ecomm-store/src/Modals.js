@@ -76,10 +76,6 @@ export default function ModalProd (props){
         cart.removeValidity();
     }    
 
-    // useEffect(() => {
-        
-    // }, [cart.validateKey])
-
     function addOriginalOrPrint () {
         if (props.product.invType === 'Original') {
             return <><p>Selling original - only one in stock</p> <Button hidden={true ? cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) : false} onClick={addToCart}>Add to cart<i  class='fas'>&#xf217;</i></Button></>
@@ -93,11 +89,10 @@ export default function ModalProd (props){
         if (cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) || props.product.invType === 'Original') {
            return '' 
         } else {
-            return <BasicSelect data={props.product.prodkey}/>
+            return <BasicSelect />
         }
 
     }
-
   
     return(
         <>
@@ -124,6 +119,7 @@ export default function ModalProd (props){
                     </div>
                 </a>  
             </MDBRipple>
+
         <MDBModal show={optSmModal} tabIndex='-1' setShow={setOptSmModal}>
         <MDBModalDialog size='lg'>
         <MDBModalContent>
