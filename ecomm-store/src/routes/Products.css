@@ -1,3 +1,7 @@
+* {
+    font-family:  Georgia;
+}
+/* 'Menaion', */
 .ripple:hover {
     transform: scale(1.05);
     transition: 250ms ease-in-out;
@@ -12,8 +16,7 @@
     text-align: center;
     padding-bottom: 20px;
     color: lightpink;
-    font-size: 30px;
-    font-family:Helvetica;
+    font-size: 34px;
 }
 
 .row {

@@ -56,6 +56,10 @@ nav {
   width: 800px;
 }
 
+.modal-body {
+  font-size: 17px !important;
+}
+
 #stripe-banner {
   max-width: 50%;
   margin: auto;
@@ -67,4 +71,8 @@ nav {
   text-align: center;
   display: flex;
 flex-direction: column;
+}
+
+.bg-info {
+  background-color: rgba(234, 234, 234, 0.1) !important;
 }

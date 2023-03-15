@@ -247,7 +247,12 @@ import { textAlign, width } from "@mui/system";
     </MDBModalContent>
   </MDBModalDialog>
 </MDBModal> */}
+          {/* <Particles/>
           <Particles/>
+          <Particles/>
+          <Particles/>
+          <Particles/> */}
+
         <div id="glass">       
             {console.log(mainObj)}
                   {mainObj && console.log(Object.values(mainObj))}

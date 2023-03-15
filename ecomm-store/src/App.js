@@ -10,7 +10,7 @@ import React, {useState, useContext} from 'react';
 
 function App() {
   return (
-    <>
+    <div style={{backgroundColor: '#252525'}}>
         <Nav />
       {/* <header id="containerHeader"> */}
         <div id='header'><Header /></div >
@@ -21,7 +21,7 @@ function App() {
       <footer>
         <FooterSection />
       </footer>
-    </>
+    </div>
   );
 }
 
