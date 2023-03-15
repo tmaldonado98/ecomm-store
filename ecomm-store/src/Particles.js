@@ -10,7 +10,7 @@ const one = {
     "shapes": [
       "circle"
     ],
-    "size": 6,
+    "size": 4,
     "minSpeed": 0.05,
     "maxSpeed": 0.3,
     "alpha": 0.7,

@@ -154,7 +154,7 @@ function proceedCheckout(){
 
     return(
       <nav>
-            <Typography style={{fontFamily: 'Helvetica', fontSize: '90px', color: 'lightpink'}} variant='h1'>Vea Collections</Typography>
+            <Typography style={{fontFamily: 'Georgia', fontSize: '90px', color: 'lightpink'}} variant='h1'>Vea Collections</Typography>
                   <div id='navBtns'>
                       {/* <ul id='nav-items'> */}
                           <Link to='/'>
@@ -223,7 +223,7 @@ function proceedCheckout(){
                 <u>Total Price - $ amt USD</u>
               </p> */}
             </strong>
-          {/* <p style={{fontSize:'14px', padding:' 0 2rem', textAlign: 'center'}}>Safe, secure payment with Stripe</p> */}
+          <p style={{fontSize:'14px', padding:' 0 2rem', textAlign: 'center'}}>Secure payments</p>
           {/* <img id="stripe-banner" src="https://cdn.brandfolder.io/KGT2DTA4/at/g65qkq94m43qc3c9fqnhh3m/Powered_by_Stripe_-_black.svg"
           /> */}
           <a href='https://stripe.com/' target='_blank' rel='noopener, noreferrers'>
@@ -239,6 +239,7 @@ function proceedCheckout(){
               <p>Check out the products section to browse our art collection.</p>
               
               <div id='empty-c-banner'>
+                <p style={{fontSize:'16px', padding:' 0 2rem', textAlign: 'center'}}>Secure payments</p>
                 <a href='https://stripe.com/' target='_blank' rel='noopener, noreferrers'>
                   <img style={{maxWidth: '35%', margin: 'auto', backgroundColor: '#623ea2', borderRadius: '0px'}} src="https://cdn.brandfolder.io/KGT2DTA4/at/v5bcwzcgcmgbp3676v3rg79q/Powered_by_Stripe_-_white.svg"/>  
                 </a>
@@ -307,7 +308,7 @@ function proceedCheckout(){
         </p>
 
       </MDBModalBody>
-      <MDBModalFooter>
+      <MDBModalFooter style={{backgroundColor:'rgba(77, 76, 76, 0.4)', color:'lightpink'}}>
           Vea Collections 2023
       </MDBModalFooter>
     </MDBModalContent>

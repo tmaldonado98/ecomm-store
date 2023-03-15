@@ -6,7 +6,7 @@ export default function Success() {
 
 
     return (
-        <div>
+        <div style={{backgroundColor: '#252525'}}>
             <nav>
                 <Typography variant='h1'>Vea Collections</Typography>
                     <Link to='/'>
@@ -23,14 +23,14 @@ export default function Success() {
                     </Link> 
             
             </nav>
-        <h1>Your order has been successfully received!</h1>
-        <h3>You will receive confirmation and an electronic receipt to the email address you provided, and your order will be shipped soon.</h3>
-        
-        <p>Put socials</p>
+            <h1>Your order has been successfully received!</h1>
+            <h3>You will receive confirmation and an electronic receipt to the email address you provided, and your order will be shipped soon.</h3>
+            
+            <p>Put socials</p>
 
-        <Link to='/products'>
-            <Button variant="outlined">Continue Browsing</Button>
-        </Link> 
+            <Link to='/products'>
+                <Button variant="outlined">Continue Browsing</Button>
+            </Link> 
 
         </div>
     )

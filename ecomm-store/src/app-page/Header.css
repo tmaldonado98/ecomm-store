@@ -1,3 +1,7 @@
+* {
+    color: #797979;
+}
+
 section {
     width: 50%;
     height: auto;
@@ -7,6 +11,8 @@ section {
 #header-box {
     width: 45%;
     text-align: center;
+    padding: 0 80px;
+
 }
 
 #h-box-ul {
@@ -19,3 +25,20 @@ section {
     justify-content: center;
     gap: 2rem;
     }
+
+#ig {
+    background-color:red;
+    padding: 4px;
+    width: 32px;
+    height: auto;
+    border-radius: 10px;
+    color: white;
+}
+
+#email {
+    padding: 2px;
+    width: 32px;
+    height: auto;
+    border-radius: 10px;
+    color: ivory;
+}
