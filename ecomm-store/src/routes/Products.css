@@ -1,6 +1,6 @@
-* {
+/* * {
     font-family:  Georgia;
-}
+} */
 /* 'Menaion', */
 .ripple:hover {
     transform: scale(1.05);
@@ -39,10 +39,6 @@
 
 .prod {
     width: 250px !important;
-}
-
-canvas {
-    position: absolute;
 }
 
 #glass {

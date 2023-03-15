@@ -7,7 +7,6 @@ import 'react-medium-image-zoom/dist/styles.css';
 import {  Button } from '@material-ui/core';
 import ModalProd from "../Modals";
 import  Axios from 'axios';
-import Particles from "../Particles";
 
 import {
     MDBCard,
@@ -215,44 +214,10 @@ import { textAlign, width } from "@mui/system";
       // const testProps = pathsObject;
 
     return (
-    <div style={{backgroundColor: '#252525'}}>
+    <>
       <Nav />    
       <h2 id="prod-h2">Artworks For Sale</h2>
       <section id="products-section">
-{/* payment disclaimer */}
-{/* <Button id="btn-policy" onClick={toggleShowCentral}>Return/Refund Policy</Button> */}
-
-    {/* <MDBModal
-  animationDirection='right'
-  show={centralModal}
-  tabIndex='-2'
-  setShow={setCentralModal}
->
-  <MDBModalDialog position='central'  id='policy-modal' >
-    <MDBModalContent>
-      <MDBModalHeader className='bg-info text-white'>
-        <MDBModalTitle>Return/Refund Policy</MDBModalTitle>
-        <MDBBtn
-          color='none'
-          className='btn-close btn-close-white'
-          onClick={toggleShowCentral}
-        ></MDBBtn>
-      </MDBModalHeader>
-      <MDBModalBody>
-        Write policy here
-      </MDBModalBody>
-      <MDBModalFooter>
-          Copyright Vea Collections LLC
-      </MDBModalFooter>
-    </MDBModalContent>
-  </MDBModalDialog>
-</MDBModal> */}
-          {/* <Particles/>
-          <Particles/>
-          <Particles/>
-          <Particles/>
-          <Particles/> */}
-
         <div id="glass">       
             {console.log(mainObj)}
                   {mainObj && console.log(Object.values(mainObj))}
@@ -262,7 +227,6 @@ import { textAlign, width } from "@mui/system";
                     return <ModalProd key={item.prodkey} product={item} />
                   })}
         </div>
-            {/* </Parti cles> */}
       </section>
 
       {/* <MDBRow>
@@ -346,7 +310,7 @@ import { textAlign, width } from "@mui/system";
       
 
         {/* <button >Add Product 1 to Cart</button> */}
-    </div>
+    </>
     )
 }
 

@@ -42,15 +42,6 @@ export default function ModalProd (props){
     const cart = useContext(CartContext);
     // console.log(cart.items)
 
-    function negative(){
-        cart.handleCardSelect(false);
-    }
-
-    function positive(){
-        cart.handleCardSelect(true);
-    }
-
-
     function addToCart(){
         // let itemToChange=  cart.items.map(currentItem => currentItem.item.key === props.key);
         let itemToChange =  cart.items.find(currentItem => currentItem.item.product.prodkey === props.product.prodkey);
@@ -124,8 +115,8 @@ export default function ModalProd (props){
         <MDBModalDialog size='lg'>
         <MDBModalContent>
             <MDBModalHeader>
-            <MDBModalTitle>{props.product.name}</MDBModalTitle>
-            <MDBBtn className='btn-close' color='none' onClick={toggleShow}></MDBBtn>
+                <MDBModalTitle>{props.product.name}</MDBModalTitle>
+                <MDBBtn className='btn-close' color='none' onClick={toggleShow}></MDBBtn>
             </MDBModalHeader>
                 <MDBModalBody>
                     <div className='modalCard'>
