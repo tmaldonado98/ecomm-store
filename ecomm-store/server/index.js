@@ -106,7 +106,7 @@ app.post('/checkout-session', async (req, res) => {
             allowed_countries: ['US'],
             // required: true,
           },
-        payment_method_types: ['card'],
+        payment_method_types: ['card', 'cashapp', 'acss_debit', 'alipay', 'paynow', 'wechat_pay'],
         success_url: `http://localhost:3000/Success?session_id=${session.id}`,
         cancel_url: 'http://localhost:3000/Products',
         line_items: forLineItems,

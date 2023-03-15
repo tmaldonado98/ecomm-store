@@ -5,7 +5,8 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 2rem 0.5rem;
-    font-family: Helvetica, sans-serif;
+    font-family: Georgia;
+    background-color: '#252525';
 }
 
   #container-nav div {
@@ -70,9 +71,23 @@ nav {
 #empty-c-banner {
   text-align: center;
   display: flex;
-flex-direction: column;
+  flex-direction: column;
+  margin-top: 60px;
+}
+
+#icons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  margin: 10px 0;
 }
 
 .bg-info {
   background-color: rgba(234, 234, 234, 0.1) !important;
+}
+
+.MuiButton-text {
+  font-family: inherit !important;
+
 }
