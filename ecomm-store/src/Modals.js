@@ -72,7 +72,7 @@ export default function ModalProd (props){
             return <><p>Selling original - only one in stock</p> <Button hidden={true ? cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) : false} onClick={addToCart}>Add to cart<i  class='fas'>&#xf217;</i></Button></>
          } else if (props.product.invType === 'Print to order'){
             // console.log(cart.validateKey.prodkey, props.product.prodkey)
-            return <Button variant='contained' hidden={true ? cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) : false} onClick={addToCart}>Add to cart<i  class='fas'>&#xf217;</i></Button>
+            return <Button id='add-to-cart-btn' variant='contained' hidden={true ? cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) : false} onClick={addToCart}>Add to cart<i  class='fas'>&#xf217;</i></Button>
          }
     }
 
@@ -119,7 +119,8 @@ export default function ModalProd (props){
                 <MDBBtn className='btn-close' color='none' onClick={toggleShow}></MDBBtn>
             </MDBModalHeader>
                 <MDBModalBody>
-                    <div className='modalCard'>
+                {/* className='modalCard' */}
+                    <div>
                         <div id='flex-container-card'>
                             <div id='container-card-text'>   
                                 <p>Artwork by {props.product.author}</p>

@@ -23,6 +23,7 @@ nav {
 
   #navBtns {
     display: flex;
+    align-items: center;
   }
 
   .MuiButton-label {
