@@ -219,13 +219,13 @@ import { textAlign, width } from "@mui/system";
       <h2 id="prod-h2">Artworks For Sale</h2>
       <section id="products-section">
         <div id="glass">       
-            {console.log(mainObj)}
-                  {mainObj && console.log(Object.values(mainObj))}
+            {/* {console.log(mainObj)} */}
+                  {/* {mainObj && console.log(Object.values(mainObj))} */}
         
-                  {mainObj && Object.values(mainObj).map(item => {
-                    console.log(item)
-                    return <ModalProd key={item.prodkey} product={item} />
-                  })}
+          {mainObj && Object.values(mainObj).map(item => {
+            // console.log(item)
+            return <ModalProd key={item.prodkey} product={item} />
+          })}
         </div>
       </section>
 
