@@ -20,7 +20,7 @@ export function BasicSelect(props) {
     
     React.useEffect(() => {
       cart.getSingleItemQuantity(quantity);
-      console.log(quantity)
+      // console.log(quantity)
     }, [quantity])
 
   return (

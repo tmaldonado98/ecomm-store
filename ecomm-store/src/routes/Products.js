@@ -1,5 +1,6 @@
 import React from "react";
 import Nav from "../Nav";
+import FooterSection from '../Footer';
 import './Products.css';
 import { useState, useContext, useEffect } from "react";
 import Zoom from 'react-medium-image-zoom';
@@ -36,7 +37,6 @@ import {
     MDBRow,
   } from 'mdb-react-ui-kit';
 import { textAlign, width } from "@mui/system";
-// import { response } from "express";
 
 
   // export const dbList = {
@@ -133,7 +133,7 @@ import { textAlign, width } from "@mui/system";
           // console.log(pathsObject)  
           }
         setMainObj(pathsObject);
-        console.log('mainObj set ', mainObj);
+        // console.log('mainObj set ', mainObj);
         }
 
         
@@ -310,6 +310,7 @@ import { textAlign, width } from "@mui/system";
       
 
         {/* <button >Add Product 1 to Cart</button> */}
+      <FooterSection/>
     </>
     )
 }

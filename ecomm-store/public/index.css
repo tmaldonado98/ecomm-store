@@ -11,13 +11,22 @@ body {
     -moz-osx-font-smoothing: grayscale;
   } 
   
+  @font-face {
+    font-family: 'MetropolisLight';
+    src: url('./metropolis.light.otf');
+}
+
   #root {
     background-color: #252525;
-    font-family: Georgia;
+    font-family: Georgia, 'MetropolisLight';
 
 }
 
-code {
+.MuiButton-label {
+  font-family: 'MetropolisLight', Georgia, Helvetica;
+}
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
+} */
+

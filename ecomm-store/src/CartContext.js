@@ -96,7 +96,7 @@ function CartProvider({children}){
 
         console.log(cartItems);
         setCartValidate(true);
-        setItemQuant(0);
+        setItemQuant(1);
     }
     
     function totalQuantity(){

@@ -39,6 +39,7 @@
 
 .prod {
     width: 250px !important;
+    height: max-content;
 }
 
 #glass {

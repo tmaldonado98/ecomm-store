@@ -6,7 +6,7 @@ import {
   MDBCarousel,
   MDBCarouselItem,
 } from 'mdb-react-ui-kit';
-// import { FaInstagram, FaEnvelope} from "react-icons/fa";
+import { FaInstagram, FaEnvelope} from "react-icons/fa";
 
 
 export default function Header(){
@@ -23,15 +23,15 @@ export default function Header(){
         <Link to='/contact'>
             <Button>Commissions/Contact</Button>
         </Link> 
-        <ul id='h-box-ul'>
+        <ul className='h-box-ul'>
             <li>
               <a href='https://instagram.com/vea.collections?igshid=YmMyMTA2M2Y=' target='_blank' rel='noopener, noreferrer'>
-                {/* <FaInstagram id='ig'/> */}
+                <FaInstagram id='ig'/>
               </a>
             </li>
             <li>
               <a href='mailto:mylovforrest@gmail.com' target='_blank' rel='noopener, noreferrer'>
-                {/* <FaEnvelope id='email'/>   */}
+                <FaEnvelope id='email'/>  
               </a>
             </li>
 

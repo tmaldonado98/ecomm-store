@@ -103,11 +103,12 @@ app.post('/checkout-session', async (req, res) => {
 
     const session = await stripe.checkout.sessions.create({
         shipping_address_collection: {
-            allowed_countries: ['US'],
+            // allowed_countries: ['US', 'CA', 'CN'],
             // required: true,
           },
-        payment_method_types: ['card', 'cashapp', 'acss_debit', 'alipay', 'paynow', 'wechat_pay'],
-        success_url: `http://localhost:3000/Success?session_id=${session.id}`,
+        payment_method_types: ['card', 'cashapp'],
+        success_url: `http://localhost:3000/Success`,
+        // ?session_id=${session.id}  ---> make unique route for each checkout session  ,
         cancel_url: 'http://localhost:3000/Products',
         line_items: forLineItems,
         mode: 'payment',

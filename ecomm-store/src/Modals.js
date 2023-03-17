@@ -153,7 +153,12 @@ export default function ModalProd (props){
             </MDBModalDialog>
         </MDBModal>
     </>
-: 'Loading...'}
+: 
+<section style={{minHeight: '100vh', backgroundColor:'#252525'}}>
+    Loading...
+</section>
+
+}
 
 </>
     );  
