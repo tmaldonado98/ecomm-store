@@ -1,11 +1,8 @@
 import './App.css';
-import {BrowserRouter as Router, Link, Route, Routes} from 'react-router-dom';
 import Nav from './Nav';
 import Header from './app-page/Header';
-import MainAbout from './app-page/MainAbout';
-import FooterSection from './app-page/Footer';
-import { Typography } from '@material-ui/core';
-import React, {useState, useContext} from 'react';
+import FooterSection from './Footer';
+import React from 'react';
 
 
 function App() {
@@ -17,11 +14,9 @@ function App() {
         <div id='header'><Header /></div >
       {/* </header> */}
       {/* <section id='mainAbout'> */}
-        <MainAbout />
+        {/* <MainAbout /> */}
       {/* </section> */}
-      <footer>
         <FooterSection />
-      </footer>
     </>
   );
 }
