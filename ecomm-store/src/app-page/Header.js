@@ -18,7 +18,7 @@ export default function Header(){
       
         <h2 style={{textAlign:'right'}}>In legacy, to remain.</h2>
         <Link to='/products'>
-            <Button>Browse Artwork</Button>
+            <Button>Browse Artworks</Button>
         </Link> 
         <Link to='/contact'>
             <Button>Commissions/Contact</Button>
@@ -41,7 +41,11 @@ export default function Header(){
        
 
     <section>
-<MDBCarousel showIndicators fade>
+      <video width="640" height="360" id='lp-video' muted autoPlay>
+        <source src="./LandingPageVid.mp4"  type="video/mp4" ></source>
+      </video>
+
+{/* <MDBCarousel showIndicators fade>
       <MDBCarouselItem
         className='w-100 d-block'
         itemId={1}
@@ -71,7 +75,7 @@ export default function Header(){
         <h5>Third slide label</h5>
         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
       </MDBCarouselItem>
-    </MDBCarousel>
+    </MDBCarousel> */}
     </section>
     </> 
     )

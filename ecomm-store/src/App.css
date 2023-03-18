@@ -9,7 +9,8 @@ body {
 
 #header {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   margin: 2rem auto;
+  height: 60vh;
 }
 
