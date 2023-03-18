@@ -6,10 +6,12 @@ import FooterSection from '../Footer';
 
 export default function about(){
     return (
-    <div style={{backgroundColor: '#252525'}}>
+    <div style={{backgroundColor: '#252525', height: '100vh'}}>
         <Nav />
         <h1>About Me</h1>
-
+        <div>
+            jfoi
+        </div>
 
         <FooterSection/>
     </div>

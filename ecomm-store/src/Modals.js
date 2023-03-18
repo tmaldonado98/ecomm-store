@@ -137,7 +137,14 @@ export default function ModalProd (props){
                                 </div> */}
                             
                             </div>
-                            {cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) && <p>Your item(s) have been added to you cart! <br/> To modify your order, please go to your cart.</p>}
+                            {cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) && 
+                            <div id='confirm-container'>
+                                <p>Your item(s) have been added to you cart! <br/> To modify your order, please go to your cart.</p>
+                                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                                <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                                <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                                </svg>
+                            </div>}
                         </div>
                         {/* <Button hidden={true ? cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) : false} disabled={cart.validity} onClick={addToCart}>Add to cart<i  class='fas'>&#xf217;</i></Button>                 */}
                     <img

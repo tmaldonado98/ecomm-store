@@ -212,7 +212,7 @@ function proceedCheckout(){
             </div>
             <strong>
               <p>
-                <u>Total Cost:</u> 
+                <u>Total Cost</u> (shipping included): 
                 <p>
                   ${getTotalPrice()}
                 </p>

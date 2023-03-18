@@ -6,6 +6,13 @@ const app = express();
 const cors = require('cors');
 const mysql = require('mysql2');
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
+const mime = require('mime');
+
+app.get('../LandingPageVid.mp4', function(req, res) {
+  res.setHeader('Content-Type', mime.getType('LandingPageVid.mp4'));
+  res.sendFile('../src/app-page/LandingPageVid.mp4');
+});
+
 
 const db = mysql.createConnection({
     host: process.env.DB_HOST,
