@@ -216,7 +216,7 @@ import { textAlign, width } from "@mui/system";
     return (
     <>
       <Nav />    
-      <h2 id="prod-h2">Artworks For Sale</h2>
+      <h2 id="prod-h2">Artworks</h2>
       <section id="products-section">
         <div id="glass">       
             {/* {console.log(mainObj)} */}
