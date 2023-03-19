@@ -1,0 +1,14 @@
+#vw-container, #tm-container {
+    height: max-content;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#vw-container img, #tm-container img {
+    width: 200px;
+    height: auto;
+}
+
+.about-text-container {
+    
+}

@@ -171,7 +171,7 @@ function proceedCheckout(){
                           </Link>           
                           
                           <Button onClick={toggleShowCentral}>Return/Refund Policy</Button>                            
-                          <Button 
+                          <Button id='cart-btn'
                           // cartItems
                           color='link' 
                           onClick={toggleShow}>Cart {cartCount()}</Button>
