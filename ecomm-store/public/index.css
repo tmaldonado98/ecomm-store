@@ -14,11 +14,16 @@ body {
   @font-face {
     font-family: 'MetropolisLight';
     src: url('./metropolis.light.otf');
+
+  @font-face {
+    font-family: 'stolzlBold';
+    src: url('../src/assets/stolzlBold.ttf');
+  }
 }
 
   #root {
     background-color: #252525;
-    font-family: Georgia, 'MetropolisLight';
+    font-family: Georgia, 'MetropolisLight', 'stolzlBold';
 
 }
 

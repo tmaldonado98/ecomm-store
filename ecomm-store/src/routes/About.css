@@ -2,13 +2,30 @@
     height: max-content;
     display: flex;
     justify-content: space-evenly;
+    padding: 12px;
 }
 
 #vw-container img, #tm-container img {
     width: 200px;
     height: auto;
+    align-self: center;
 }
 
 .about-text-container {
-    
+    color: #848484;
+    max-width: 600px;
+}
+
+.about-text-container h3 {
+    color: #b7b7b7;
+}
+
+.about-image-container {
+    align-self: center;
+}
+
+@media only screen and (max-width: 700px) {
+    .about-text-container {
+        width: 38%;
+    }
 }

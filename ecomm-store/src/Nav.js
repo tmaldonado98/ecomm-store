@@ -65,7 +65,7 @@ export function ProdInCart(props) {
 
                 {props.prod.product.invType === 'Print to order' ?
                   !toggleEdit ?
-                    <MDBBtn color='dark' onClick={showOrHideEdit}>Edit</MDBBtn> 
+                    <MDBBtn color='dark' style={{marginRight: '12px'}}  onClick={showOrHideEdit}>Edit</MDBBtn> 
                     :
                     <MDBBtn onClick={showOrHideEdit}>Cancel</MDBBtn>
                   :
@@ -75,7 +75,7 @@ export function ProdInCart(props) {
                 {props.prod.product.invType === 'Print to order' && toggleEdit &&
                   <>
                     <CartSelect hidden={!toggleEdit} currentQuant={props.quantity}/>
-                    <MDBBtn color='info' onClick={sendKey}>Confirm</MDBBtn>
+                    <MDBBtn color='info' style={{marginRight: '12px'}} onClick={sendKey}>Confirm</MDBBtn>
                   </>
                 }
 
@@ -154,7 +154,7 @@ function proceedCheckout(){
 
     return(
       <nav style={{fontFamily: 'Georgia'}}>
-            <Typography style={{fontFamily: 'Georgia', fontSize: '90px', color: 'lightpink'}} variant='h1'>Vea Collections</Typography>
+            <Typography id='nav-h1' variant='h1'>Vea Collections</Typography>
                   <div id='navBtns'>
                       {/* <ul id='nav-items'> */}
                           <Link to='/'>
