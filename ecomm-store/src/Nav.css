@@ -24,6 +24,20 @@ nav {
   #navBtns {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  #cart-btn {
+    background-color: black;
+    color: ivory !important;
+  }
+  #cart-btn:hover {
+    background-color: rgba(0, 0, 0, 0.171);
+  }
+  #navBtns button:hover {
+    box-shadow: ivory 0px 0px 3px 0px;
   }
 
   .MuiButton-label {

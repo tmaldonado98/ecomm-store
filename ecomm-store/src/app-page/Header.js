@@ -41,8 +41,8 @@ export default function Header(){
        
 
     <section>
-      <video width="640" height="360" id='lp-video' muted autoPlay>
-        <source src="./LandingPageVid.mp4"  type="video/mp4" ></source>
+      <video width="640" height="360" id='lp-video' muted autoPlay loop>
+        <source src={require("./LandingPagevid.mp4")}  type="video/mp4" ></source>
       </video>
 
 {/* <MDBCarousel showIndicators fade>
