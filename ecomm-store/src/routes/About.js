@@ -4,10 +4,11 @@ import {BrowserRouter} from 'react-router-dom';
 import Nav from "../Nav";
 import FooterSection from '../Footer';
 import './About.css';
+import { motion } from 'framer-motion';
 
 export default function about(){
     return (
-    <div style={{backgroundColor: '#252525'}}>
+    <motion.div style={{backgroundColor: '#252525'}} initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0, transitionDuration: 0.25}}>
         <Nav />
         <h1 style={{textAlign:'center', color: '#FFCBED'}}>About Us</h1>
         <div id="vw-container">
@@ -40,6 +41,6 @@ export default function about(){
 
         </div>
         <FooterSection/>
-    </div>
+    </motion.div>
     )
 }

@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const bodyparser = require('body-parser');
+// const bodyparser = require('body-parser');
 const app = express();
 const cors = require('cors');
 const mysql = require('mysql2');
@@ -18,12 +18,9 @@ const db = mysql.createConnection({
 app.use(cors());
 app.use(express.static('public'));
 app.use(express.json());
-// app.use(bodyparser.urlencoded({extended: true}))
 
-// const readBuffer =  multer({storage: multer.memoryStorage()});
 
 app.get('/data', (req, res) => {  
-    // .then(console.log(rows)).then(response => rows.push(response))   , { rowAsArray: false })
     const fetch = 'SELECT * FROM inventory';
     db.query(fetch, (err, result) => {
         if (err) {console.log(err)};
@@ -124,66 +121,29 @@ app.post('/checkout-session', async (req, res) => {
 })
 
 
-// const sendEmail = () => {
-//     // Get the necessary data from the component state
-//     // const { name, email, message } = this.state;
-  
-//     // Create an object with the email data
-  
-//     const key = process.env.REACT_APP_SENDGRID_KEY;
-//     const emailData = {
-//       personalizations: [
-//         {
-//           to: [
-//             {
-//               email: 'tmaldonadotrs@gmail.com'
-//             }
-//           ]
-//         }
-//       ],
-//       from: {
-//         email: messageData.user,
-//         name: messageData.name
-//       },
-//       subject: 'New message from ' + messageData.name,
-//       content: [
-//         {
-//           type: 'text/plain',
-//           value: messageData.message
-//         }
-//       ]
-//     };
-  
-//     // Make an HTTP POST request to the SendGrid API endpoint
-//     axios.post('https://api.sendgrid.com/v3/mail/send', emailData, {
-//       headers: {
-//         'Authorization': `Bearer ${process.env.REACT_APP_SENDGRID_KEY}`,
-//         'Content-Type': 'application/json'
-//       }
-//     })
-//     .then(response => {
-//       console.log('Email sent successfully:', response);
-//     })
-//     .catch(error => {
-//       console.error('Error sending email:', error);
-//     });
-//   }
-
 app.post('/contact', (req, res) => {
     const messageData = req.body;
     console.log(process.env.SENDGRID_KEY);
     console.log(messageData)
     sgMail.setApiKey(process.env.SENDGRID_KEY);
     const msg = {
+        // CHANGE TO VEA COLLECTIONS EMAIL ADDRESS
       to: 'tmaldonadotrs@gmail.com',
       from: messageData.user,
-      subject: 'Inquiry from ' + messageData.name,
+      subject: 'Vea Collections: Message from ' + messageData.name,
       text: 'Message body: ' + messageData.message,
-      // html: '<p>Hello from <b>Node.  js</b>!</p>',
+    };
+
+    const customerCopy = {
+        to: messageData.user,
+        from: messageData.user,
+        subject: 'Copy of your message to the Vea Collections team',
+        text: 'Message body: ' + messageData.message,
     };
 
     sgMail.send(msg)
-    .then(() => console.log('Email sent successfully!'))
+    .then(sgMail.send(customerCopy))
+    .then(() => console.log('Email and customer copy sent successfully!'))
     .catch((error) => console.error(error));
 
     res.json();
