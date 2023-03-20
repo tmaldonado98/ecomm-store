@@ -23,10 +23,10 @@ export default function FooterSection(){
 
     return (
     <footer id='footerContainer'>
-        <p>Copyright {year} © Vea Collections LLC </p> 
-        <p style={{cursor: 'pointer'}} onClick={toggleShowCentral} title='Click to open.'>Privacy Policy</p>
-        <p>Site encrypted with SSL</p>
-        <a href='https://tomasmaldonado.rf.gd/' target='_blank' rel='noopener, noreferrer'><p title="Go to author's website.">Page author</p></a>
+        <p className='footerP'>Copyright {year} © Vea Collections LLC </p> 
+        <p className='footerP' style={{cursor: 'pointer'}} onClick={toggleShowCentral} title='Click to open.'>Privacy Policy</p>
+        <p className='footerP'>Site encrypted with SSL</p>
+        <a href='https://tomasmaldonado.rf.gd/' target='_blank' rel='noopener, noreferrer'><p className='footerP' title="Go to author's website.">Page author</p></a>
 
 
         <MDBModal
