@@ -1,0 +1,35 @@
+#nav-h1 {
+    font-family: Georgia, Helvetica; 
+    text-align: center; 
+    color: #FFCBED;
+}
+
+#success-main {
+    text-align: center;
+    min-height: 70vh;
+    padding: 24px 48px;
+    color: #b7b7b7;
+    width: 80%;
+    margin: auto;
+}
+
+#success-main h1{
+    margin-bottom: 32px;
+    color: #e9bad9;
+}
+
+#success-main h3{
+    margin-bottom: 18px;
+}
+
+#success-main .MuiButton-label {
+    color: #b7b7b7;
+    background-color: #e9bad934;
+    padding: 8px;
+    border-radius: 8px;
+}
+@media only screen and (max-width: 530px) {
+    #nav-h1{
+        font-size: 60px;
+    }
+}

@@ -6,11 +6,11 @@ import React from 'react';
 import {Link } from 'react-router-dom';
 import { Button, Typography } from '@material-ui/core';
 import { FaInstagram, FaEnvelope} from "react-icons/fa";
-
+import { motion } from 'framer-motion';
 
 function App() {
   return (
-    <div id='header'>
+    <motion.div id='header' initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0, transitionDuration: 0.25}}>
       <Nav />
       <div id='app-container'>
         <div id='header-box'>
@@ -42,7 +42,7 @@ function App() {
         </section>
       </div>
       <FooterSection />
-    </div>
+    </motion.div>
   );
 }
 

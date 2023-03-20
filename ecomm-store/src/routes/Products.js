@@ -8,6 +8,7 @@ import 'react-medium-image-zoom/dist/styles.css';
 import {  Button } from '@material-ui/core';
 import ModalProd from "../Modals";
 import  Axios from 'axios';
+import { motion } from 'framer-motion';
 
 import {
     MDBCard,
@@ -86,19 +87,7 @@ import { textAlign, width } from "@mui/system";
 
       const [mainObj, setMainObj] = useState(null);
 
-      useEffect(() => {
-        Axios.get('http://localhost:3001/data')
-        .then(response => {
-                setRows(response.data);
-                // console.log(response.data)
-              })
-        // .then(() => {
-        //         console.log('rows state set ')
-        //       })
-        .catch(error => alert(error))
-        
-      }, []);
-      
+
       useEffect(() => {
         // loopedObj();
         if (rows !== null) {
@@ -138,9 +127,14 @@ import { textAlign, width } from "@mui/system";
 
         
         // console.log("Rows state updated:", rows);
-      }, [rows]);
+      }, [rows]);     
+
       
-      if (!rows) {
+      if (!mainObj) {
+        Axios.get('http://localhost:3001/data')
+        .then(response => {setRows(response.data)})
+        .catch(error => alert(error))
+
         return (
         <>
           <Nav />
@@ -212,9 +206,10 @@ import { textAlign, width } from "@mui/system";
         
       //   console.log(pathsObject.one)
       // const testProps = pathsObject;
+      else {
 
     return (
-    <>
+    <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0, transitionDuration: 0.25}}>
       <Nav />    
       <h2 id="prod-h2">Artworks</h2>
       <section id="products-section">
@@ -316,7 +311,8 @@ import { textAlign, width } from "@mui/system";
 
         {/* <button >Add Product 1 to Cart</button> */}
       <FooterSection/>
-    </>
+    </motion.div>
     )
+}
 }
 

@@ -8,6 +8,7 @@ import FooterSection from '../Footer';
 import { MDBBtn } from "mdb-react-ui-kit";
 import axios from 'axios';
 import CircularProgress from '@mui/material/CircularProgress';
+import { motion } from 'framer-motion';
 
 
 export default function Contact(){
@@ -99,7 +100,7 @@ useEffect(() => {
 }, [message]);  
 
     return (
-    <div style={{backgroundColor: '#252525'}}>
+    <motion.div style={{backgroundColor: '#252525'}} initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0, transitionDuration: 0.25}}>
       <Nav />
 
       <section id="contact-page">  
@@ -134,6 +135,7 @@ useEffect(() => {
           <h2 className="contact-h">Want to ask about commissions?</h2>
           <fieldset>
             <legend>Fill out this form!</legend>
+            <p>If you would like to send us an image, please send us an email directly with the image file attached. Thank you.</p>
         
             <label for='name'>What is your name?</label>
             <input name="name" type='text' required value={name} onChange={handleNameChange}></input>
@@ -148,16 +150,15 @@ useEffect(() => {
             <p hidden={messageInvalid} className='invalid'>You must enter a message.</p>
         
             <p>* All input fields are required</p><br/>
-            <p>If you would like to send us an image, please send us an email directly with the image file attached. Thank you.</p>
             {sendingEmail === false ? 
               (<><MDBBtn onClick={sendMail}>Submit Message</MDBBtn>
                 <div hidden={sentStatus}>
-                  <br/><br/>
-                  <p>Message sent!</p>
                   <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
                   <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
                   <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
                   </svg>
+                  <p>Message sent!</p>
+                  <p>A copy of your message will be sent to the address you have provided. <br/> Thank you, and we'll be in touch shortly.</p>
                 </div>
                 </>
               )
@@ -170,6 +171,6 @@ useEffect(() => {
         
       </section>
       <FooterSection/>
-    </div>
+    </motion.div>
     )
 }

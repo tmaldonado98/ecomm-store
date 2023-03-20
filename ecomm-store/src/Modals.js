@@ -1,5 +1,5 @@
 import Products from './routes/Products';
-import { useContext, useEffect } from 'react';
+import { useState, useContext, useEffect, memo } from 'react';
 import { CartContext } from './CartContext';
 import Nav from './Nav';
 import {BasicSelect, CartSelect} from './Select';
@@ -27,9 +27,6 @@ import {
   } from 'mdb-react-ui-kit';
 
   import {  Button } from '@material-ui/core';
-
-import { useState } from "react";
-
 
 
 export default function ModalProd (props){
@@ -139,6 +136,7 @@ export default function ModalProd (props){
                             </div>
                             {cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) && 
                             <div id='confirm-container'>
+                        
                                 <p>Your item(s) have been added to you cart! <br/> To modify your order, please go to your cart.</p>
                                 <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
                                 <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
@@ -166,6 +164,7 @@ export default function ModalProd (props){
     );  
 }
 
+ 
 // export function ModalSix (props.oneone){
 //     const [optSmModal, setOptSmModal] = useState(false);
     
