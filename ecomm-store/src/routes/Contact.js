@@ -19,12 +19,24 @@ export default function Contact(){
   const [sendingEmail, setSendingEmail] = useState(false);
   const [sentStatus, setSentStatus] = useState(true); 
 
-  function sendMail() {
+  const [nameInvalid, setNameInvalid] = useState(true);
+  const [userInvalid, setUserInvalid] = useState(true);
+  const [messageInvalid, setMessageInvalid] = useState(true);
 
-    if (name.length === 0 || user.length === 0 || message.length === 0) {
-      alert('All input fields must be filled out');
+  function sendMail() {
+    if (name.length === 0 ) {
+      setNameInvalid(false);
       return false
-    } else {
+    }
+    else if(user.length === 0){
+      setUserInvalid(false);
+      return false;
+    }
+    else if(message.length === 0) {
+      setMessageInvalid(false);
+      return false;
+    } 
+    else {
       setSentStatus(true);      
       const messageData = {name: name, user: user, message: message};
 
@@ -36,11 +48,15 @@ export default function Contact(){
         setUser('')
         setMessage('')
 
+        setNameInvalid(true);
+        setUserInvalid(true);
+        setMessageInvalid(true);
+
         setTimeout(() => {
           setSentStatus(true);
         }, 5000)
         console.log('Response:', response);
-        ///SUCCESSFULL EVENT
+
       })
       .catch(error => {
         console.error('Error:', error);
@@ -49,36 +65,38 @@ export default function Contact(){
   
 }
 
-
-// function handleSubmit() {
-//     const nameInput = document.getElementsByName('name');
-//     const emailInput = document.getElementsByName('email');
-//     const messageInput = document.getElementsByTagName('textarea');
-
-//     if (name.length === 0 || user.length === 0 || message.length === 0) {
-//       alert('All input fields must be filled out');
-//       return false
-//     } else {
-//       const messageData = {name: name, user: user, message: message}
-
-//       axios.post('/contact', messageData)
-//       .then(response => {
-//         console.log('Email sent successfully:', response);
-//         alert('Your message has been sent!');
-//       })
-//       .catch(error => {
-//         console.error('Error sending email:', error);
-//         alert('There was an error sending your message. Please try again later.');
-//       });
-//     }
-// }
+function handleNameChange(e) {
+  setName(e.target.value);
+}
 
 useEffect(() => {
-  console.log(name);
-  console.log(user);
-  console.log(message);
-  
-}, [message])
+  if (name.length > 0){
+    setNameInvalid(true);
+  }
+}, [name])
+
+
+function handleUserChange(e) {
+  setUser(e.target.value);
+}
+
+useEffect(() => {
+  if (user.length > 0){
+    setUserInvalid(true);
+  }
+
+}, [user]);
+
+
+function handleMessageChange(e) {
+  setMessage(e.target.value);
+}
+
+useEffect(() => {
+  if (message.length > 0){
+    setMessageInvalid(true);
+  }
+}, [message]);  
 
     return (
     <div style={{backgroundColor: '#252525'}}>
@@ -118,15 +136,19 @@ useEffect(() => {
             <legend>Fill out this form!</legend>
         
             <label for='name'>What is your name?</label>
-            <input name="name" type='text' required value={name} onChange={e => setName(e.target.value)}></input>
-            
+            <input name="name" type='text' required value={name} onChange={handleNameChange}></input>
+            <p hidden={nameInvalid} className='invalid'>You must enter your name.</p>
+
             <label for='email'>What is your email?</label>
-            <input name="email" type='text' required value={user} onChange={e => setUser(e.target.value)}></input>
+            <input name="email" type='text' required value={user} onChange={handleUserChange}></input>
+            <p hidden={userInvalid} className='invalid'>You must enter your email address.</p>
         
             <label for='details'>Give us some more details</label>
-            <textarea required value={message} placeholder="Suggestion of things to include:&#10;• Your estimated budget&#10;• Which size do you want?&#10;• Any other questions you may have, please write them here"  onChange={e => setMessage(e.target.value)}></textarea>
+            <textarea required value={message} placeholder="Suggestion of things to include:&#10;• Your estimated budget&#10;• Which size do you want?&#10;• Any other questions you may have, please write them here"  onChange={handleMessageChange}></textarea>
+            <p hidden={messageInvalid} className='invalid'>You must enter a message.</p>
         
-            <p>* All input fields are required</p>
+            <p>* All input fields are required</p><br/>
+            <p>If you would like to send us an image, please send us an email directly with the image file attached. Thank you.</p>
             {sendingEmail === false ? 
               (<><MDBBtn onClick={sendMail}>Submit Message</MDBBtn>
                 <div hidden={sentStatus}>
