@@ -49,9 +49,11 @@
     overflow: hidden;
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 950px) {
     #app-container {
         flex-direction: column;
+        justify-content: center;
+        height: 75vh;
     }
 
     #header-box {

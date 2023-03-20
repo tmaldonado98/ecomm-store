@@ -5,14 +5,17 @@
     background-color: #1b1b1b;
     color: #676767;
     justify-content: space-between;
-    align-content: center;
+    /* align-content: center; */
     padding: 10px 25px;
     width: 100%;
+    align-items: center;
 }
-#footerContainer p {
+.footerP {
     margin: 0;
     font-size: 13px;
 }
+
+
 
 #privacy-modal-body p {
     font-size: 16px;
