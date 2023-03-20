@@ -5,6 +5,7 @@ const app = express();
 const cors = require('cors');
 const mysql = require('mysql2');
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
+const sgMail = require('@sendgrid/mail')
 
 const db = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -123,6 +124,70 @@ app.post('/checkout-session', async (req, res) => {
 })
 
 
+// const sendEmail = () => {
+//     // Get the necessary data from the component state
+//     // const { name, email, message } = this.state;
+  
+//     // Create an object with the email data
+  
+//     const key = process.env.REACT_APP_SENDGRID_KEY;
+//     const emailData = {
+//       personalizations: [
+//         {
+//           to: [
+//             {
+//               email: 'tmaldonadotrs@gmail.com'
+//             }
+//           ]
+//         }
+//       ],
+//       from: {
+//         email: messageData.user,
+//         name: messageData.name
+//       },
+//       subject: 'New message from ' + messageData.name,
+//       content: [
+//         {
+//           type: 'text/plain',
+//           value: messageData.message
+//         }
+//       ]
+//     };
+  
+//     // Make an HTTP POST request to the SendGrid API endpoint
+//     axios.post('https://api.sendgrid.com/v3/mail/send', emailData, {
+//       headers: {
+//         'Authorization': `Bearer ${process.env.REACT_APP_SENDGRID_KEY}`,
+//         'Content-Type': 'application/json'
+//       }
+//     })
+//     .then(response => {
+//       console.log('Email sent successfully:', response);
+//     })
+//     .catch(error => {
+//       console.error('Error sending email:', error);
+//     });
+//   }
+
+app.post('/contact', (req, res) => {
+    const messageData = req.body;
+    console.log(process.env.SENDGRID_KEY);
+    console.log(messageData)
+    sgMail.setApiKey(process.env.SENDGRID_KEY);
+    const msg = {
+      to: 'tmaldonadotrs@gmail.com',
+      from: messageData.user,
+      subject: 'Inquiry from ' + messageData.name,
+      text: 'Message body: ' + messageData.message,
+      // html: '<p>Hello from <b>Node.  js</b>!</p>',
+    };
+
+    sgMail.send(msg)
+    .then(() => console.log('Email sent successfully!'))
+    .catch((error) => console.error(error));
+
+    res.json();
+})
     
     // const itemsInCart = req.body;
     // console.log(itemsInCart)

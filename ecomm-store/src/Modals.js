@@ -87,7 +87,7 @@ export default function ModalProd (props){
   
     return(
         <>
-        {props ? 
+        {props && 
         <>
             <MDBRipple onClick={toggleShow} rippleColor='light' rippleTag='div' className='bg-image hover-overlay prod'>
                     {/* {console.log(src)} */}
@@ -160,11 +160,6 @@ export default function ModalProd (props){
             </MDBModalDialog>
         </MDBModal>
     </>
-: 
-<section style={{minHeight: '100vh', backgroundColor:'#252525'}}>
-    Loading...
-</section>
-
 }
 
 </>
