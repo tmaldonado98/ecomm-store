@@ -13,7 +13,7 @@ export default function about(){
         <div id="vw-container">
             <div className="about-text-container">
                 <h3>Vea Wolf</h3>
-                <p>Costa-Rican artist based in southern California specializing in realism.</p>
+                <p>Costa Rican artist based in southern California specializing in realism.</p>
                 <p>Mediums of choice include charcoal, acrylic, and colored pencil in a monochromatic color scheme.</p>
                 <p>Currently mastering portraiture, studying figure-drawing, and working on large still-life charcoal drawings.</p>
                 <p>Lets the artworks speak for themselves.</p>
@@ -29,7 +29,7 @@ export default function about(){
             <div className="about-text-container">
                 <h3>T.M. Vea</h3>
                 {/* <p>Costa-Rican artist based in southern California specializing in realism.</p> */}
-                <p>Artist interested in expressionism and the versatility of color.</p>
+                <p>Costa Rican arist interested in expressionism and the versatility of color.</p>
                 {/* <p>Currently mastering portraiture, studying figure-drawing, and working on large still-life charcoal drawings.</p> */}
                 <p>Seeks to express emotions through the canvas to communicate the personal story of exploration and growth.</p>
                 <p>Enjoys experimental use of color, and the improvisation of the artistic process.</p>

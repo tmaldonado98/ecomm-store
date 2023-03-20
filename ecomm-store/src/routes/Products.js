@@ -222,10 +222,15 @@ import { textAlign, width } from "@mui/system";
             {/* {console.log(mainObj)} */}
                   {/* {mainObj && console.log(Object.values(mainObj))} */}
         
-          {mainObj && Object.values(mainObj).map(item => {
+          {mainObj ? Object.values(mainObj).map(item => {
             // console.log(item)
             return <ModalProd key={item.prodkey} product={item} />
-          })}
+          }) :
+          // <section style={{minHeight: '100vh', backgroundColor:'#252525'}}>
+            <p>Loading...</p>
+          // </section>
+
+          }
         </div>
       </section>
 
