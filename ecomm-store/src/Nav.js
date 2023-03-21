@@ -154,7 +154,9 @@ function proceedCheckout(){
 
     return(
       <nav style={{fontFamily: 'Georgia'}}>
-            <Typography id='nav-h1' variant='h1'>Vea Collections</Typography>
+                  <Link to='/'>
+                      <Typography id='nav-h1' variant='h1'>Vea Collections</Typography>
+                  </Link>
                   <div id='navBtns'>
                       {/* <ul id='nav-items'> */}
                           <Link to='/'>
