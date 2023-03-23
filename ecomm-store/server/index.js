@@ -21,7 +21,7 @@ app.use(express.json());
 
 
 app.get('/data', (req, res) => {  
-    const fetch = 'SELECT * FROM inventory';
+    const fetch = 'SELECT * FROM inventory_table';
     db.query(fetch, (err, result) => {
         if (err) {console.log(err)};
         res.json(result);
@@ -148,49 +148,6 @@ app.post('/contact', (req, res) => {
 
     res.json();
 })
-    
-    // const itemsInCart = req.body;
-    // console.log(itemsInCart)
-
-    // const keyArray = [];
-    // const prodkey = itemsInCart.forEach(element => {
-    //     keyArray.push(element.item.product.prodkey)
-        
-    // });
-    // console.log(keyArray)
-
-    // await stripe.products.list()
-    // .then(item => {
-    //     const productToUpd = item.data.find(prod => prod.metadata.prodkey === prodkey)
-    //     productId = productToUpd.id;
-    //     console.log(productId);
-    // })
-
-    // stripe.prices.list()
-    // .then(curIt => {
-    //     const priceItem = curIt.data.find(price => price.product === itemsInCart.item.product)
-    // })
-
-
-    // const cartMap = new Map([]);
-    // itemsInCart.map(curIt => {
-    //     cartMap.set(curIt.item.product, curIt.quantity)
-    // })
-    // // cartMap.set(itemsInCart)
-    // console.log(cartMap);
-
-// })
-
-// app.post('/orderData', (request, response) => {
-//     const insert = 'INSERT INTO vea_orders () VALUES (?, )';
-    
-//     db.query(insert, [], (error, result) => {
-//         if (error) {console.log(error)};
-//         // res.json(result);
-
-//     })
-
-// })
  
 const port = 3001;
 
@@ -201,7 +158,3 @@ app.listen(port, () => {
         console.log('database connected')
     })
 })
-
-    // "devStart": "nodemon index.js", 
-    // "start": "CHOKIDAR_USEPOLLING=true react-scripts start",   <--for react on package.json
-
