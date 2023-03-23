@@ -12,5 +12,14 @@
         "destination": "/index.html"
       }
     ]
+  },
+  "database": {
+    "instance": "veacollections",
+    "name": "veacollections",
+    "creds": {
+      "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDTsMBKI6MJRhOk\nA9nZXuZYP2J7IE+vwKibGQkVSFco1p83K+yfXyUHQzJkcUnxN7jO6mI/Z3thyDuV\nHZ33XiTBK3UB6u2Gr4PV+FKUwL3ANyjJe7o1uTU3riRTXQGrHpBx0u+1FLOAnSvi\ntFyLQ+wXOEiXi0aw5my+8pQMNXYQdeWwW/9BCQvAE+NCDb6GnDTyQJn9GrQrTZwm\nn49vqfJzRn5sAoKTnRpsSdAJkDMxc4zpb0sGkQCW0RlSoAkHgRFi+ZJA3Lsgvy2o\naMH+6nq3IoVL3kGytVkPJCuja8tgOg7QeAvjPuL2F1GFSMQbxuPNbMZhU/ZKY8Am\nq3AVeiBBAgMBAAECggEABTMmD59Y30U+ZEMuWoPvPbzicWQ1l0gwz0AWx6DZ3m67\n+HUp82KfgtJbh+x63kotGvM868Vh8+C6pFejsrJrgRpmxF/kUVbSv5j0hlZ5rFTU\n7Qx1LxULW2b52dmPme4+3amw9tsfhNakTLkVCnXmDbTCa7ghfP6CYbcmfDcWXSJM\nwfzBlNucOc7XgX8ld5Hu5EfhAn2zfaSDeYRoZmvGXoOmS+xBVMBuRNV+3HrwAn7q\n06UKnCuMvC0wUsO2j05jJhYtjF2g9t3c4PQJj2b5ISQCxluKJpwGSeFaShjAmsCT\nUquLBZSd72CGRN+lIhMO6jwyoMskcR0cyxI6Z1QkdQKBgQD9yZ4XpJj4nf1jCU10\ndB1CAq7m9+vf8qsc4N6m2ESKlH65focW01vM6bn+9EnDDWEf2OYY2yaP22ZDNVCC\nBaefyACIZOntFdtY45eGxqMsd9WlySQoShxGcBFvNfSZ0Q9UJzq/yHfC9p7fwqs9\noAFoX2ycU8ZUZ0G64Mt/Fr4evwKBgQDViS9DbjHBS6WCvnvRizp2apCCE6sgZ1L3\nLFP9Ki5aPlH2Cg0EOVfx3nPgasSIBXSGi+3h7Fo8GzHjo55B3BK/fAm7DguXm9Jp\nGw32Ea15jD8daJjAC0kRLGitsaY3pjJyI1Q++zBp4eHW5qoONYPepaRNAhurMn5+\nOw6/KcaA/wKBgQCUgvqHnWODAXk5DkWMIzLH4SgWsvgOGkS15oWEn0Qk0FcEF53X\n5qFu3UthffT4NokiiNvFqeD8CAjkxXsySzrXTsO5DUyy17p/XtfaH713FT0qAfWt\nugin04bwTGOx61wMA9TmS9qBda5tBM8Oheas/EJjjMaft7kIMeoDmfxxowKBgCN9\n+tIdZb24Ihl6KcBpgN0f10cXl9D5+4tD3e3tbejoBN19TC6QjXKRQ/dgJ6xoI7cd\nWPu9Oj5VUtSAZJSTzLXxGvjxW7HmX3HC4m4tAAV87xynPwRkm89z7y43oeYMBMR9\n5MnXHHPs7Im4qzlTYcjHBWkbWZf5+5ZloIzbl7fnAoGBAMmo8nBT7N+wyNacp0aK\nPN1VKnxb7yMGbOEBAeZ5aEkAwcQrOHRiZWzPeY0PXUbanMvjId9v3MSMCNFn4BrK\nz7yY5I/2S6fdWuuUU+J0yYhsasSVdkWpfajsB3++lrimAcn2HZk1tJpj+XwRx5PH\nzlHRS0b3jjSs+W03sKJluJ/b\n-----END PRIVATE KEY-----\n",
+      "client_email": "firebase-adminsdk-35y1d@admin-page-vea-collections.iam.gserviceaccount.com"
+    }
   }
+  
 }
