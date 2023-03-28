@@ -118,9 +118,14 @@
     color: ivory !important;
 }
 
-.css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
-    color: ivory;
+.css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input, #demo-simple-select {
+    color: ivory !important;
 background-color: #fffff026;
+}
+
+#demo-simple-select-label {
+  color: ivory !important;
+
 }
 
 #selectAndAdd .MuiButton-label {
