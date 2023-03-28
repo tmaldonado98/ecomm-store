@@ -76,12 +76,6 @@ nav {
     text-align: center;
   }
 
-  @media screen and (max-width: 410px) {
-    .itemInCart button {
-      margin: 0;
-    }
-  }
-
   .col-9 {
     text-align: center;
     margin: 1rem auto;
@@ -142,4 +136,21 @@ nav {
 /* Quantity text select */
 .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root {
   color: ivory !important;
+}
+
+
+#confirm-btn, #edit-btn {
+  margin-right: 12px;
+}
+
+@media screen and (max-width: 410px) {
+  .itemInCart button {
+    margin: 0;
+  }
+
+  #confirm-btn, #edit-btn {
+    margin-right: 0;
+    margin-bottom: 10px;
+
+  }
 }

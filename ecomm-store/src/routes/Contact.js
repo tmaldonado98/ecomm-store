@@ -41,7 +41,7 @@ export default function Contact(){
       setSentStatus(true);      
       const messageData = {name: name, user: user, message: message};
 
-      axios.post('http://localhost:3001/contact', messageData)
+      axios.post('https://us-central1-vea-collections-b5045.cloudfunctions.net/app/contact', messageData)
       .then(response => {
         setSendingEmail(false);
         setSentStatus(false);
