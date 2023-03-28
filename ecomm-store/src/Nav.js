@@ -65,7 +65,7 @@ export function ProdInCart(props) {
 
                 {props.prod.product.invType === 'Print to order' ?
                   !toggleEdit ?
-                    <MDBBtn color='dark' style={{marginRight: '12px'}}  onClick={showOrHideEdit}>Edit</MDBBtn> 
+                    <MDBBtn color='dark' id='edit-btn' onClick={showOrHideEdit}>Edit</MDBBtn> 
                     :
                     <MDBBtn onClick={showOrHideEdit}>Cancel</MDBBtn>
                   :
@@ -75,7 +75,7 @@ export function ProdInCart(props) {
                 {props.prod.product.invType === 'Print to order' && toggleEdit &&
                   <>
                     <CartSelect hidden={!toggleEdit} currentQuant={props.quantity}/>
-                    <MDBBtn color='info' style={{marginRight: '12px'}} onClick={sendKey}>Confirm</MDBBtn>
+                    <MDBBtn color='info' id="confirm-btn" onClick={sendKey}>Confirm</MDBBtn>
                   </>
                 }
 
@@ -139,15 +139,13 @@ export default function Nav(){
 
 ////ADD SHIPPING FUNCTIONALITY ==> ASK FOR SHIPPING ADDRESS. CALCULATE SHIPPING COST + TAXES WITH STRIPE
 function proceedCheckout(){
-    Axios.post('http://localhost:3001/checkout-session', cart.items)
+    Axios.post('https://us-central1-vea-collections-b5045.cloudfunctions.net/app/checkout-session', cart.items)
     .then(setProceed(true))
     .then(response => {
       
       window.location = response.data.url;
     })
-    .catch(e => {
-      console.error(e.error)
-    })
+    .catch(error => console.error(error))
 
 }
 

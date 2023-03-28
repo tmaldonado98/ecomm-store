@@ -19,9 +19,11 @@ export default function Products(){
   const [mainObj, setMainObj] = useState(null);
 
     useEffect(() => {
-      Axios.get('http://localhost:3001/data')
-      .then(response => {setRows(response.data)})
-      .catch(error => alert(error))
+      Axios.get('https://us-central1-vea-collections-b5045.cloudfunctions.net/app/data')
+    //  , {timeout: 5000}
+    .then(response => {setRows(response.data)})
+    .then(response => console.log(response.data))
+      .catch(error => console.log(error + ' front'))
       
     }, []);
       

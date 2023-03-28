@@ -32,6 +32,7 @@ yarn-debug.log*
 yarn-error.log*
 
 fbconfig.js
-firebase.json
-.firebaserc
-
+# firebase.json
+# .firebaserc
+fbadmin.js
+vcfadminkey.json
