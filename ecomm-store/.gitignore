@@ -35,4 +35,4 @@ fbconfig.js
 # firebase.json
 # .firebaserc
 fbadmin.js
-vcfadminkey.json
+vcfbadminkey.json
