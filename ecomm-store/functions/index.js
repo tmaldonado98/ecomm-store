@@ -20,38 +20,15 @@ const db = mysql.createPool({
     // connectTimeout: 10000,
 })
 
-
-
-
-// const allowedOrigins = ['https://us-central1-vea-collections-b5045.cloudfunctions.net', 'https://vea-collections-b5045.web.app'];
-// const corsOptions = {
-//   origin: function(origin, callback) {
-//     if (allowedOrigins.indexOf(origin) !== -1) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error('Not allowed by CORS'));
-//     }
-//   }
-// };
-
-
-// db.connect((err) => {
-//     if (err) {
-//         console.error('Error connecting to database:', err);
-//         return;
-//     }
-//     console.log('Database connection established');
-// });
 app.use(cors());
-// app.use(cors);
-app.use(express.static('functions')); ///build?
-app.use(express.json());
+app.use(express.static('functions'));
+app.use(express.json()); 
 
     app.get('/data', async (req, resu) => {  
 
 
         const fetch = 'SELECT * FROM inventory_table;';
-        console.log(fetch);
+        // console.log(fetch);
         try {
           const sel = await db.query(fetch);
           resu.json(sel[0]);
@@ -78,7 +55,7 @@ app.post('/checkout-session', async (req, resu) => {
     cartItems.map(curr => {
         prodQuant.push(curr.quantity)
     })
-    console.log(prodQuant)
+    // console.log(prodQuant)
 
     const stripeProdArr = [];
     const stripeProdId = [];
@@ -91,8 +68,9 @@ app.post('/checkout-session', async (req, resu) => {
             
         }
 
-        console.log(stripeProdArr)
+        // console.log(stripeProdArr) // --> returning undefined because products + prices not created yet!!!
         // console.log(stripeProdSet.length)
+        // console.log(stripe.products.list())
         
      })
     .catch(error => console.log(error))
@@ -109,28 +87,32 @@ app.post('/checkout-session', async (req, resu) => {
         }
         // priceId = price.id;
         // console.log(priceArrItems);
-        console.log(priceArr);    
+        console.log(priceArr + ' --> priceArr');    
         console.log(forLineItems);    
 
     })
-    .catch(error => console.log(error))
+    .then(console.log(forLineItems))
+    // .catch(error => console.log(error))
 
 
+    .then(async () => {
 
-    const session = await stripe.checkout.sessions.create({
-        shipping_address_collection: {
-            // allowed_countries: ['US', 'CA', 'CN'],
-            // required: true,
-          },
-        payment_method_types: ['card', 'cashapp'],
-        success_url: `https://vea-collections-b5045.firebaseapp.com/Success`,
-        // ?session_id=${session.id}  ---> make unique route for each checkout session  ,
-        cancel_url: 'https://vea-collections-b5045.firebaseapp.com/Products',
-        line_items: forLineItems,
-        mode: 'payment',
+        const session = await stripe.checkout.sessions.create({
+            shipping_address_collection: {
+                // allowed_countries: ['US', 'CA', 'CN'],
+                // required: true,
+            },
+            payment_method_types: ['card'],
+            success_url: `https://vea-collections-b5045.firebaseapp.com/Success`,
+            // ?session_id=${session.id}  ---> make unique route for each checkout session  ,
+            cancel_url: 'https://vea-collections-b5045.firebaseapp.com/Products',
+            line_items: forLineItems,
+            mode: 'payment',
+        })
+        resu.json({ url: session.url }); ////returning ReferenceError: Cannot access 'session' before initialization 
     })
-      
-    resu.json({ url: session.url });
+    
+    .catch(error => console.log(error));
 })
 
 

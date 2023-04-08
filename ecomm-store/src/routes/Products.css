@@ -39,9 +39,12 @@
 }
 
 .prod {
-    width: 250px !important;
+    width: 350px !important;
     height: max-content;
 }
+/* .prod:nth-child(10), .prod:nth-child(11){
+    width: 400px !important;
+} */
 
 #glass {
     background-color: rgba(234, 234, 234, 0.1);

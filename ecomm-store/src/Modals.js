@@ -2,7 +2,7 @@ import { useState, useContext, useEffect, memo } from 'react';
 import { CartContext } from './CartContext';
 import {BasicSelect, CartSelect} from './Select';
 import './Modals.css';
-
+import { FaCartPlus} from "react-icons/fa";
 import {MDBRipple} from 'mdb-react-ui-kit';
 
 import {
@@ -55,10 +55,10 @@ export default function ModalProd (props){
 
     function addOriginalOrPrint () {
         if (props.product.invType === 'Original') {
-            return <><p>Selling original - only one in stock</p> <Button hidden={true ? cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) : false} onClick={addToCart}>Add to cart<i  class='fas'>&#xf217;</i></Button></>
+            return <><p>Selling original - only one in stock</p> <Button hidden={true ? cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) : false} onClick={addToCart}>Add to cart<FaCartPlus/> </Button></> //<i  class='fas fa-cart-plus'>&#xf217;</i>
          } else if (props.product.invType === 'Print to order'){
             // console.log(cart.validateKey.prodkey, props.product.prodkey)
-            return <Button id='add-to-cart-btn' variant='contained' hidden={true ? cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) : false} onClick={addToCart}>Add to cart<i  class='fas'>&#xf217;</i></Button>
+            return <Button id='add-to-cart-btn' variant='contained' hidden={true ? cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) : false} onClick={addToCart}>Add to cart<FaCartPlus/></Button> //<i  class='fas fa-cart-plus'>&#xf217;</i>
          }
     }
 
