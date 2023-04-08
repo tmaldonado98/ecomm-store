@@ -91,7 +91,6 @@ app.post('/checkout-session', async (req, resu) => {
         console.log(forLineItems);    
 
     })
-    .then(console.log(forLineItems))
     // .catch(error => console.log(error))
 
 
@@ -109,10 +108,10 @@ app.post('/checkout-session', async (req, resu) => {
             line_items: forLineItems,
             mode: 'payment',
         })
-        resu.json({ url: session.url }); ////returning ReferenceError: Cannot access 'session' before initialization 
+        .then(session => resu.json({ url: session.url })) ////returning ReferenceError: Cannot access 'session' before initialization 
     })
-    
     .catch(error => console.log(error));
+    
 })
 
 
