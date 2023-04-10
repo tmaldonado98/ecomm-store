@@ -102,9 +102,9 @@ app.post('/checkout-session', async (req, resu) => {
                 // required: true,
             },
             payment_method_types: ['card'],
-            success_url: `https://vea-collections-b5045.firebaseapp.com/Success`,
+            success_url: `https://vea-collections.com/Success`,
             // ?session_id=${session.id}  ---> make unique route for each checkout session  ,
-            cancel_url: 'https://vea-collections-b5045.firebaseapp.com/Products',
+            cancel_url: 'https://vea-collections.com/Products',
             line_items: forLineItems,
             mode: 'payment',
         })
