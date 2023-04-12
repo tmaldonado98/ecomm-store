@@ -35,7 +35,7 @@ export default function about(){
                 <p>Seeks to express emotions through the canvas to communicate the personal story of exploration and growth.</p>
                 <p>Enjoys experimental use of color, and the improvisation of the artistic process.</p>
             </div>
-            <div className="about-image-container">
+            <div id="tm-image" className="about-image-container">
                 <img src={require("../assets/About2.JPG")} alt="T.M. Vea"/>
             </div>
 

@@ -11,6 +11,10 @@
     align-self: center;
 }
 
+#tm-container img {
+    width: 300px;
+}
+
 .about-text-container {
     color: #848484;
     max-width: 600px;
