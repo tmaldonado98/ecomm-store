@@ -2,6 +2,7 @@ import { useState, useContext, useEffect, memo } from 'react';
 import { CartContext } from './CartContext';
 import {BasicSelect, CartSelect} from './Select';
 import './Modals.css';
+import {BsCartPlus} from 'react-icons/bs'
 
 import {MDBRipple} from 'mdb-react-ui-kit';
 
@@ -53,12 +54,13 @@ export default function ModalProd (props){
         cart.removeValidity();
     }    
 
+    
     function addOriginalOrPrint () {
         if (props.product.invType === 'Original') {
-            return <><p>Selling original - only one in stock</p> <Button hidden={true ? cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) : false} onClick={addToCart}>Add to cart<i  class='fas'>&#xf217;</i></Button></>
+            return <><p>Selling original - only one in stock</p> <Button hidden={true ? cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) : false} onClick={addToCart}>Add to cart <BsCartPlus/></Button></>
          } else if (props.product.invType === 'Print to order'){
             // console.log(cart.validateKey.prodkey, props.product.prodkey)
-            return <Button id='add-to-cart-btn' variant='contained' hidden={true ? cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) : false} onClick={addToCart}>Add to cart<i  class='fas'>&#xf217;</i></Button>
+            return <Button id='add-to-cart-btn' variant='contained' hidden={true ? cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) : false} onClick={addToCart}>Add to cart <BsCartPlus/></Button>
          }
     }
 
@@ -79,7 +81,8 @@ export default function ModalProd (props){
                     {/* {console.log(src)} */}
                     <img
                     src={props.product.src}
-                    className={props.product.className}
+                    className="prod"
+                    alt={props.product.title}
                     />
                 <a>
                     <div className='mask' style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}>
@@ -136,7 +139,7 @@ export default function ModalProd (props){
                         {/* <Button hidden={true ? cart.items.find(curIt => curIt.item.product.prodkey === props.product.prodkey) : false} disabled={cart.validity} onClick={addToCart}>Add to cart<i  class='fas'>&#xf217;</i></Button>                 */}
                     <img
                     src={props.product.src}
-                    className={props.product.className}
+                    className="modImg"
                     alt={[props.product.name, props.product.medium, props.product.size]}    
                     />
                         

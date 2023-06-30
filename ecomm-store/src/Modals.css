@@ -131,3 +131,7 @@ background-color: #fffff026;
 #selectAndAdd .MuiButton-label {
     color: #252525 !important;
 }
+
+.modImg {
+  width: 100%;
+}

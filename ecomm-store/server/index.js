@@ -12,7 +12,7 @@ const db = mysql.createConnection({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    port: '3306'
+    port: process.env.DB_PORT,
 })
 
 app.use(cors());
@@ -22,24 +22,17 @@ app.use(express.json());
 
 app.get('/data', (req, res) => {  
     const fetch = 'SELECT * FROM inventory_table';
+    console.log(fetch);
     db.query(fetch, (err, result) => {
         if (err) {console.log(err)};
         res.json(result);
-
+        console.log(result)
     })
 })
 
 app.post('/checkout-session', async (req, res) => {
     
     const cartItems = req.body;
-    // console.log(cartItems)
-    // console.log(cartItems[0].item);
-
-    // const cartMap = new Map([]);
-    // cartItems.map(currentObj => {
-    //     cartMap.set({prodkey: currentObj.item.product.prodkey, price: currentObj.item.product.price, name: currentObj.item.product.name}, {quantity: currentObj.quantity})
-    // });
-    // console.log(cartMap);
 
     const cartArr = [];
     cartItems.map(currentObj => {
@@ -51,8 +44,6 @@ app.post('/checkout-session', async (req, res) => {
         prodQuant.push(curr.quantity)
     })
     console.log(prodQuant)
-    // + currentObj.quantity
-
 
     const stripeProdArr = [];
     const stripeProdId = [];
@@ -62,22 +53,16 @@ app.post('/checkout-session', async (req, res) => {
     .then(item => { 
         for (let i = 0; i < cartArr.length; i++) {
             stripeProdArr.push(item.data.find(prod => prod.metadata.prodkey === cartArr[i].prodkey))
-            // stripeProdId.push(stripeProdArr.id)
-            //  = product.id;
             
         }
-        // const stripeProdSet = new Set(stripeProdArr)
 
         console.log(stripeProdArr)
         // console.log(stripeProdSet.length)
-        // console.log(stripeProdId)
         
      })
     .catch(error => console.log(error))
 
     const priceArr = [];
-    // const priceArrId = [];
-    // const priceIdArr = [];
     const forLineItems = [];
 
     await stripe.prices.list()
@@ -89,11 +74,10 @@ app.post('/checkout-session', async (req, res) => {
         }
         // priceId = price.id;
         // console.log(priceArrItems);
-        console.log(priceArr);    
-        console.log(forLineItems);    
+        // console.log(priceArr);    
+        // console.log(forLineItems);    
 
     })
-    .then()
     .catch(error => console.log(error))
 
 
@@ -104,20 +88,14 @@ app.post('/checkout-session', async (req, res) => {
             // required: true,
           },
         payment_method_types: ['card', 'cashapp'],
-        success_url: `http://localhost:3000/Success`,
+        success_url: `https://vea-collections.com/Success`,
         // ?session_id=${session.id}  ---> make unique route for each checkout session  ,
-        cancel_url: 'http://localhost:3000/Products',
+        cancel_url: 'https://vea-collections.com/Products',
         line_items: forLineItems,
         mode: 'payment',
     })
-
       
-    console.log(session);
-
     res.json({ url: session.url });
-
-    //   .then(console.log(res.json()))
-    //   .then(res.json({ url }))
 })
 
 
@@ -127,8 +105,7 @@ app.post('/contact', (req, res) => {
     console.log(messageData)
     sgMail.setApiKey(process.env.SENDGRID_KEY);
     const msg = {
-        // CHANGE TO VEA COLLECTIONS EMAIL ADDRESS
-      to: 'tmaldonadotrs@gmail.com',
+      to: process.env.SG_ADDRESS,
       from: messageData.user,
       subject: 'Vea Collections: Message from ' + messageData.name,
       text: 'Message body: ' + messageData.message,

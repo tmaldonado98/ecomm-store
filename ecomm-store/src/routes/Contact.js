@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Nav from "../Nav";
 import './Contact.css';
-// import { Button, Typography } from '@material-ui/core';
-// import {Link } from 'react-router-dom';
 import { FaInstagram, FaEnvelope} from "react-icons/fa";
 import FooterSection from '../Footer';
 import { MDBBtn } from "mdb-react-ui-kit";
@@ -40,7 +38,7 @@ export default function Contact(){
     else {
       setSentStatus(true);      
       const messageData = {name: name, user: user, message: message};
-
+       
       axios.post('https://us-central1-vea-collections-b5045.cloudfunctions.net/app/contact', messageData)
       .then(response => {
         setSendingEmail(false);
@@ -130,12 +128,12 @@ useEffect(() => {
           </section>
 
           <div id="sent-status" hidden={sentStatus}>
-                  <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                  <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
-                  <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                  <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                  <circle className="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                  <path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
                   </svg>
                   <p style={{textAlign:'center', marginTop:'12px'}}>Message sent!</p>
-                  <p>A copy of your message will be sent to the address you have provided. <br/> Thank you, and we'll be in touch shortly.</p>
+                  <p>A copy of your message will be sent to the address you have provided. <br/> Thank you, and we\ll be in touch shortly.</p>
                 </div>
         </div>
         
@@ -145,15 +143,15 @@ useEffect(() => {
             <legend>Fill out this form!</legend>
             <p>If you would like to send us an image, please send us an email directly with the image file attached. Thank you.</p>
         
-            <label for='name'>What is your name?</label>
+            <label htmlFor='name'>What is your name?</label>
             <input name="name" type='text' required value={name} onChange={handleNameChange}></input>
             <p hidden={nameInvalid} className='invalid'>You must enter your name.</p>
 
-            <label for='email'>What is your email?</label>
+            <label htmlFor='email'>What is your email?</label>
             <input name="email" type='text' required value={user} onChange={handleUserChange}></input>
             <p hidden={userInvalid} className='invalid'>You must enter your email address.</p>
         
-            <label for='details'>Give us some more details</label>
+            <label htmlFor='details'>Give us some more details</label>
             <textarea required value={message} placeholder="Suggestion of things to include:&#10;• Your estimated budget&#10;• Which size do you want?&#10;• Any other questions you may have, please write them here"  onChange={handleMessageChange}></textarea>
             <p hidden={messageInvalid} className='invalid'>You must enter a message.</p>
         

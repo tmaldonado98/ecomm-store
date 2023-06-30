@@ -107,7 +107,7 @@ export default function Nav(){
     }
 
     const cart = useContext(CartContext);
-    // console.log(cart.items)
+    console.log(cart.items)
 
     // const cartCount = cart.items.length //cart.items.reduce((sum, item) => sum + item.quantity, 0)
       const cartCount = () => {
