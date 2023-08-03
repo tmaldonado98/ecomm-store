@@ -14,6 +14,7 @@
 .about-text-container {
     color: #848484;
     max-width: 600px;
+    min-height: 60vh;
 }
 
 .about-text-container h3 {

@@ -144,8 +144,12 @@ function proceedCheckout(){
     .then(response => {
       
       window.location = response.data.url;
+      console.log(response.data);
     })
-    .catch(error => console.error(error))
+      .catch((error, response) =>
+        console.error(error),
+        console.log(response.data)
+      )
 
 }
 

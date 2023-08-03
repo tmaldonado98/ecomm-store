@@ -2,7 +2,6 @@ require('dotenv').config();
 const functions = require("firebase-functions");
 const express = require('express');
 const app = express();
-<<<<<<< HEAD
 // const bodyparser = require('body-parser');
 // 
 const cors = require('cors');
@@ -44,7 +43,6 @@ const db = mysql.createPool({
 //     console.log('Database connection established');
 // });
 app.use(cors());
-// app.use(cors);
 app.use(express.static('functions')); ///build?
 app.use(express.json());
 
@@ -67,42 +65,6 @@ app.use(express.json());
 
 
 app.post('/checkout-session', async (req, resu) => {
-=======
-const cors = require('cors');
-// const bodyparser = require('body-parser');
-// 
-const mysql = require('mysql2');
-const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
-const sgMail = require('@sendgrid/mail')
-
-const db = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    port: process.env.DB_PORT,
-})
-
-app.use(cors({ origin: true }));
-// app.use(express.static('build')); ///build?
-app.use(express.json());
-
-
-app.get('/data', (req, res) => {  
-    console.log(fetch);
-    
-    const fetch = 'SELECT * FROM inventory_table';
-    res.setHeader('Cache-Control', 'public, max-age=300, s-maxage=600');
-    db.query(fetch, (err, result) => {
-        if (err) {console.log('data error',err)};
-        res.json(result);
-        console.log(result)
-    })
-})
-
-app.post('/checkout-session', async (req, res) => {
-    res.setHeader('Cache-Control', 'public, max-age=300, s-maxage=600');
->>>>>>> 85311de (Commit for brandon.)
     
     const cartItems = req.body;
 
@@ -150,10 +112,6 @@ app.post('/checkout-session', async (req, res) => {
         console.log(forLineItems);    
 
     })
-<<<<<<< HEAD
-=======
-    .then()
->>>>>>> 85311de (Commit for brandon.)
     .catch(error => console.log(error))
 
 
@@ -163,28 +121,19 @@ app.post('/checkout-session', async (req, res) => {
             // allowed_countries: ['US', 'CA', 'CN'],
             // required: true,
           },
-        payment_method_types: ['card', 'cashapp'],
-        success_url: `https://vea-collections-b5045.firebaseapp.com/Success`,
+        payment_method_types: ['card'],
+        success_url: `https://vea-collections.com/Success`,
         // ?session_id=${session.id}  ---> make unique route for each checkout session  ,
-        cancel_url: 'https://vea-collections-b5045.firebaseapp.com/Products',
+        cancel_url: 'https://vea-collections.com/Products',
         line_items: forLineItems,
         mode: 'payment',
     })
       
-<<<<<<< HEAD
     resu.json({ url: session.url });
 })
 
 
 app.post('/contact', (req, resu) => {
-=======
-    res.json({ url: session.url });
-})
-
-
-app.post('/contact', (req, res) => {
-    res.setHeader('Cache-Control', 'public, max-age=300, s-maxage=600');
->>>>>>> 85311de (Commit for brandon.)
 
     const messageData = req.body;
     console.log(process.env.SENDGRID_KEY);
@@ -209,38 +158,20 @@ app.post('/contact', (req, res) => {
     .then(() => console.log('Email and customer copy sent successfully!'))
     .catch((error) => console.error(error));
 
-<<<<<<< HEAD
     resu.json();
 })
 
 // app.listen(process.env.LISTEN_PORT, () => {
 //     console.log('running on port ' + process.env.LISTEN_PORT)
-=======
-    res.json();
-})
-
-// app.listen(port, () => {
-//     console.log('running on port ' + port)
->>>>>>> 85311de (Commit for brandon.)
 //     db.connect( function (err){
 //         if(err) throw err;
 //         console.log('database connected')
 //     })
 // })
 
-<<<<<<< HEAD
 exports.app = functions.https.onRequest(app);
 
 // exports.helloWorld = (req, res) => {
 //     let message = req.query.message || req.body.message || 'Hello World!';
 //     res.status(200).send(message);
 //   };
-=======
-// exports.app = functions.https.onRequest(cors(app));
-try {
-    exports.app = functions.https.onRequest(app);
-    
-} catch (error) {
-    console.log(error)
-}
->>>>>>> 85311de (Commit for brandon.)
